@@ -1,0 +1,16 @@
+linkWorkspacePackages: true
+
+packages:
+  - packages/*
+
+allowBuilds:
+  esbuild: true
+
+catalog:
+  "@zag-js/anatomy": ^1.44.0
+  "@zag-js/collection": ^1.44.0
+  "@zag-js/core": ^1.44.0
+  "@zag-js/dom-query": ^1.44.0
+  "@zag-js/focus-visible": ^1.44.0
+  "@zag-js/types": ^1.44.0
+  "@zag-js/utils": ^1.44.0
