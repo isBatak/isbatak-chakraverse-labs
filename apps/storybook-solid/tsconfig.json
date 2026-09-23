@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src", ".storybook/*.ts", "vite.config.ts"],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["vite/client"],
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo"
+  }
+}

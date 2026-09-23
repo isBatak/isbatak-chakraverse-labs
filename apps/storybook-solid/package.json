@@ -1,0 +1,24 @@
+{
+  "name": "@isbatak/storybook-solid",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6010 --no-open",
+    "build-storybook": "storybook build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@isbatak/storybook-shared": "workspace:*",
+    "@isbatak/zag-wheel-picker": "workspace:*",
+    "@zag-js/date-input": "catalog:",
+    "@zag-js/popover": "catalog:",
+    "@zag-js/solid": "catalog:",
+    "solid-js": "^1.9.15"
+  },
+  "devDependencies": {
+    "storybook": "catalog:",
+    "storybook-solidjs-vite": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-solid": "^2.11.14"
+  }
+}

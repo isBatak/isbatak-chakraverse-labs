@@ -1,0 +1,17 @@
+{
+  "name": "@isbatak/storybook",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "wait-on --timeout 180000 tcp:6007 tcp:6008 tcp:6009 tcp:6010 tcp:6011 tcp:6012 && storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "catalog:",
+    "@storybook/html-vite": "catalog:",
+    "storybook": "catalog:",
+    "vite": "catalog:",
+    "wait-on": "^9.1.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src", ".storybook/*.ts", "vite.config.ts"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "types": ["vite/client"],
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo"
+  }
+}

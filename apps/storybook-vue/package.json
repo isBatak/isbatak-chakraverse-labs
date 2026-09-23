@@ -1,0 +1,25 @@
+{
+  "name": "@isbatak/storybook-vue",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6008 --no-open",
+    "build-storybook": "storybook build",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@isbatak/storybook-shared": "workspace:*",
+    "@isbatak/zag-wheel-picker": "workspace:*",
+    "@zag-js/date-input": "catalog:",
+    "@zag-js/popover": "catalog:",
+    "@zag-js/vue": "catalog:",
+    "vue": "^3.5.43"
+  },
+  "devDependencies": {
+    "@storybook/vue3-vite": "catalog:",
+    "@vitejs/plugin-vue": "^6.0.9",
+    "storybook": "catalog:",
+    "vite": "catalog:",
+    "vue-tsc": "^3.3.11"
+  }
+}

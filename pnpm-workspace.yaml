@@ -2,6 +2,7 @@ linkWorkspacePackages: true
 
 packages:
   - packages/*
+  - apps/*
 
 allowBuilds:
   esbuild: true
@@ -10,7 +11,24 @@ catalog:
   "@zag-js/anatomy": ^1.44.0
   "@zag-js/collection": ^1.44.0
   "@zag-js/core": ^1.44.0
+  "@zag-js/date-input": ^1.44.0
   "@zag-js/dom-query": ^1.44.0
   "@zag-js/focus-visible": ^1.44.0
+  "@zag-js/popover": ^1.44.0
+  "@zag-js/preact": ^1.44.0
+  "@zag-js/react": ^1.44.0
+  "@zag-js/solid": ^1.44.0
+  "@zag-js/svelte": ^1.44.0
   "@zag-js/types": ^1.44.0
   "@zag-js/utils": ^1.44.0
+  "@zag-js/vanilla": ^1.44.0
+  "@zag-js/vue": ^1.44.0
+  "@storybook/addon-docs": ^10.6.0
+  "@storybook/html-vite": ^10.6.0
+  "@storybook/preact-vite": ^10.6.0
+  "@storybook/react-vite": ^10.6.0
+  "@storybook/svelte-vite": ^10.6.0
+  "@storybook/vue3-vite": ^10.6.0
+  storybook: ^10.6.0
+  storybook-solidjs-vite: ^10.7.2
+  vite: ^8.3.0

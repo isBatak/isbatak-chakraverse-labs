@@ -1,0 +1,25 @@
+{
+  "name": "@isbatak/storybook-svelte",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6009 --no-open",
+    "build-storybook": "storybook build",
+    "typecheck": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "@isbatak/storybook-shared": "workspace:*",
+    "@isbatak/zag-wheel-picker": "workspace:*",
+    "@zag-js/date-input": "catalog:",
+    "@zag-js/popover": "catalog:",
+    "@zag-js/svelte": "catalog:",
+    "svelte": "^5.57.1"
+  },
+  "devDependencies": {
+    "@storybook/svelte-vite": "catalog:",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "storybook": "catalog:",
+    "svelte-check": "^4.7.6",
+    "vite": "catalog:"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@isbatak/storybook-vanilla",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6012 --no-open",
+    "build-storybook": "storybook build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@isbatak/storybook-shared": "workspace:*",
+    "@isbatak/zag-wheel-picker": "workspace:*",
+    "@zag-js/vanilla": "catalog:"
+  },
+  "devDependencies": {
+    "@storybook/html-vite": "catalog:",
+    "storybook": "catalog:",
+    "vite": "catalog:"
+  }
+}

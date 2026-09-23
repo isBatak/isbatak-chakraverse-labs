@@ -1,0 +1,18 @@
+{
+  "name": "@isbatak/storybook-shared",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@internationalized/date": "^3.12.4",
+    "@isbatak/zag-wheel-picker": "workspace:*",
+    "@zag-js/date-input": "catalog:"
+  }
+}

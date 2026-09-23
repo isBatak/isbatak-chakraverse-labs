@@ -1,0 +1,24 @@
+{
+  "name": "@isbatak/storybook-preact",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6011 --no-open",
+    "build-storybook": "storybook build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@isbatak/storybook-shared": "workspace:*",
+    "@isbatak/zag-wheel-picker": "workspace:*",
+    "@zag-js/date-input": "catalog:",
+    "@zag-js/popover": "catalog:",
+    "@zag-js/preact": "catalog:",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "@storybook/preact-vite": "catalog:",
+    "storybook": "catalog:",
+    "vite": "catalog:"
+  }
+}
