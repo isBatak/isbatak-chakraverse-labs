@@ -133,7 +133,7 @@ importers:
         version: link:../storybook-shared
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
-        version: link:../../packages/wheel-picker
+        version: link:../../packages/zag/wheel-picker
       '@zag-js/date-input':
         specifier: 'catalog:'
         version: 1.44.0(@internationalized/date@3.12.4)
@@ -167,7 +167,7 @@ importers:
         version: link:../storybook-shared
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
-        version: link:../../packages/wheel-picker
+        version: link:../../packages/zag/wheel-picker
       '@zag-js/date-input':
         specifier: 'catalog:'
         version: 1.44.0(@internationalized/date@3.12.4)
@@ -210,7 +210,7 @@ importers:
         version: 3.12.4
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
-        version: link:../../packages/wheel-picker
+        version: link:../../packages/zag/wheel-picker
       '@zag-js/date-input':
         specifier: 'catalog:'
         version: 1.44.0(@internationalized/date@3.12.4)
@@ -222,7 +222,7 @@ importers:
         version: link:../storybook-shared
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
-        version: link:../../packages/wheel-picker
+        version: link:../../packages/zag/wheel-picker
       '@zag-js/date-input':
         specifier: 'catalog:'
         version: 1.44.0(@internationalized/date@3.12.4)
@@ -256,7 +256,7 @@ importers:
         version: link:../storybook-shared
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
-        version: link:../../packages/wheel-picker
+        version: link:../../packages/zag/wheel-picker
       '@zag-js/date-input':
         specifier: 'catalog:'
         version: 1.44.0(@internationalized/date@3.12.4)
@@ -293,7 +293,7 @@ importers:
         version: link:../storybook-shared
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
-        version: link:../../packages/wheel-picker
+        version: link:../../packages/zag/wheel-picker
       '@zag-js/vanilla':
         specifier: 'catalog:'
         version: 1.44.0
@@ -315,7 +315,7 @@ importers:
         version: link:../storybook-shared
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
-        version: link:../../packages/wheel-picker
+        version: link:../../packages/zag/wheel-picker
       '@zag-js/date-input':
         specifier: 'catalog:'
         version: 1.44.0(@internationalized/date@3.12.4)
@@ -345,7 +345,7 @@ importers:
         specifier: ^3.3.11
         version: 3.3.11(typescript@6.0.3)
 
-  packages/wheel-picker:
+  packages/zag/wheel-picker:
     dependencies:
       '@zag-js/anatomy':
         specifier: 'catalog:'

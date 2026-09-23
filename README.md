@@ -1,10 +1,10 @@
-# isbatak/zag
+# @isbatak/chakraverse-labs
 
 Zag state machines developed outside [Zag](https://github.com/chakra-ui/zag) before they are contributed upstream.
 
 ## Packages
 
-- [`@isbatak/zag-wheel-picker`](packages/wheel-picker): wheel picker state machine
+- [`@isbatak/zag-wheel-picker`](packages/zag/wheel-picker): wheel picker state machine
 
 ## Development
 
