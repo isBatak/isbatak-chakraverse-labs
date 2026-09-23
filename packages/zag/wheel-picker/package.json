@@ -15,8 +15,7 @@
   "main": "src/index.ts",
   "sideEffects": false,
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "exports": {
     ".": "./src/index.ts",

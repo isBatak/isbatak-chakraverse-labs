@@ -1,7 +1,7 @@
 linkWorkspacePackages: true
 
 packages:
-  - packages/*
+  - packages/*/*
   - apps/*
 
 allowBuilds:
