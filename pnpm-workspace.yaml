@@ -7,6 +7,15 @@ packages:
 allowBuilds:
   esbuild: true
 
+# Supply-chain hardening (see https://pnpm.io/supply-chain-security)
+minimumReleaseAge: 1440
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  # Legacy-line releases published without provenance after newer lines had it (long-vetted)
+  - chokidar@4.0.3
+  - semver@6.3.1
+
 catalog:
   "@zag-js/anatomy": ^1.44.0
   "@zag-js/collection": ^1.44.0
