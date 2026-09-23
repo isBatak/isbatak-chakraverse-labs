@@ -12,6 +12,15 @@
   ],
   "author": "Ivica Batinic <ivicabatinic123@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/isBatak/isbatak-chakraverse-labs/tree/main/packages/zag/wheel-picker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isBatak/isbatak-chakraverse-labs.git",
+    "directory": "packages/zag/wheel-picker"
+  },
+  "bugs": {
+    "url": "https://github.com/isBatak/isbatak-chakraverse-labs/issues"
+  },
   "main": "src/index.ts",
   "sideEffects": false,
   "files": [
