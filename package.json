@@ -13,6 +13,7 @@
     "format:check": "oxfmt --check",
     "storybook": "pnpm --parallel --filter \"./apps/storybook*\" storybook",
     "build:storybook": "pnpm --filter \"./apps/storybook-*\" build-storybook && pnpm --filter @isbatak/storybook build-storybook",
+    "www": "pnpm --parallel --filter \"./apps/www*\"",
     "changeset": "changeset",
     "version-packages": "changeset version && oxfmt",
     "clean": "pnpm -r exec rm -rf dist node_modules/.cache && rm -rf node_modules"
@@ -25,6 +26,6 @@
     "oxlint": "1.85.0",
     "tsup": "8.5.1",
     "typescript": "6.0.3",
-    "vitest": "4.1.10"
+    "vitest": "catalog:"
   }
 }

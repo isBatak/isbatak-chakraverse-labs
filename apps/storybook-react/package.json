@@ -13,14 +13,14 @@
     "@zag-js/date-input": "catalog:",
     "@zag-js/popover": "catalog:",
     "@zag-js/react": "catalog:",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@storybook/react-vite": "catalog:",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.1",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
     "storybook": "catalog:",
     "vite": "catalog:"
   }

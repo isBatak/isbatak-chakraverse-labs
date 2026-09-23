@@ -5,6 +5,7 @@ packages:
   - apps/*
 
 allowBuilds:
+  "@parcel/watcher": false
   esbuild: true
 
 # Supply-chain hardening (see https://pnpm.io/supply-chain-security)
@@ -15,6 +16,11 @@ trustPolicyExclude:
   # Legacy-line releases published without provenance after newer lines had it (long-vetted)
   - chokidar@4.0.3
   - semver@6.3.1
+  # Panda CSS v2 beta packages published without provenance (apps/www)
+  - "@pandacss/cli@2.0.0-beta.18"
+  - "@pandacss/compiler@2.0.0-beta.18"
+  - "@pandacss/compiler-shared@2.0.0-beta.18"
+  - "@pandacss/transformer@2.0.0-beta.18"
 
 catalog:
   "@zag-js/anatomy": ^1.44.0
@@ -41,3 +47,9 @@ catalog:
   storybook: ^10.6.0
   storybook-solidjs-vite: ^10.7.2
   vite: ^8.3.0
+  "@types/react": ^19.3.0
+  "@types/react-dom": ^19.3.0
+  "@vitejs/plugin-react": ^6.1.1
+  react: ^19.3.0
+  react-dom: ^19.3.0
+  vitest: 4.1.10
