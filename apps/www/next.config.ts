@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
       "./app/**/*.tsx": pandaLoader,
       "./components/**/*.tsx": pandaLoader,
     },
+    resolveAlias: {
+      // Written by scripts/panda-internal-css.mjs
+      "@pandacss-internal/css": "./.panda/internal-css.mjs",
+    },
   },
 }
 

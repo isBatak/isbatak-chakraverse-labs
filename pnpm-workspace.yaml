@@ -7,6 +7,7 @@ packages:
 allowBuilds:
   "@parcel/watcher": false
   esbuild: true
+  sharp: false
 
 # Supply-chain hardening (see https://pnpm.io/supply-chain-security)
 minimumReleaseAge: 1440

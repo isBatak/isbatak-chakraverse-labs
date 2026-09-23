@@ -1,15 +1,24 @@
-"use client"
+"use client";
 
-import { useTheme } from "next-themes"
+import { useTheme } from "next-themes";
 
-import { Button } from "./ui/button"
+import { Button } from "./ui/button";
+import { Icon } from "./ui/icon";
 
 export function ColorModeButton() {
-  const { resolvedTheme, setTheme } = useTheme()
-  const next = resolvedTheme === "dark" ? "light" : "dark"
+  const { resolvedTheme, setTheme } = useTheme();
+
   return (
-    <Button variant="ghost" size="sm" onClick={() => setTheme(next)} suppressHydrationWarning>
-      Toggle theme
+    <Button
+      variant="ghost"
+      size="xs"
+      px="0"
+      aspectRatio="square"
+      aria-label="Toggle color mode"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+    >
+      <Icon name="moon" display="none" _dark={{ display: "block" }} />
+      <Icon name="sun" _dark={{ display: "none" }} />
     </Button>
-  )
+  );
 }

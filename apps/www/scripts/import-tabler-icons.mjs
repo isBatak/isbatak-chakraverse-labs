@@ -29,6 +29,10 @@ const icons = {
   file: "outline/file", // FileIcon
   copy: "outline/copy", // CopyIcon
   "color-picker": "outline/color-picker", // PipetteIcon
+  // Website
+  "brand-github": "outline/brand-github",
+  sun: "outline/sun",
+  moon: "outline/moon",
 }
 
 const PRESENTATION_ATTRS = ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin"]
