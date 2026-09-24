@@ -1,0 +1,104 @@
+.wheel-picker,
+.wheel-picker-example {
+  --wheel-picker-fg: var(--wheel-picker-fg-color, #18181b);
+  --wheel-picker-muted: var(--wheel-picker-muted-color, #a1a1aa);
+  --wheel-picker-highlight: var(--wheel-picker-highlight-color, #f4f4f5);
+  --wheel-picker-ring: var(--wheel-picker-ring-color, #a1a1aa);
+  --wheel-picker-border: var(--wheel-picker-border-color, #e4e4e7);
+}
+
+.wheel-picker {
+  width: 240px;
+}
+
+.wheel-picker [data-part="label"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.wheel-picker [data-part="control"] {
+  height: 240px;
+  outline: none;
+  cursor: grab;
+}
+
+.wheel-picker [data-part="control"][data-dragging] {
+  cursor: grabbing;
+}
+
+.wheel-picker [data-part="viewport"] {
+  mask-image: linear-gradient(to bottom, transparent, black 30% 70%, transparent);
+}
+
+.wheel-picker [data-part="item"] {
+  color: var(--wheel-picker-muted);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.wheel-picker [data-part="highlight"] {
+  border-radius: var(--wheel-picker-radius, 8px);
+  background: var(--wheel-picker-highlight);
+}
+
+.wheel-picker [data-part="control"][data-focus-visible] [data-part="highlight"] {
+  outline: 2px solid var(--wheel-picker-ring);
+  outline-offset: -2px;
+}
+
+.wheel-picker [data-part="highlight-item"] {
+  color: var(--wheel-picker-fg);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.wheel-picker [data-part="item"][data-disabled],
+.wheel-picker [data-part="highlight-item"][data-disabled] {
+  opacity: 0.35;
+}
+
+.wheel-picker-example {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+
+.wheel-picker-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.wheel-picker-actions button {
+  padding: 6px 12px;
+  border: 1px solid var(--wheel-picker-border);
+  border-radius: var(--wheel-picker-radius, 8px);
+  background: transparent;
+  color: var(--wheel-picker-fg);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.wheel-picker-actions button:hover {
+  background: var(--wheel-picker-highlight);
+}
+
+.wheel-picker-example output {
+  color: var(--wheel-picker-muted);
+  font-size: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .wheel-picker,
+  .wheel-picker-example {
+    --wheel-picker-fg: var(--wheel-picker-fg-color, #fafafa);
+    --wheel-picker-muted: var(--wheel-picker-muted-color, #71717a);
+    --wheel-picker-highlight: var(--wheel-picker-highlight-color, #27272a);
+    --wheel-picker-ring: var(--wheel-picker-ring-color, #71717a);
+    --wheel-picker-border: var(--wheel-picker-border-color, #3f3f46);
+  }
+}

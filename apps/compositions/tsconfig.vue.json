@@ -1,0 +1,5 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src/examples/vue", "mount/vue.ts", "mount/env.d.ts"],
+  "compilerOptions": { "types": ["node"], "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo.vue" }
+}
