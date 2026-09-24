@@ -1,0 +1,78 @@
+---
+title: Wheel picker
+description: Pick from a vertical list with inertia scrolling, precise snapping and optional infinite looping.
+order: 1
+category: Inputs
+status: beta
+preview: wheel-picker-basic
+---
+
+Drag, scroll, use the keyboard or type to jump to an option. Works in React, Vue, Svelte, Solid, Preact and vanilla JS.
+
+- Mouse, touch, wheel, keyboard and typeahead
+- Inertia scrolling that snaps to items
+- Optional infinite looping
+- Disabled items, controlled and uncontrolled values
+- A hidden native select for forms
+- RTL support
+
+## Installation
+
+Pick your framework, then add the component with the shadcn CLI or copy it by hand.
+
+<Installation id="wheel-picker-basic" />
+
+## Usage
+
+Import the component and render it.
+
+<WheelPickerUsage />
+
+The items live at the top of the component file. Edit them to fit your data.
+
+## Examples
+
+Each example is its own registry item, so you can add it with the CLI the same way.
+
+### Controlled value
+
+<Example id="wheel-picker-controlled" />
+
+### Infinite scrolling
+
+<Example id="wheel-picker-infinite" />
+
+## Theming
+
+The stylesheet is scoped to the `wheel-picker` class and reads these custom properties, so you can theme it without
+editing it:
+
+```css
+:root {
+  --wheel-picker-fg-color: #18181b;
+  --wheel-picker-muted-color: #a1a1aa;
+  --wheel-picker-highlight-color: #f4f4f5;
+  --wheel-picker-ring-color: #a1a1aa;
+  --wheel-picker-radius: 8px;
+}
+```
+
+## Accessibility
+
+The control has the `spinbutton` role and reports the current item through `aria-valuenow` and `aria-valuetext`. Give it
+a name with a visible label, `aria-label` or `aria-labelledby`.
+
+- **Arrow Up / Arrow Down**: select the previous or next enabled item
+- **Arrow Left / Arrow Right**: move focus between sibling wheel pickers
+- **Home / End**: select the first or last enabled item (not in infinite mode)
+- **Characters**: jump to an item by typeahead
+
+## Props
+
+<ApiTable name="wheel-picker" kind="context" />
+
+## Go further
+
+- [Zag machine](/components/wheel-picker/zag): build your own markup on the headless state machine.
+- [Ark UI](/components/wheel-picker/ark): ready-made parts for React, Solid, Vue and Svelte.
+- [Panda CSS](/components/wheel-picker/panda): the slot recipe and preset used on this site.

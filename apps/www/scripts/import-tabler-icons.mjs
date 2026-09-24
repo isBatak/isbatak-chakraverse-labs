@@ -37,6 +37,17 @@ const icons = {
   "arrow-right": "outline/arrow-right",
   heart: "outline/heart",
   plus: "outline/plus",
+  code: "outline/code",
+  components: "outline/components",
+  refresh: "outline/refresh",
+  maximize: "outline/maximize",
+  minimize: "outline/minimize",
+  contrast: "outline/contrast",
+  "brand-react": "outline/brand-react",
+  "brand-vue": "outline/brand-vue",
+  "brand-svelte": "outline/brand-svelte",
+  "brand-solidjs": "outline/brand-solidjs",
+  "brand-javascript": "outline/brand-javascript",
 }
 
 const PRESENTATION_ATTRS = ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin"]

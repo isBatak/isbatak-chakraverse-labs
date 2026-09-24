@@ -5,7 +5,8 @@ import { styled } from "styled-system/jsx"
 import { CodeBlock } from "./code/code-block"
 import { ApiTable } from "./docs/api-table"
 import { ArkWheelPickerExample } from "./docs/ark-wheel-picker-example"
-import { Example, ExampleCode, FrameworkInstall, FrameworkRegistry } from "./docs/framework-code"
+import { Example, ExampleCode, FrameworkInstall, Installation } from "./docs/framework-code"
+import { WheelPickerUsage } from "./docs/wheel-picker-usage"
 
 type MDXComponents = Record<string, ComponentType<any>>
 
@@ -30,7 +31,8 @@ const sharedComponents: MDXComponents = {
   Example,
   ExampleCode,
   FrameworkInstall,
-  FrameworkRegistry,
+  Installation,
+  WheelPickerUsage,
 }
 
 function getMDXComponent(code: string): ComponentType<{ components?: MDXComponents }> {

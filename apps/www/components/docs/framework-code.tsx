@@ -48,21 +48,76 @@ export function FrameworkInstall({ id }: ExampleProps) {
   )
 }
 
-function RegistryCommand({ id, framework }: ExampleProps & { framework: FrameworkId }) {
-  if (!getExample(id, framework)) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
-  return <CodeBlock lang="sh" code={`pnpm dlx shadcn@latest add ${registryUrl(id, framework)}`} />
+const folderOf = (example: ExampleFiles) => example.files[0]!.target.replace(/[^/]+$/, "")
+
+function CliInstall({ id, framework }: ExampleProps & { framework: FrameworkId }) {
+  const example = getExample(id, framework)
+  if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
+
+  return (
+    <>
+      <CodeBlock lang="sh" code={`pnpm dlx shadcn@latest add ${registryUrl(id, framework)}`} />
+      <p>
+        This installs the dependencies and adds the component with its stylesheet to <code>{folderOf(example)}</code>.
+        It works in any project, with or without a <code>components.json</code>.
+      </p>
+    </>
+  )
 }
 
-export function FrameworkRegistry({ id }: ExampleProps) {
+function ManualInstall({ id, framework }: ExampleProps & { framework: FrameworkId }) {
+  const example = getExample(id, framework)
+  if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
+
   return (
-    <FrameworkSwitch
-      react={<RegistryCommand id={id} framework="react" />}
-      vue={<RegistryCommand id={id} framework="vue" />}
-      svelte={<RegistryCommand id={id} framework="svelte" />}
-      solid={<RegistryCommand id={id} framework="solid" />}
-      preact={<RegistryCommand id={id} framework="preact" />}
-      vanilla={<RegistryCommand id={id} framework="vanilla" />}
-    />
+    <ol>
+      <li>
+        Install the dependencies:
+        <CodeBlock lang="sh" code={`pnpm add ${example.dependencies.join(" ")}`} />
+      </li>
+      <li>
+        Copy these files into <code>{folderOf(example)}</code>:
+        <CodeFrame>
+          <ExampleFilesTabs id={id} framework={framework} />
+        </CodeFrame>
+      </li>
+    </ol>
+  )
+}
+
+export function Installation({ id }: ExampleProps) {
+  return (
+    <styled.div my="6">
+      <styled.div overflowX="auto" pb="1">
+        <FrameworkPicker />
+      </styled.div>
+      <Tabs.Root defaultValue="cli" size="sm" variant="line" mt="4">
+        <Tabs.List>
+          <Tabs.Trigger value="cli">shadcn CLI</Tabs.Trigger>
+          <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="cli">
+          <FrameworkSwitch
+            react={<CliInstall id={id} framework="react" />}
+            vue={<CliInstall id={id} framework="vue" />}
+            svelte={<CliInstall id={id} framework="svelte" />}
+            solid={<CliInstall id={id} framework="solid" />}
+            preact={<CliInstall id={id} framework="preact" />}
+            vanilla={<CliInstall id={id} framework="vanilla" />}
+          />
+        </Tabs.Content>
+        <Tabs.Content value="manual">
+          <FrameworkSwitch
+            react={<ManualInstall id={id} framework="react" />}
+            vue={<ManualInstall id={id} framework="vue" />}
+            svelte={<ManualInstall id={id} framework="svelte" />}
+            solid={<ManualInstall id={id} framework="solid" />}
+            preact={<ManualInstall id={id} framework="preact" />}
+            vanilla={<ManualInstall id={id} framework="vanilla" />}
+          />
+        </Tabs.Content>
+      </Tabs.Root>
+    </styled.div>
   )
 }
 
@@ -111,6 +166,14 @@ function ExampleFiles({ id }: ExampleProps) {
       preact={<ExampleFilesTabs id={id} framework="preact" />}
       vanilla={<ExampleFilesTabs id={id} framework="vanilla" />}
     />
+  )
+}
+
+export function ExampleSource({ id }: ExampleProps) {
+  return (
+    <CodeFrame>
+      <ExampleFiles id={id} />
+    </CodeFrame>
   )
 }
 
