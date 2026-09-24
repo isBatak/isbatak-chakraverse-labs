@@ -33,7 +33,7 @@ const icons = {
   "brand-github": "outline/brand-github",
   sun: "outline/sun",
   moon: "outline/moon",
-  "layout-sidebar": "outline/layout-sidebar",
+  home: "outline/home",
   "arrow-right": "outline/arrow-right",
   heart: "outline/heart",
   plus: "outline/plus",

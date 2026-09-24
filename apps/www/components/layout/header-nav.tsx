@@ -22,10 +22,7 @@ export function HeaderNav() {
 
   return (
     <styled.nav display={{ base: "none", md: "flex" }} alignItems="center" gap="5">
-      <NavLink
-        href="/docs/components/wheel-picker"
-        aria-current={pathname.startsWith("/docs/components") ? "page" : undefined}
-      >
+      <NavLink href="/components" aria-current={pathname.startsWith("/components") ? "page" : undefined}>
         Components
       </NavLink>
     </styled.nav>

@@ -1,13 +1,15 @@
 import { defineCollection, defineConfig, s } from "velite"
 
-const docs = defineCollection({
-  name: "Doc",
-  pattern: "docs/**/*.mdx",
+const components = defineCollection({
+  name: "Component",
+  pattern: "components/*.mdx",
   schema: s
     .object({
       title: s.string().max(99),
       description: s.string().max(999).optional(),
       order: s.number().default(0),
+      category: s.string(),
+      status: s.enum(["new", "beta", "stable"]).optional(),
       preview: s.string().optional(),
       path: s.path(),
       toc: s.toc(),
@@ -15,8 +17,8 @@ const docs = defineCollection({
       code: s.mdx(),
     })
     .transform(({ path, ...data }) => {
-      const slug = path.replace(/^docs\//, "")
-      return { ...data, slug, permalink: `/docs/${slug}` }
+      const slug = path.replace(/^components\//, "")
+      return { ...data, slug, permalink: `/components/${slug}` }
     }),
 })
 
@@ -29,5 +31,5 @@ export default defineConfig({
     name: "[name]-[hash:6].[ext]",
     clean: true,
   },
-  collections: { docs },
+  collections: { components },
 })

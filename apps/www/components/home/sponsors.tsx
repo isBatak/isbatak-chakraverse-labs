@@ -76,7 +76,7 @@ export function Sponsors() {
           <SectionHeading>The sponsor wall is open.</SectionHeading>
           <SectionText>
             Every seat below is still up for grabs. Sponsorship pays for the slow parts: edge cases, accessibility
-            passes and the review rounds it takes to land a machine upstream.
+            passes and keeping React, Vue, Svelte, Solid, Preact and vanilla JS in lockstep.
           </SectionText>
         </styled.div>
 

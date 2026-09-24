@@ -32,8 +32,7 @@ export function SiteFooter() {
           · MIT licensed, built in the open.
         </styled.p>
         <styled.nav aria-label="Footer" display="flex" flexWrap="wrap" gap="5">
-          <FooterLink href="/docs/introduction">Docs</FooterLink>
-          <FooterLink href="/docs/components/wheel-picker">Components</FooterLink>
+          <FooterLink href="/components">Components</FooterLink>
           <FooterLink href={SPONSOR_URL} target="_blank" rel="noopener">
             Sponsor
           </FooterLink>

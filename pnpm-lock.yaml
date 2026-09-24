@@ -141,6 +141,70 @@ importers:
         specifier: 'catalog:'
         version: 4.1.10(@types/node@25.9.5)(vite@8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1))
 
+  apps/compositions:
+    dependencies:
+      '@isbatak/zag-wheel-picker':
+        specifier: workspace:*
+        version: link:../../packages/zag/wheel-picker
+      '@zag-js/preact':
+        specifier: 'catalog:'
+        version: 1.44.0(preact@10.29.8)
+      '@zag-js/react':
+        specifier: 'catalog:'
+        version: 1.44.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@zag-js/solid':
+        specifier: 'catalog:'
+        version: 1.44.0(solid-js@1.9.15)
+      '@zag-js/svelte':
+        specifier: 'catalog:'
+        version: 1.44.0(svelte@5.57.1)
+      '@zag-js/vanilla':
+        specifier: 'catalog:'
+        version: 1.44.0
+      '@zag-js/vue':
+        specifier: 'catalog:'
+        version: 1.44.0(vue@3.5.43(typescript@6.0.3))
+      preact:
+        specifier: ^10.29.8
+        version: 10.29.8
+      react:
+        specifier: 'catalog:'
+        version: 19.3.0
+      solid-js:
+        specifier: ^1.9.15
+        version: 1.9.15
+      svelte:
+        specifier: ^5.57.1
+        version: 5.57.1
+      vue:
+        specifier: ^3.5.43
+        version: 3.5.43(typescript@6.0.3)
+    devDependencies:
+      '@preact/preset-vite':
+        specifier: ^2.10.6
+        version: 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(rollup@4.63.4)(vite@8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1))
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^7.3.0
+        version: 7.3.0(svelte@5.57.1)(vite@8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1))
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.3.0
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.9
+        version: 6.0.9(vite@8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
+      svelte-check:
+        specifier: ^4.7.6
+        version: 4.7.6(picomatch@4.0.7)(svelte@5.57.1)(typescript@6.0.3)
+      vite:
+        specifier: 'catalog:'
+        version: 8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1)
+      vite-plugin-solid:
+        specifier: ^2.11.14
+        version: 2.11.14(@testing-library/jest-dom@6.9.1)(solid-js@1.9.15)(vite@8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1))
+      vue-tsc:
+        specifier: ^3.3.11
+        version: 3.3.11(typescript@6.0.3)
+
   apps/storybook:
     devDependencies:
       '@storybook/addon-docs':
@@ -383,9 +447,18 @@ importers:
       '@ark-ui/react':
         specifier: 5.39.2
         version: 5.39.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@isbatak/ark-wheel-picker':
+        specifier: workspace:*
+        version: link:../../packages/ark/wheel-picker
+      '@isbatak/compositions':
+        specifier: workspace:*
+        version: link:../compositions
       '@isbatak/panda-ds':
         specifier: workspace:*
         version: link:../../packages/panda/ds
+      '@isbatak/panda-wheel-picker':
+        specifier: workspace:*
+        version: link:../../packages/panda/wheel-picker
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
         version: link:../../packages/zag/wheel-picker
@@ -404,6 +477,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.3.0(react@19.3.0)
+      sugar-high:
+        specifier: 2.4.1
+        version: 2.4.1
     devDependencies:
       '@ikona/cli':
         specifier: 0.2.1
@@ -433,6 +509,55 @@ importers:
         specifier: 0.4.0
         version: 0.4.0
 
+  packages/ark/wheel-picker:
+    dependencies:
+      '@isbatak/zag-wheel-picker':
+        specifier: workspace:*
+        version: link:../../zag/wheel-picker
+    devDependencies:
+      '@ark-ui/react':
+        specifier: 5.39.2
+        version: 5.39.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@ark-ui/solid':
+        specifier: 5.39.2
+        version: 5.39.2(solid-js@1.9.15)
+      '@ark-ui/svelte':
+        specifier: 5.24.2
+        version: 5.24.2(svelte@5.57.1)
+      '@ark-ui/vue':
+        specifier: 5.39.2
+        version: 5.39.2(vue@3.5.43(typescript@6.0.3))
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.3.0
+      '@zag-js/react':
+        specifier: 'catalog:'
+        version: 1.44.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@zag-js/solid':
+        specifier: 'catalog:'
+        version: 1.44.0(solid-js@1.9.15)
+      '@zag-js/svelte':
+        specifier: 'catalog:'
+        version: 1.44.0(svelte@5.57.1)
+      '@zag-js/vue':
+        specifier: 'catalog:'
+        version: 1.44.0(vue@3.5.43(typescript@6.0.3))
+      react:
+        specifier: 'catalog:'
+        version: 19.3.0
+      solid-js:
+        specifier: ^1.9.15
+        version: 1.9.15
+      svelte:
+        specifier: ^5.57.1
+        version: 5.57.1
+      svelte-check:
+        specifier: ^4.7.6
+        version: 4.7.6(picomatch@4.0.7)(svelte@5.57.1)(typescript@6.0.3)
+      vue:
+        specifier: ^3.5.43
+        version: 3.5.43(typescript@6.0.3)
+
   packages/panda/ds:
     devDependencies:
       '@pandacss/dev':
@@ -441,6 +566,15 @@ importers:
       '@pandacss/preset-base':
         specifier: 'catalog:'
         version: 2.0.0-beta.18
+      '@pandacss/types':
+        specifier: 'catalog:'
+        version: 2.0.0-beta.18
+
+  packages/panda/wheel-picker:
+    devDependencies:
+      '@pandacss/dev':
+        specifier: 'catalog:'
+        version: 2.0.0-beta.18(postcss@8.5.28)
       '@pandacss/types':
         specifier: 'catalog:'
         version: 2.0.0-beta.18
@@ -479,6 +613,21 @@ packages:
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
+
+  '@ark-ui/solid@5.39.2':
+    resolution: {integrity: sha512-J7NMQTix+INJ7kGDVpuQegkprAw+iB1am1ZLjcSclCkNrSOw+zKU17YTW2eMYUlh7ARe2vusOl/20EiaDdUViA==}
+    peerDependencies:
+      solid-js: '>=1.6.0'
+
+  '@ark-ui/svelte@5.24.2':
+    resolution: {integrity: sha512-PNbDCTXhpwuS9HGfFIGAtI+k/sDLbx4oPHe/qMSupSYZy/LdcJ78dDt1Bh9p/fNsLgwvILJwvgY4otkCfELXYg==}
+    peerDependencies:
+      svelte: '>=5.20.0'
+
+  '@ark-ui/vue@5.39.2':
+    resolution: {integrity: sha512-ZAkJPhsXKm92A8yZBO8RU+oPqZr244UaJi74XYzxeEFpo19h+CubihkyZlCcmAfvweUi8nUe0CA8y9ttiU2Unw==}
+    peerDependencies:
+      vue: '>=3.5.0'
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -3130,6 +3279,11 @@ packages:
   '@zag-js/slider@1.43.3':
     resolution: {integrity: sha512-SwnwdabVPouHraF4fcICz9szGMARxUd8CPA0+x+w48D8hEn0GzFXDRI0ntXByEstwbpyzvy4ptRvh0WRvwCJbw==}
 
+  '@zag-js/solid@1.43.3':
+    resolution: {integrity: sha512-xAYrRfeo3+3rcUaGlbi1hpx/mlruPO1YoMmnnttWConHKxH4zkLOviM3+uaqJGZLAjDdUqEMUFijLyPWLC7AUw==}
+    peerDependencies:
+      solid-js: '>=1.1.3'
+
   '@zag-js/solid@1.44.0':
     resolution: {integrity: sha512-KyTc5RJPBLe+ghT7PMaH2U7d53I2EZ2CH0UrJtjdl25BMBtOSMFgmogiOIc9PYbp/gwbksX0iHDfJ0aOjaW0vw==}
     peerDependencies:
@@ -3146,6 +3300,11 @@ packages:
 
   '@zag-js/store@1.44.0':
     resolution: {integrity: sha512-syjbybsc1e2zro50Eu+SaloeJbiXTY78wa+m8iUzswdmVzpts+7KSk3Oogso7jxZ7L91vNAQDhSqZR73Il3KOA==}
+
+  '@zag-js/svelte@1.43.3':
+    resolution: {integrity: sha512-DrbiM8KHoUF3DLZha4cZxSafG4n/r/YLohol/sk3Tebu6yoqOLBBap9Rt1rT/Ap0WHBc13lNex08yBARt2PUBA==}
+    peerDependencies:
+      svelte: '>=5'
 
   '@zag-js/svelte@1.44.0':
     resolution: {integrity: sha512-nKnRIdAB0bZ9ybfIZWx9ClcFpzHJcJyGHi8kcxXC3B2yX0Yixo6byrZKCRQxMkvVf87tCzDRtkYhd1Pv81EV9A==}
@@ -3199,6 +3358,11 @@ packages:
 
   '@zag-js/vanilla@1.44.0':
     resolution: {integrity: sha512-3oWhimPLJzlvVbwMiNoSbDI8aDT14angpokN5zDlQbc+PYGewFpbt9MiX76bxECV1JrMoSWOUSu0ONyg++8FIg==}
+
+  '@zag-js/vue@1.43.3':
+    resolution: {integrity: sha512-xSiKiZxPLfPet/fUOS1McyxjMgxsWwPB++YAJG9ZPFyN3rs4CM0BXqUCJmnZS2GHLiGNn+jJ9q3JxeTW5D9s8Q==}
+    peerDependencies:
+      vue: '>=3.0.0'
 
   '@zag-js/vue@1.44.0':
     resolution: {integrity: sha512-VOEieYCss9DnGOtvpXPFSuqnzZ7SbDFfLSjsB1mtPJcsU5qF9DPtu4xwpzgRNAg7IvioOm5aU85ePiwP4X/f6g==}
@@ -4783,6 +4947,14 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
 
+  sugar-high@2.4.1:
+    resolution: {integrity: sha512-w4uhunMgEP+9f/2W/ZLBjvrVBLY14oL4b6a2+Ca/JWECd0Rc45KqL89bDvUOVFGrr0D14q5hoEqBXkgxwxL6RQ==}
+    peerDependencies:
+      gpu-lexer: '>=0.0.2'
+    peerDependenciesMeta:
+      gpu-lexer:
+        optional: true
+
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
@@ -5268,6 +5440,225 @@ snapshots:
       '@zag-js/utils': 1.43.3
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
+
+  '@ark-ui/solid@5.39.2(solid-js@1.9.15)':
+    dependencies:
+      '@internationalized/date': 3.12.4
+      '@zag-js/accordion': 1.43.3
+      '@zag-js/anatomy': 1.43.3
+      '@zag-js/angle-slider': 1.43.3
+      '@zag-js/async-list': 1.43.3
+      '@zag-js/auto-resize': 1.43.3
+      '@zag-js/avatar': 1.43.3
+      '@zag-js/carousel': 1.43.3
+      '@zag-js/cascade-select': 1.43.3
+      '@zag-js/checkbox': 1.43.3
+      '@zag-js/clipboard': 1.43.3
+      '@zag-js/collapsible': 1.43.3
+      '@zag-js/collection': 1.43.3
+      '@zag-js/color-picker': 1.43.3
+      '@zag-js/color-utils': 1.43.3
+      '@zag-js/combobox': 1.43.3
+      '@zag-js/core': 1.43.3
+      '@zag-js/date-input': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/date-picker': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/date-utils': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/dialog': 1.43.3
+      '@zag-js/dom-query': 1.43.3
+      '@zag-js/drawer': 1.43.3
+      '@zag-js/editable': 1.43.3
+      '@zag-js/file-upload': 1.43.3
+      '@zag-js/file-utils': 1.43.3
+      '@zag-js/floating-panel': 1.43.3
+      '@zag-js/focus-trap': 1.43.3
+      '@zag-js/focus-visible': 1.43.3
+      '@zag-js/highlight-word': 1.43.3
+      '@zag-js/hotkeys': 1.43.3
+      '@zag-js/hover-card': 1.43.3
+      '@zag-js/i18n-utils': 1.43.3
+      '@zag-js/image-cropper': 1.43.3
+      '@zag-js/json-tree-utils': 1.43.3
+      '@zag-js/listbox': 1.43.3
+      '@zag-js/marquee': 1.43.3
+      '@zag-js/menu': 1.43.3
+      '@zag-js/navigation-menu': 1.43.3
+      '@zag-js/number-input': 1.43.3
+      '@zag-js/pagination': 1.43.3
+      '@zag-js/password-input': 1.43.3
+      '@zag-js/pin-input': 1.43.3
+      '@zag-js/popover': 1.43.3
+      '@zag-js/presence': 1.43.3
+      '@zag-js/progress': 1.43.3
+      '@zag-js/qr-code': 1.43.3
+      '@zag-js/radio-group': 1.43.3
+      '@zag-js/rating-group': 1.43.3
+      '@zag-js/scroll-area': 1.43.3
+      '@zag-js/select': 1.43.3
+      '@zag-js/signature-pad': 1.43.3
+      '@zag-js/slider': 1.43.3
+      '@zag-js/solid': 1.43.3(solid-js@1.9.15)
+      '@zag-js/splitter': 1.43.3
+      '@zag-js/steps': 1.43.3
+      '@zag-js/switch': 1.43.3
+      '@zag-js/tabs': 1.43.3
+      '@zag-js/tags-input': 1.43.3
+      '@zag-js/timer': 1.43.3
+      '@zag-js/toast': 1.43.3
+      '@zag-js/toc': 1.43.3
+      '@zag-js/toggle': 1.43.3
+      '@zag-js/toggle-group': 1.43.3
+      '@zag-js/tooltip': 1.43.3
+      '@zag-js/tour': 1.43.3
+      '@zag-js/tree-view': 1.43.3
+      '@zag-js/types': 1.43.3
+      '@zag-js/utils': 1.43.3
+      solid-js: 1.9.15
+
+  '@ark-ui/svelte@5.24.2(svelte@5.57.1)':
+    dependencies:
+      '@internationalized/date': 3.12.4
+      '@zag-js/accordion': 1.43.3
+      '@zag-js/anatomy': 1.43.3
+      '@zag-js/angle-slider': 1.43.3
+      '@zag-js/async-list': 1.43.3
+      '@zag-js/auto-resize': 1.43.3
+      '@zag-js/avatar': 1.43.3
+      '@zag-js/carousel': 1.43.3
+      '@zag-js/cascade-select': 1.43.3
+      '@zag-js/checkbox': 1.43.3
+      '@zag-js/clipboard': 1.43.3
+      '@zag-js/collapsible': 1.43.3
+      '@zag-js/collection': 1.43.3
+      '@zag-js/color-picker': 1.43.3
+      '@zag-js/color-utils': 1.43.3
+      '@zag-js/combobox': 1.43.3
+      '@zag-js/core': 1.43.3
+      '@zag-js/date-input': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/date-picker': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/date-utils': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/dialog': 1.43.3
+      '@zag-js/dom-query': 1.43.3
+      '@zag-js/drawer': 1.43.3
+      '@zag-js/editable': 1.43.3
+      '@zag-js/file-upload': 1.43.3
+      '@zag-js/file-utils': 1.43.3
+      '@zag-js/floating-panel': 1.43.3
+      '@zag-js/focus-trap': 1.43.3
+      '@zag-js/focus-visible': 1.43.3
+      '@zag-js/highlight-word': 1.43.3
+      '@zag-js/hotkeys': 1.43.3
+      '@zag-js/hover-card': 1.43.3
+      '@zag-js/i18n-utils': 1.43.3
+      '@zag-js/image-cropper': 1.43.3
+      '@zag-js/json-tree-utils': 1.43.3
+      '@zag-js/listbox': 1.43.3
+      '@zag-js/marquee': 1.43.3
+      '@zag-js/menu': 1.43.3
+      '@zag-js/navigation-menu': 1.43.3
+      '@zag-js/number-input': 1.43.3
+      '@zag-js/pagination': 1.43.3
+      '@zag-js/password-input': 1.43.3
+      '@zag-js/pin-input': 1.43.3
+      '@zag-js/popover': 1.43.3
+      '@zag-js/presence': 1.43.3
+      '@zag-js/progress': 1.43.3
+      '@zag-js/qr-code': 1.43.3
+      '@zag-js/radio-group': 1.43.3
+      '@zag-js/rating-group': 1.43.3
+      '@zag-js/scroll-area': 1.43.3
+      '@zag-js/select': 1.43.3
+      '@zag-js/signature-pad': 1.43.3
+      '@zag-js/slider': 1.43.3
+      '@zag-js/splitter': 1.43.3
+      '@zag-js/steps': 1.43.3
+      '@zag-js/svelte': 1.43.3(svelte@5.57.1)
+      '@zag-js/switch': 1.43.3
+      '@zag-js/tabs': 1.43.3
+      '@zag-js/tags-input': 1.43.3
+      '@zag-js/timer': 1.43.3
+      '@zag-js/toast': 1.43.3
+      '@zag-js/toc': 1.43.3
+      '@zag-js/toggle': 1.43.3
+      '@zag-js/toggle-group': 1.43.3
+      '@zag-js/tooltip': 1.43.3
+      '@zag-js/tour': 1.43.3
+      '@zag-js/tree-view': 1.43.3
+      '@zag-js/types': 1.43.3
+      '@zag-js/utils': 1.43.3
+      svelte: 5.57.1
+
+  '@ark-ui/vue@5.39.2(vue@3.5.43(typescript@6.0.3))':
+    dependencies:
+      '@internationalized/date': 3.12.4
+      '@zag-js/accordion': 1.43.3
+      '@zag-js/anatomy': 1.43.3
+      '@zag-js/angle-slider': 1.43.3
+      '@zag-js/async-list': 1.43.3
+      '@zag-js/auto-resize': 1.43.3
+      '@zag-js/avatar': 1.43.3
+      '@zag-js/carousel': 1.43.3
+      '@zag-js/cascade-select': 1.43.3
+      '@zag-js/checkbox': 1.43.3
+      '@zag-js/clipboard': 1.43.3
+      '@zag-js/collapsible': 1.43.3
+      '@zag-js/collection': 1.43.3
+      '@zag-js/color-picker': 1.43.3
+      '@zag-js/color-utils': 1.43.3
+      '@zag-js/combobox': 1.43.3
+      '@zag-js/core': 1.43.3
+      '@zag-js/date-input': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/date-picker': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/date-utils': 1.43.3(@internationalized/date@3.12.4)
+      '@zag-js/dialog': 1.43.3
+      '@zag-js/dom-query': 1.43.3
+      '@zag-js/drawer': 1.43.3
+      '@zag-js/editable': 1.43.3
+      '@zag-js/file-upload': 1.43.3
+      '@zag-js/file-utils': 1.43.3
+      '@zag-js/floating-panel': 1.43.3
+      '@zag-js/focus-trap': 1.43.3
+      '@zag-js/focus-visible': 1.43.3
+      '@zag-js/highlight-word': 1.43.3
+      '@zag-js/hotkeys': 1.43.3
+      '@zag-js/hover-card': 1.43.3
+      '@zag-js/i18n-utils': 1.43.3
+      '@zag-js/image-cropper': 1.43.3
+      '@zag-js/json-tree-utils': 1.43.3
+      '@zag-js/listbox': 1.43.3
+      '@zag-js/marquee': 1.43.3
+      '@zag-js/menu': 1.43.3
+      '@zag-js/navigation-menu': 1.43.3
+      '@zag-js/number-input': 1.43.3
+      '@zag-js/pagination': 1.43.3
+      '@zag-js/password-input': 1.43.3
+      '@zag-js/pin-input': 1.43.3
+      '@zag-js/popover': 1.43.3
+      '@zag-js/presence': 1.43.3
+      '@zag-js/progress': 1.43.3
+      '@zag-js/qr-code': 1.43.3
+      '@zag-js/radio-group': 1.43.3
+      '@zag-js/rating-group': 1.43.3
+      '@zag-js/scroll-area': 1.43.3
+      '@zag-js/select': 1.43.3
+      '@zag-js/signature-pad': 1.43.3
+      '@zag-js/slider': 1.43.3
+      '@zag-js/splitter': 1.43.3
+      '@zag-js/steps': 1.43.3
+      '@zag-js/switch': 1.43.3
+      '@zag-js/tabs': 1.43.3
+      '@zag-js/tags-input': 1.43.3
+      '@zag-js/timer': 1.43.3
+      '@zag-js/toast': 1.43.3
+      '@zag-js/toc': 1.43.3
+      '@zag-js/toggle': 1.43.3
+      '@zag-js/toggle-group': 1.43.3
+      '@zag-js/tooltip': 1.43.3
+      '@zag-js/tour': 1.43.3
+      '@zag-js/tree-view': 1.43.3
+      '@zag-js/types': 1.43.3
+      '@zag-js/utils': 1.43.3
+      '@zag-js/vue': 1.43.3(vue@3.5.43(typescript@6.0.3))
+      vue: 3.5.43(typescript@6.0.3)
 
   '@babel/code-frame@7.29.7':
     dependencies:
@@ -7801,6 +8192,15 @@ snapshots:
       '@zag-js/types': 1.43.3
       '@zag-js/utils': 1.43.3
 
+  '@zag-js/solid@1.43.3(solid-js@1.9.15)':
+    dependencies:
+      '@solid-primitives/keyed': 1.5.3(solid-js@1.9.15)
+      '@zag-js/core': 1.43.3
+      '@zag-js/store': 1.43.3
+      '@zag-js/types': 1.43.3
+      '@zag-js/utils': 1.43.3
+      solid-js: 1.9.15
+
   '@zag-js/solid@1.44.0(solid-js@1.9.15)':
     dependencies:
       '@solid-primitives/keyed': 1.5.3(solid-js@1.9.15)
@@ -7833,6 +8233,13 @@ snapshots:
   '@zag-js/store@1.44.0':
     dependencies:
       proxy-compare: 3.0.1
+
+  '@zag-js/svelte@1.43.3(svelte@5.57.1)':
+    dependencies:
+      '@zag-js/core': 1.43.3
+      '@zag-js/types': 1.43.3
+      '@zag-js/utils': 1.43.3
+      svelte: 5.57.1
 
   '@zag-js/svelte@1.44.0(svelte@5.57.1)':
     dependencies:
@@ -7959,6 +8366,14 @@ snapshots:
       '@zag-js/store': 1.44.0
       '@zag-js/types': 1.44.0
       '@zag-js/utils': 1.44.0
+
+  '@zag-js/vue@1.43.3(vue@3.5.43(typescript@6.0.3))':
+    dependencies:
+      '@zag-js/core': 1.43.3
+      '@zag-js/store': 1.43.3
+      '@zag-js/types': 1.43.3
+      '@zag-js/utils': 1.43.3
+      vue: 3.5.43(typescript@6.0.3)
 
   '@zag-js/vue@1.44.0(vue@3.5.43(typescript@6.0.3))':
     dependencies:
@@ -9917,6 +10332,8 @@ snapshots:
       pirates: 4.0.7
       tinyglobby: 0.2.17
       ts-interface-checker: 0.1.13
+
+  sugar-high@2.4.1: {}
 
   supports-preserve-symlinks-flag@1.0.0: {}
 

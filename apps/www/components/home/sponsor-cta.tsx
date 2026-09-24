@@ -27,8 +27,8 @@ export function SponsorCta() {
             letterSpacing="tight"
             textWrap="balance"
           >
-            Shipping on Zag, Ark UI or Chakra UI and missing a widget? Sponsoring is the shortest path from
-            &ldquo;someone should build this&rdquo; to a machine you can install.
+            Missing a widget in your stack? Sponsoring is the shortest path from &ldquo;someone should build this&rdquo;
+            to a component that runs in every framework, and in none at all.
           </styled.p>
           <Button asChild>
             <a href={SPONSOR_URL} target="_blank" rel="noopener">

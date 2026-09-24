@@ -1,16 +1,73 @@
+import { components } from "#site/content"
 import Link from "next/link"
-import { Fragment } from "react"
 import { styled } from "styled-system/jsx"
 
 import { Button } from "../ui/button"
 import { Icon } from "../ui/icon"
 import { Eyebrow, Section } from "./section"
 
-const stats = [
-  { value: "6", label: "Framework adapters" },
-  { value: "100%", label: "Headless" },
-  { value: "MIT", label: "Licensed" },
-]
+const Stat = styled("div", {
+  base: {
+    display: "flex",
+    alignItems: "baseline",
+    gap: "2.5",
+  },
+})
+
+// Label first for dt/dd semantics, shown after the value
+const StatLabel = styled("dt", {
+  base: {
+    order: "1",
+    textStyle: "xs",
+    textTransform: "uppercase",
+    letterSpacing: "widest",
+    color: "fg.muted",
+  },
+})
+
+const LeadingStatLabel = styled(StatLabel, {
+  base: {
+    order: "0",
+  },
+})
+
+const StatValue = styled("dd", {
+  base: {
+    textStyle: "xl",
+    fontWeight: "medium",
+    letterSpacing: "tight",
+  },
+})
+
+const Dot = styled("span", {
+  base: {
+    display: { base: "none", sm: "block" },
+    boxSize: "1",
+    rounded: "full",
+    bg: "border.emphasized",
+  },
+})
+
+// A one-line window onto the framework names, rolled like a wheel picker
+const FrameworkRoll = styled("span", {
+  base: {
+    display: "inline-block",
+    verticalAlign: "bottom",
+    height: "1.25em",
+    lineHeight: "1.25em",
+    overflow: "hidden",
+    maskImage: "linear-gradient(to bottom, transparent, black 25% 75%, transparent)",
+  },
+})
+
+const FrameworkRollList = styled("span", {
+  base: {
+    display: "flex",
+    flexDirection: "column",
+    animation: "framework-roll 12s cubic-bezier(0.65, 0, 0.35, 1) infinite",
+    _motionReduce: { animation: "none" },
+  },
+})
 
 export function Hero() {
   return (
@@ -18,7 +75,7 @@ export function Hero() {
       <styled.div pt={{ base: "20", md: "36" }} pb={{ base: "16", md: "24" }}>
         <styled.div display="grid" gap="8" gridTemplateColumns={{ md: "repeat(12, minmax(0, 1fr))" }}>
           <styled.div gridColumn={{ md: "span 7 / span 7" }} minW="0">
-            <Eyebrow>Zag machine lab</Eyebrow>
+            <Eyebrow>One machine, every framework</Eyebrow>
             <styled.h1
               mt="4"
               textStyle={{ base: "4xl", sm: "5xl", md: "6xl" }}
@@ -27,24 +84,25 @@ export function Hero() {
               letterSpacing="tighter"
               textWrap="balance"
             >
-              State machines for the widgets Zag doesn&apos;t have yet.
+              Headless components for React, Vue, Svelte, Solid, Preact and plain JavaScript.
             </styled.h1>
           </styled.div>
 
           <styled.div gridColumn={{ md: "9 / span 4" }} pt={{ md: "10" }}>
             <styled.p maxW="sm" color="fg.muted" lineHeight="1.7" textWrap="pretty">
-              A workbench for framework-agnostic UI logic. Each machine is built, documented and put through its paces
-              here, then proposed to Zag so every Ark UI and Chakra UI user gets it too.
+              Each component&apos;s logic lives in a single framework-agnostic state machine. Thin adapters plug it into
+              your framework of choice, or into no framework at all with vanilla JS. Same behavior, same accessibility,
+              wherever you ship.
             </styled.p>
             <styled.div display="flex" flexWrap="wrap" gap="2" mt="6">
               <Button asChild size="sm">
-                <Link href="/docs/components/wheel-picker">
-                  Try the wheel picker
+                <Link href="/components">
+                  Browse components
                   <Icon name="arrow-right" />
                 </Link>
               </Button>
               <Button asChild size="sm" variant="outline">
-                <Link href="/docs/introduction">Read the docs</Link>
+                <Link href="/components/wheel-picker">See it in your framework</Link>
               </Button>
             </styled.div>
           </styled.div>
@@ -58,28 +116,33 @@ export function Hero() {
           alignItems={{ sm: "center" }}
           mt={{ base: "14", md: "20" }}
         >
-          {stats.map((stat, index) => (
-            <Fragment key={stat.label}>
-              {index > 0 && (
-                <styled.span
-                  aria-hidden
-                  display={{ base: "none", sm: "block" }}
-                  boxSize="1"
-                  rounded="full"
-                  bg="border.emphasized"
-                />
-              )}
-              {/* Label first for dt/dd semantics, shown after the value */}
-              <styled.div display="flex" alignItems="baseline" gap="2.5">
-                <styled.dt order="1" textStyle="xs" textTransform="uppercase" letterSpacing="widest" color="fg.muted">
-                  {stat.label}
-                </styled.dt>
-                <styled.dd textStyle="xl" fontWeight="medium" letterSpacing="tight">
-                  {stat.value}
-                </styled.dd>
-              </styled.div>
-            </Fragment>
-          ))}
+          <Stat>
+            <StatLabel>{components.length === 1 ? "Component" : "Components"}</StatLabel>
+            <StatValue>{components.length}</StatValue>
+          </Stat>
+          <Dot aria-hidden />
+          <Stat>
+            <StatLabel>Headless</StatLabel>
+            <StatValue>100%</StatValue>
+          </Stat>
+          <Dot aria-hidden />
+          <Stat>
+            <LeadingStatLabel>Works with</LeadingStatLabel>
+            <StatValue>
+              <styled.span srOnly>React, Vue, Svelte, Solid, Preact and Vanilla JS</styled.span>
+              <FrameworkRoll aria-hidden>
+                <FrameworkRollList>
+                  <span>React</span>
+                  <span>Vue</span>
+                  <span>Svelte</span>
+                  <span>Solid</span>
+                  <span>Preact</span>
+                  <span>Vanilla JS</span>
+                  <span>React</span>
+                </FrameworkRollList>
+              </FrameworkRoll>
+            </StatValue>
+          </Stat>
         </styled.dl>
       </styled.div>
     </Section>
