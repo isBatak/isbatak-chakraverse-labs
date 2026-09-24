@@ -16,6 +16,11 @@ export const theme = {
         layout: { value: "{sizes.6xl}" },
       },
     },
+    keyframes: {
+      "scroll-blur-out": {
+        to: { opacity: "0", backdropFilter: "blur(0)" },
+      },
+    },
     recipes: {
       layoutContainer,
       // Icons default to the surrounding font size; `size` variants override it
