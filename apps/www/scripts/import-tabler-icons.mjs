@@ -33,6 +33,7 @@ const icons = {
   "brand-github": "outline/brand-github",
   sun: "outline/sun",
   moon: "outline/moon",
+  "layout-sidebar": "outline/layout-sidebar",
 }
 
 const PRESENTATION_ATTRS = ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin"]

@@ -4,7 +4,6 @@ import { styled } from "styled-system/jsx"
 export const Prose = styled("div", {
   base: {
     color: "fg",
-    maxWidth: "65ch",
     fontSize: "sm",
     lineHeight: "1.7em",
     "& :where(p)": {
@@ -21,11 +20,15 @@ export const Prose = styled("div", {
       marginBottom: "0.8em",
       lineHeight: "1.2em",
     },
+    // Section labels, e.g. "Installation", "Usage"
     "& :where(h2)": {
-      fontSize: "1.4em",
-      marginTop: "1.6em",
-      marginBottom: "0.8em",
-      lineHeight: "1.4em",
+      fontSize: "0.8em",
+      fontWeight: "medium",
+      textTransform: "uppercase",
+      letterSpacing: "wider",
+      color: "fg.muted",
+      marginTop: "4em",
+      marginBottom: "1.2em",
     },
     "& :where(h3)": {
       fontSize: "1.285em",
@@ -84,12 +87,11 @@ export const Prose = styled("div", {
       fontSize: "0.9em",
       lineHeight: "1.6",
       overflowX: "auto",
-      borderRadius: "md",
-      borderWidth: "thin",
-      padding: "1em",
+      borderRadius: "xl",
+      padding: "1.25em",
       marginTop: "1.6em",
       marginBottom: "1.6em",
-      bg: "bg.subtle",
+      bg: "bg.muted",
     },
     "& :where(pre code)": {
       fontSize: "inherit",

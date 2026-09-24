@@ -8,6 +8,7 @@ const docs = defineCollection({
       title: s.string().max(99),
       description: s.string().max(999).optional(),
       order: s.number().default(0),
+      preview: s.string().optional(),
       path: s.path(),
       toc: s.toc(),
       metadata: s.metadata(),

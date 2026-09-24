@@ -5,7 +5,5 @@ export const conditions = defineConditions({
     dark: ".dark &",
     light: ":root &, .light &",
     motionReduce: "@media (prefers-reduced-motion: reduce)",
-    // A page opts into the wide layout by rendering an element with data-layout="wide"
-    layoutWide: "body:has([data-layout=wide]) &",
   },
 })

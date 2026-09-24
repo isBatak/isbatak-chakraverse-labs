@@ -6,6 +6,8 @@ const pandaLoader = {
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Workspace package that exports its TypeScript source
+  transpilePackages: ["@isbatak/zag-wheel-picker"],
   turbopack: {
     rules: {
       "./app/**/*.tsx": pandaLoader,

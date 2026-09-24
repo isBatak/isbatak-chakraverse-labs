@@ -1,11 +1,12 @@
 import { defineConfig } from "@pandacss/dev"
 
 import { theme } from "./theme"
+import { chakra } from "./theme/chakra-preset"
 import { conditions } from "./theme/conditions"
 import { globalCss } from "./theme/global-css"
 
 export default defineConfig({
-  presets: ["@pandacss/preset-base", "@chakra-ui/panda-preset"],
+  presets: ["@pandacss/preset-base", chakra],
   preflight: true,
   jsxFramework: "react",
   include: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],

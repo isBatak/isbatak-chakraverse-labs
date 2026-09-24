@@ -17,8 +17,8 @@ export function ColorModeButton() {
       aria-label="Toggle color mode"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
-      <Icon name="moon" display="none" _dark={{ display: "block" }} />
-      <Icon name="sun" _dark={{ display: "none" }} />
+      <Icon size="sm" name="moon" display="none" _dark={{ display: "block" }} />
+      <Icon size="sm" name="sun" _dark={{ display: "none" }} />
     </Button>
   );
 }

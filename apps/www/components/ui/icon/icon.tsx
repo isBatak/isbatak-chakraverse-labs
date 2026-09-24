@@ -3,8 +3,8 @@ import { preload } from "react-dom"
 import { styled } from "styled-system/jsx"
 import { icon } from "styled-system/recipes"
 
-import type { IconName } from "../../.ikona/types/icon-name"
-import sprite from "../../assets/sprite.svg"
+import type { IconName } from "../../../.ikona/types/icon-name"
+import sprite from "../../../assets/sprite.svg"
 
 const BaseIcon = styled("svg", icon)
 
@@ -14,7 +14,7 @@ export interface IconProps extends ComponentProps<typeof BaseIcon> {
 
 export function Icon({ name, ...props }: IconProps) {
   return (
-    <BaseIcon boxSize="1em" aria-hidden focusable="false" data-name={name} {...props}>
+    <BaseIcon aria-hidden focusable="false" data-name={name} {...props}>
       <use href={`${sprite.src}#${name}`} />
     </BaseIcon>
   )

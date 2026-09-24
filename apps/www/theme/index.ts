@@ -1,5 +1,8 @@
 import type { ExtendableTheme } from "@pandacss/types"
 
+import { layoutContainer } from "./recipes/layout-container"
+import { wheelPicker } from "./recipes/wheel-picker"
+
 export const theme = {
   extend: {
     tokens: {
@@ -10,12 +13,14 @@ export const theme = {
       },
       sizes: {
         header: { value: "3.5rem" },
-        // Max width of the page column shared by the header and the page content
-        layout: {
-          DEFAULT: { value: "{sizes.3xl}" },
-          wide: { value: "{sizes.6xl}" },
-        },
+        layout: { value: "{sizes.3xl}" },
       },
     },
+    recipes: {
+      layoutContainer,
+      // Icons default to the surrounding font size; `size` variants override it
+      icon: { base: { boxSize: "1em" } },
+    },
+    slotRecipes: { wheelPicker },
   },
 } satisfies ExtendableTheme

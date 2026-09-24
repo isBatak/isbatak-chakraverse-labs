@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-import * as Accordion from "../components/ui/accordion"
-import { Button } from "../components/ui/button"
-import { Icon } from "../components/ui/icon"
-import { icons } from "../.ikona/icons"
+import { Accordion } from "../../components/ui/accordion"
+import { Button } from "../../components/ui/button"
+import { Icon } from "../../components/ui/icon"
+import { icons } from "../../.ikona/icons"
 import { HStack, Stack, Wrap, styled } from "styled-system/jsx"
 
 const faqs = [
