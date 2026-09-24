@@ -48,6 +48,7 @@ export function connect<P extends PropTypes, T extends CollectionItem = Collecti
   }
 
   return {
+    collection: itemCollection,
     value,
     valueAsString,
     selectedItem,

@@ -139,6 +139,8 @@ export interface ItemState {
 }
 
 export interface WheelPickerApi<P extends PropTypes = PropTypes, T extends CollectionItem = CollectionItem> {
+  /** The item collection. */
+  collection: ListCollection<T>
   /** The selected value. */
   value: string | null
   /** The selected item. */
