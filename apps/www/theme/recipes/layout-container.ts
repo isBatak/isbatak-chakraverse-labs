@@ -9,8 +9,6 @@ export const layoutContainer = defineRecipe({
     position: "relative",
     width: "full",
     marginInline: "auto",
-    borderInlineWidth: "1px",
-    borderColor: "border",
     maxWidth: { md: "layout" },
   },
 })

@@ -13,7 +13,7 @@ export const theme = {
       },
       sizes: {
         header: { value: "3.5rem" },
-        layout: { value: "{sizes.3xl}" },
+        layout: { value: "{sizes.6xl}" },
       },
     },
     recipes: {

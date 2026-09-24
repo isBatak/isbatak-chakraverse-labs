@@ -2,30 +2,13 @@ import Link from "next/link";
 import { styled } from "styled-system/jsx";
 
 import { ColorModeButton } from "../color-mode-button";
+import { RadiusPicker } from "../radius-picker";
 import { Button } from "../ui/button";
 import { Icon } from "../ui/icon";
 import { HeaderNav } from "./header-nav";
 import { LayoutContainer } from "./layout-container";
-
-const REPO_URL = "https://github.com/isBatak/isbatak-chakraverse-labs";
-
-// Horizontal hairline that runs across the whole viewport, past the column borders
-const screenLine = {
-  content: '""',
-  position: "absolute",
-  insetInlineStart: "-100vw",
-  width: "200vw",
-  height: "1px",
-  bg: "border",
-  zIndex: "1",
-} as const;
-
-const HomeLink = styled(Link, {
-  base: {
-    fontWeight: "semibold",
-    letterSpacing: "tight",
-  },
-});
+import { REPO_URL } from "./site-links";
+import { Wordmark } from "./wordmark";
 
 const Separator = styled("div", {
   base: {
@@ -52,20 +35,16 @@ export function SiteHeader() {
         alignItems="center"
         gap={{ base: "2", sm: "4" }}
         h="header"
-        ps="4"
-        pe="2"
-        _before={{ ...screenLine, top: "0" }}
-        _after={{ ...screenLine, bottom: "0" }}
+        ps={{ base: "5", md: "10" }}
+        pe={{ base: "3", md: "8" }}
       >
-        <HomeLink href="/">isBatal/chakraverse-labs</HomeLink>
-        <styled.div flex="1" />
+        <Link href="/">
+          <Wordmark />
+        </Link>
+        <Separator aria-hidden mx="2" display={{ base: "none", md: "block" }} />
         <HeaderNav />
+        <styled.div flex="1" />
         <styled.div display="flex" alignItems="center">
-          <Separator
-            aria-hidden
-            me="2"
-            display={{ base: "none", sm: "block" }}
-          />
           <Button asChild variant="ghost" size="xs" px="0" aspectRatio="square">
             <a
               href={REPO_URL}
@@ -77,6 +56,7 @@ export function SiteHeader() {
             </a>
           </Button>
           <Separator aria-hidden mx="2" />
+          <RadiusPicker />
           <ColorModeButton />
         </styled.div>
       </LayoutContainer>

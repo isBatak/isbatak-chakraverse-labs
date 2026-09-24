@@ -34,6 +34,9 @@ const icons = {
   sun: "outline/sun",
   moon: "outline/moon",
   "layout-sidebar": "outline/layout-sidebar",
+  "arrow-right": "outline/arrow-right",
+  heart: "outline/heart",
+  plus: "outline/plus",
 }
 
 const PRESENTATION_ATTRS = ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin"]

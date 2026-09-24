@@ -15,6 +15,11 @@ const items = [
     href: "/docs/components/wheel-picker",
     isActive: (pathname: string) => pathname.startsWith("/docs/components"),
   },
+  {
+    label: "Sponsors",
+    href: "/#sponsors",
+    isActive: () => false,
+  },
 ]
 
 const NavLink = styled(Link, {
@@ -34,7 +39,7 @@ export function HeaderNav() {
   const pathname = usePathname()
 
   return (
-    <styled.nav display={{ base: "none", sm: "flex" }} alignItems="center" gap="4">
+    <styled.nav display={{ base: "none", md: "flex" }} alignItems="center" gap="5">
       {items.map((item) => (
         <NavLink key={item.href} href={item.href} aria-current={item.isActive(pathname) ? "page" : undefined}>
           {item.label}
