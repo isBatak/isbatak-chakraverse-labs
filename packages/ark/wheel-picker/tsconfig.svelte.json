@@ -1,0 +1,9 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": ["src/types.ts", "src/svelte"],
+  "compilerOptions": {
+    "exactOptionalPropertyTypes": false,
+    "types": ["node"],
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo.svelte"
+  }
+}
