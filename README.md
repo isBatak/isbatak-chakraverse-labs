@@ -1,4 +1,4 @@
-# @isbatak/chakraverse-labs
+# @isbatak/labs
 
 Zag state machines developed outside [Zag](https://github.com/chakra-ui/zag) before they are contributed upstream.
 
