@@ -28,8 +28,7 @@ export function SiteFooter() {
         textStyle="sm"
       >
         <styled.p color="fg.muted">
-          <Wordmark />{" "}
-          · MIT licensed, built in the open.
+          <Wordmark /> · MIT licensed, built in the open.
         </styled.p>
         <styled.nav aria-label="Footer" display="flex" flexWrap="wrap" gap="5">
           <FooterLink href="/components">Components</FooterLink>

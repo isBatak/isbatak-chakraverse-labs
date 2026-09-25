@@ -1,4 +1,4 @@
-import { styled } from "styled-system/jsx";
+import { styled } from "styled-system/jsx"
 
 export const BottomBlur = styled(
   "div",
@@ -29,4 +29,4 @@ export const BottomBlur = styled(
       "aria-hidden": true,
     },
   },
-);
+)

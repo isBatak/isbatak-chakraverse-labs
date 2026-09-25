@@ -29,12 +29,6 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   if (!doc) notFound()
 
   return (
-    <DocPage
-      component={doc}
-      title={doc.title}
-      description={doc.description}
-      preview={doc.preview}
-      code={doc.code}
-    />
+    <DocPage component={doc} title={doc.title} description={doc.description} preview={doc.preview} code={doc.code} />
   )
 }

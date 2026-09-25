@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { styled } from "styled-system/jsx";
+import Link from "next/link"
+import { styled } from "styled-system/jsx"
 
-import { ColorModeButton } from "../color-mode-button";
-import { RadiusPicker } from "../radius-picker";
-import { Button } from "../ui/button";
-import { Icon } from "../ui/icon";
-import { HeaderNav } from "./header-nav";
-import { LayoutContainer } from "./layout-container";
-import { REPO_URL } from "./site-links";
-import { Wordmark } from "./wordmark";
+import { ColorModeButton } from "../color-mode-button"
+import { RadiusPicker } from "../radius-picker"
+import { Button } from "../ui/button"
+import { Icon } from "../ui/icon"
+import { HeaderNav } from "./header-nav"
+import { LayoutContainer } from "./layout-container"
+import { REPO_URL } from "./site-links"
+import { Wordmark } from "./wordmark"
 
 const Separator = styled("div", {
   base: {
@@ -17,19 +17,11 @@ const Separator = styled("div", {
     height: "5",
     bg: "border",
   },
-});
+})
 
 export function SiteHeader() {
   return (
-    <styled.header
-      position="sticky"
-      top="0"
-      zIndex="sticky"
-      bg="bg"
-      px="2"
-      maxW="100vw"
-      overflowX="clip"
-    >
+    <styled.header position="sticky" top="0" zIndex="sticky" bg="bg" px="2" maxW="100vw" overflowX="clip">
       <LayoutContainer
         display="flex"
         alignItems="center"
@@ -46,12 +38,7 @@ export function SiteHeader() {
         <styled.div flex="1" />
         <styled.div display="flex" alignItems="center">
           <Button asChild variant="ghost" size="xs" px="0" aspectRatio="square">
-            <a
-              href={REPO_URL}
-              target="_blank"
-              rel="noopener"
-              aria-label="GitHub repository"
-            >
+            <a href={REPO_URL} target="_blank" rel="noopener" aria-label="GitHub repository">
               <Icon size="sm" name="brand-github" />
             </a>
           </Button>
@@ -61,5 +48,5 @@ export function SiteHeader() {
         </styled.div>
       </LayoutContainer>
     </styled.header>
-  );
+  )
 }

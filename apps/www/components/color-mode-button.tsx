@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { useTheme } from "next-themes";
+import { useTheme } from "next-themes"
 
-import { Button } from "./ui/button";
-import { Icon } from "./ui/icon";
+import { Button } from "./ui/button"
+import { Icon } from "./ui/icon"
 
 export function ColorModeButton() {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme()
 
   return (
     <Button
@@ -20,5 +20,5 @@ export function ColorModeButton() {
       <Icon size="sm" name="moon" display="none" _dark={{ display: "block" }} />
       <Icon size="sm" name="sun" _dark={{ display: "none" }} />
     </Button>
-  );
+  )
 }

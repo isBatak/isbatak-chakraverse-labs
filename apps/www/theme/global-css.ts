@@ -1,4 +1,4 @@
-import { defineGlobalStyles } from "@pandacss/dev";
+import { defineGlobalStyles } from "@pandacss/dev"
 
 export const globalCss = defineGlobalStyles({
   html: {
@@ -7,4 +7,4 @@ export const globalCss = defineGlobalStyles({
   body: {
     minHeight: "100dvh",
   },
-});
+})
