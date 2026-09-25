@@ -53,13 +53,17 @@ const Pre = styled("pre", {
   base: {
     m: "0",
     p: "4",
-    pe: "12",
     overflowX: "auto",
     bg: "transparent",
     borderRadius: "0",
     fontFamily: "mono",
     fontSize: "0.8125rem",
     lineHeight: "1.7",
+  },
+  variants: {
+    floatingActions: {
+      true: { pe: "12" },
+    },
   },
 })
 
@@ -78,11 +82,12 @@ export function highlightCode(code: string, language?: string) {
 export interface CodeBodyProps {
   code: string
   lang?: string | undefined
+  floatingActions?: boolean
 }
 
-export function CodeBody({ code, lang }: CodeBodyProps) {
+export function CodeBody({ code, lang, floatingActions }: CodeBodyProps) {
   return (
-    <Pre>
+    <Pre floatingActions={floatingActions}>
       <code dangerouslySetInnerHTML={{ __html: highlightCode(code, lang) }} />
     </Pre>
   )
@@ -96,7 +101,7 @@ export function CodeBlock({ code, lang, title }: CodeBlockProps) {
   if (!title) {
     return (
       <CodeFrame>
-        <CodeBody code={code} lang={lang} />
+        <CodeBody code={code} lang={lang} floatingActions />
         <FloatingActions>
           <CopyButton value={code.trimEnd()} />
         </FloatingActions>

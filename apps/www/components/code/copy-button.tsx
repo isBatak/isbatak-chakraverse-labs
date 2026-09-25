@@ -1,5 +1,6 @@
 "use client"
 
+import { useTabsContext } from "@ark-ui/react/tabs"
 import { useEffect, useState } from "react"
 
 import { Button } from "../ui/button"
@@ -27,4 +28,9 @@ export function CopyButton({ value }: { value: string }) {
       <Icon name={copied ? "check" : "copy"} />
     </Button>
   )
+}
+
+export function TabsCopyButton({ files }: { files: Record<string, string> }) {
+  const { value } = useTabsContext()
+  return <CopyButton value={files[value ?? ""] ?? ""} />
 }

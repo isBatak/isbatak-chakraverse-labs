@@ -1,21 +1,29 @@
-import manifest from "@isbatak/compositions/manifest.json"
-import type { ReactNode } from "react"
-import { styled } from "styled-system/jsx"
+import manifest from "@isbatak/compositions/manifest.json";
+import type { ReactNode } from "react";
+import { styled } from "styled-system/jsx";
 
-import { CodeBlock, CodeBody, CodeFrame, CodeHeader } from "../code/code-block"
-import { CopyButton } from "../code/copy-button"
-import { ExampleTrigger } from "../examples/example-trigger"
-import { Tabs } from "../ui/tabs"
-import { type FrameworkId, FrameworkSwitch } from "./framework"
-import { registryUrl } from "./registry"
-import { type StylingId, StylingSwitch } from "./styling"
+import { CodeBlock, CodeBody, CodeFrame, CodeHeader } from "../code/code-block";
+import { TabsCopyButton } from "../code/copy-button";
+import { ExampleTrigger } from "../examples/example-trigger";
+import { Tabs } from "../ui/tabs";
+import { type FrameworkId, FrameworkSwitch } from "./framework";
+import { registryUrl } from "./registry";
+import { type StylingId, StylingSwitch } from "./styling";
 
-type ExampleFiles = (typeof manifest.examples)[number]["frameworks"]["react"]["panda"]
+type ExampleFiles =
+  (typeof manifest.examples)[number]["frameworks"]["react"]["panda"];
 
-const getExample = (id: string, framework: FrameworkId, styling: StylingId): ExampleFiles | undefined =>
-  manifest.examples.find((example) => example.id === id)?.frameworks[framework]?.[styling]
+const getExample = (
+  id: string,
+  framework: FrameworkId,
+  styling: StylingId,
+): ExampleFiles | undefined =>
+  manifest.examples.find((example) => example.id === id)?.frameworks[
+    framework
+  ]?.[styling];
 
-const frameworkLabel = (framework: FrameworkId) => manifest.frameworks.find(({ id }) => id === framework)!.label
+const frameworkLabel = (framework: FrameworkId) =>
+  manifest.frameworks.find(({ id }) => id === framework)!.label;
 
 const Unavailable = styled("p", {
   base: {
@@ -23,91 +31,152 @@ const Unavailable = styled("p", {
     textStyle: "sm",
     color: "fg.muted",
   },
-})
+});
 
 interface ExampleProps {
-  id: string
+  id: string;
 }
 
 interface VariantProps extends ExampleProps {
-  framework: FrameworkId
-  styling: StylingId
+  framework: FrameworkId;
+  styling: StylingId;
 }
 
-function VariantSwitch({ render }: { render: (framework: FrameworkId, styling: StylingId) => ReactNode }) {
+function VariantSwitch({
+  render,
+}: {
+  render: (framework: FrameworkId, styling: StylingId) => ReactNode;
+}) {
   return (
     <FrameworkSwitch
-      react={<StylingSwitch panda={render("react", "panda")} css={render("react", "css")} />}
-      vue={<StylingSwitch panda={render("vue", "panda")} css={render("vue", "css")} />}
-      svelte={<StylingSwitch panda={render("svelte", "panda")} css={render("svelte", "css")} />}
-      solid={<StylingSwitch panda={render("solid", "panda")} css={render("solid", "css")} />}
-      preact={<StylingSwitch panda={render("preact", "panda")} css={render("preact", "css")} />}
-      vanilla={<StylingSwitch panda={render("vanilla", "panda")} css={render("vanilla", "css")} />}
+      react={
+        <StylingSwitch
+          panda={render("react", "panda")}
+          css={render("react", "css")}
+        />
+      }
+      vue={
+        <StylingSwitch
+          panda={render("vue", "panda")}
+          css={render("vue", "css")}
+        />
+      }
+      svelte={
+        <StylingSwitch
+          panda={render("svelte", "panda")}
+          css={render("svelte", "css")}
+        />
+      }
+      solid={
+        <StylingSwitch
+          panda={render("solid", "panda")}
+          css={render("solid", "css")}
+        />
+      }
+      preact={
+        <StylingSwitch
+          panda={render("preact", "panda")}
+          css={render("preact", "css")}
+        />
+      }
+      vanilla={
+        <StylingSwitch
+          panda={render("vanilla", "panda")}
+          css={render("vanilla", "css")}
+        />
+      }
     />
-  )
+  );
 }
 
 const installCommands = (example: ExampleFiles) =>
   [
     `pnpm add ${example.dependencies.join(" ")}`,
-    example.devDependencies.length > 0 && `pnpm add -D ${example.devDependencies.join(" ")}`,
+    example.devDependencies.length > 0 &&
+      `pnpm add -D ${example.devDependencies.join(" ")}`,
   ]
     .filter(Boolean)
-    .join("\n")
+    .join("\n");
 
 function InstallCommand({ id, framework, styling }: VariantProps) {
-  const example = getExample(id, framework, styling)
-  if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
-  return <CodeBlock lang="sh" code={`pnpm add ${example.dependencies.join(" ")}`} />
+  const example = getExample(id, framework, styling);
+  if (!example)
+    return (
+      <Unavailable>
+        Not available for {frameworkLabel(framework)} yet.
+      </Unavailable>
+    );
+  return (
+    <CodeBlock lang="sh" code={`pnpm add ${example.dependencies.join(" ")}`} />
+  );
 }
 
 export function FrameworkInstall({ id }: ExampleProps) {
   return (
     <VariantSwitch
-      render={(framework, styling) => <InstallCommand id={id} framework={framework} styling={styling} />}
+      render={(framework, styling) => (
+        <InstallCommand id={id} framework={framework} styling={styling} />
+      )}
     />
-  )
+  );
 }
 
-const folderOf = (example: ExampleFiles) => example.files[0]!.target.replace(/[^/]+$/, "")
+const folderOf = (example: ExampleFiles) =>
+  example.files[0]!.target.replace(/[^/]+$/, "");
 
 function PandaSetup() {
   return (
     <p>
-      Add <code>wheelPickerPreset</code> from <code>@isbatak/panda-wheel-picker</code> to your Panda config, see{" "}
+      Add <code>wheelPickerPreset</code> from{" "}
+      <code>@isbatak/panda-wheel-picker</code> to your Panda config, see{" "}
       <a href="/components/wheel-picker/panda">Panda CSS</a>.
     </p>
-  )
+  );
 }
 
 function CliInstall({ id, framework, styling }: VariantProps) {
-  const example = getExample(id, framework, styling)
-  if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
+  const example = getExample(id, framework, styling);
+  if (!example)
+    return (
+      <Unavailable>
+        Not available for {frameworkLabel(framework)} yet.
+      </Unavailable>
+    );
 
   return (
     <>
-      <CodeBlock lang="sh" code={`pnpm dlx shadcn@latest add ${registryUrl(id, framework, styling)}`} />
+      <CodeBlock
+        lang="sh"
+        code={`pnpm dlx shadcn@latest add ${registryUrl(id, framework, styling)}`}
+      />
       {styling === "panda" ? (
         <>
           <p>
-            This installs the dependencies and adds the component to <code>{folderOf(example)}</code>. It imports the
-            recipe from <code>styled-system/recipes</code>.
+            This installs the dependencies and adds the component to{" "}
+            <code>{folderOf(example)}</code>. It imports the recipe from{" "}
+            <code>styled-system/recipes</code>.
           </p>
           <PandaSetup />
         </>
       ) : (
         <p>
-          This installs the dependencies and adds the component with its stylesheet to <code>{folderOf(example)}</code>.
-          It works in any project, with or without a <code>components.json</code>.
+          This installs the dependencies and adds the component with its
+          stylesheet to <code>{folderOf(example)}</code>. It works in any
+          project, with or without a <code>components.json</code>.
         </p>
       )}
     </>
-  )
+  );
 }
 
 function ManualInstall({ id, framework, styling }: VariantProps) {
-  const example = getExample(id, framework, styling)
-  if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
+  const example = getExample(id, framework, styling);
+  if (!example)
+    return (
+      <Unavailable>
+        Not available for {frameworkLabel(framework)} yet.
+      </Unavailable>
+    );
 
   return (
     <ol>
@@ -127,7 +196,7 @@ function ManualInstall({ id, framework, styling }: VariantProps) {
         </CodeFrame>
       </li>
     </ol>
-  )
+  );
 }
 
 export function Installation({ id }: ExampleProps) {
@@ -140,59 +209,74 @@ export function Installation({ id }: ExampleProps) {
       </Tabs.List>
       <Tabs.Content value="cli">
         <VariantSwitch
-          render={(framework, styling) => <CliInstall id={id} framework={framework} styling={styling} />}
+          render={(framework, styling) => (
+            <CliInstall id={id} framework={framework} styling={styling} />
+          )}
         />
       </Tabs.Content>
       <Tabs.Content value="manual">
         <VariantSwitch
-          render={(framework, styling) => <ManualInstall id={id} framework={framework} styling={styling} />}
+          render={(framework, styling) => (
+            <ManualInstall id={id} framework={framework} styling={styling} />
+          )}
         />
       </Tabs.Content>
     </Tabs.Root>
-  )
+  );
 }
 
-const FileActions = styled("div", {
-  base: {
-    position: "absolute",
-    top: "2",
-    insetEnd: "2",
-  },
-})
-
 function ExampleFilesTabs({ id, framework, styling }: VariantProps) {
-  const example = getExample(id, framework, styling)
-  if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
+  const example = getExample(id, framework, styling);
+  if (!example)
+    return (
+      <Unavailable>
+        Not available for {frameworkLabel(framework)} yet.
+      </Unavailable>
+    );
 
   return (
-    <Tabs.Root key={`${framework}-${styling}`} defaultValue={example.files[0]!.name} size="sm" variant="line">
+    <Tabs.Root
+      key={`${framework}-${styling}`}
+      defaultValue={example.files[0]!.name}
+      size="xs"
+      variant="outline"
+    >
       <CodeHeader>
-        <Tabs.List borderBottomWidth="0">
+        <Tabs.List
+          alignSelf="flex-end"
+          ms="-2.5"
+          borderBottomWidth="0"
+          overflowX="auto"
+        >
           {example.files.map((file) => (
             <Tabs.Trigger key={file.name} value={file.name}>
               {file.name}
             </Tabs.Trigger>
           ))}
         </Tabs.List>
+        <TabsCopyButton
+          files={Object.fromEntries(
+            example.files.map((file) => [file.name, file.code]),
+          )}
+        />
       </CodeHeader>
       {example.files.map((file) => (
-        <Tabs.Content key={file.name} value={file.name} position="relative" pt="0">
+        <Tabs.Content key={file.name} value={file.name} pt="0">
           <CodeBody code={file.code} lang={file.lang} />
-          <FileActions>
-            <CopyButton value={file.code} />
-          </FileActions>
         </Tabs.Content>
       ))}
     </Tabs.Root>
-  )
+  );
 }
 
 function ExampleFiles({ id }: ExampleProps) {
   return (
     <VariantSwitch
-      render={(framework, styling) => <ExampleFilesTabs id={id} framework={framework} styling={styling} />}
+      render={(framework, styling) => (
+        <ExampleFilesTabs id={id} framework={framework} styling={styling} />
+      )}
     />
-  )
+  );
 }
 
 export function ExampleSource({ id }: ExampleProps) {
@@ -200,13 +284,16 @@ export function ExampleSource({ id }: ExampleProps) {
     <CodeFrame>
       <ExampleFiles id={id} />
     </CodeFrame>
-  )
+  );
 }
 
-export function Example({ id, children }: ExampleProps & { children?: ReactNode }) {
+export function Example({
+  id,
+  children,
+}: ExampleProps & { children?: ReactNode }) {
   return (
     <ExampleTrigger id={id} source={<ExampleSource id={id} />}>
       {children}
     </ExampleTrigger>
-  )
+  );
 }
