@@ -4,11 +4,11 @@ import { styled } from "styled-system/jsx"
 
 import { CodeBlock, CodeBody, CodeFrame, CodeHeader } from "../code/code-block"
 import { CopyButton } from "../code/copy-button"
-import { ExampleView } from "../examples/example-view"
+import { ExampleTrigger } from "../examples/example-trigger"
 import { Tabs } from "../ui/tabs"
-import { type FrameworkId, FrameworkPicker, FrameworkSwitch } from "./framework"
+import { type FrameworkId, FrameworkSwitch } from "./framework"
 import { registryUrl } from "./registry"
-import { type StylingId, StylingPicker, StylingSwitch } from "./styling"
+import { type StylingId, StylingSwitch } from "./styling"
 
 type ExampleFiles = (typeof manifest.examples)[number]["frameworks"]["react"]["panda"]
 
@@ -22,15 +22,6 @@ const Unavailable = styled("p", {
     p: "4",
     textStyle: "sm",
     color: "fg.muted",
-  },
-})
-
-const Pickers = styled("div", {
-  base: {
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "center",
-    gap: "2",
   },
 })
 
@@ -142,13 +133,7 @@ function ManualInstall({ id, framework, styling }: VariantProps) {
 export function Installation({ id }: ExampleProps) {
   return (
     <styled.div my="6">
-      <styled.div overflowX="auto" pb="1">
-        <Pickers>
-          <FrameworkPicker />
-          <StylingPicker />
-        </Pickers>
-      </styled.div>
-      <Tabs.Root defaultValue="cli" size="sm" variant="line" mt="4">
+      <Tabs.Root defaultValue="cli" size="sm" variant="line">
         <Tabs.List>
           <Tabs.Trigger value="cli">shadcn CLI</Tabs.Trigger>
           <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
@@ -219,33 +204,10 @@ export function ExampleSource({ id }: ExampleProps) {
   )
 }
 
-export function ExampleCode({ id }: ExampleProps) {
+export function Example({ id, children }: ExampleProps & { children?: ReactNode }) {
   return (
-    <CodeFrame>
-      <CodeHeader overflowX="auto" py="2">
-        <Pickers>
-          <FrameworkPicker />
-          <StylingPicker />
-        </Pickers>
-      </CodeHeader>
-      <ExampleFiles id={id} />
-    </CodeFrame>
-  )
-}
-
-export function Example({ id }: ExampleProps) {
-  return (
-    <CodeFrame>
-      <CodeHeader overflowX="auto" py="2">
-        <Pickers>
-          <FrameworkPicker />
-          <StylingPicker />
-        </Pickers>
-      </CodeHeader>
-      <styled.div display="grid" placeItems="center" py="8" borderBottomWidth="1px" bg="bg">
-        <ExampleView id={id} />
-      </styled.div>
-      <ExampleFiles id={id} />
-    </CodeFrame>
+    <ExampleTrigger id={id} source={<ExampleSource id={id} />}>
+      {children}
+    </ExampleTrigger>
   )
 }

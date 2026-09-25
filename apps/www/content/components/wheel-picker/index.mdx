@@ -18,35 +18,54 @@ Drag, scroll, use the keyboard or type to jump to an option. Works in React, Vue
 
 ## Installation
 
-Pick your framework, then add the component with the shadcn CLI or copy it by hand.
+Pick your framework in the preview, then add the component with the shadcn CLI or copy it by hand.
 
 <Installation id="wheel-picker-basic" />
 
-## Usage
-
-Import the component and render it.
-
-<WheelPickerUsage />
-
-The items live at the top of the component file. Edit them to fit your data.
-
 ## Examples
 
-Each example is its own registry item, so you can add it with the CLI the same way.
+Scroll to an example to load it in the preview, and open the code view there for the full source. Each example is its
+own registry item, so you can add it with the CLI the same way.
 
 ### Controlled value
 
-<Example id="wheel-picker-controlled" />
+<Example id="wheel-picker-controlled">
+
+Pass `value` and `onValueChange` to own the state. Anything that updates `value`, like the buttons under the wheel,
+moves the picker to that item.
+
+```ts
+const service = useMachine(wheelPicker.machine, {
+  collection,
+  value,
+  onValueChange: (details) => setValue(details.value),
+})
+```
+
+</Example>
 
 ### Infinite scrolling
 
-<Example id="wheel-picker-infinite" />
+<Example id="wheel-picker-infinite">
+
+Set `infinite: true` to loop the items, so the wheel wraps from the last item back to the first. Home and End do
+nothing while looping.
+
+```ts
+const service = useMachine(wheelPicker.machine, {
+  collection,
+  defaultValue: "30",
+  infinite: true,
+})
+```
+
+</Example>
 
 ## Theming
 
 Every example is styled by the `wheelPicker` slot recipe from
-[`@isbatak/panda-wheel-picker`](/components/wheel-picker/panda). Pick **Panda CSS** above to get the source that calls
-the recipe, or **CSS** to get the same classes with a stylesheet generated from it.
+[`@isbatak/panda-wheel-picker`](/components/wheel-picker/panda). Switch to **Panda CSS** in the preview to get the
+source that calls the recipe, or **CSS** to get the same classes with a stylesheet generated from it.
 
 With Panda CSS, theme it through your semantic tokens (`fg`, `fg.subtle`, `bg.muted`, `colorPalette.focusRing` and the
 `l2` radius) or switch `variant` and `size` on the recipe call.
