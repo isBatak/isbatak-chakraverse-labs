@@ -77,10 +77,9 @@ export const Prose = styled("div", {
       fontSize: "0.925em",
       letterSpacing: "-0.01em",
       borderRadius: "l1",
-      borderWidth: "thin",
       paddingInline: "0.4em",
       paddingBlock: "0.1em",
-      bg: "bg.subtle",
+      bg: "bg.muted",
     },
     "& :where(pre code)": {
       fontSize: "inherit",
