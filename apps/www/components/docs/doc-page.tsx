@@ -8,6 +8,7 @@ import { MDXContent } from "../mdx-content"
 import { Button } from "../ui/button"
 import { Icon } from "../ui/icon"
 import { Prose } from "../ui/prose"
+import { DocFooter } from "./doc-footer"
 import { FrameworkProvider } from "./framework"
 import { ExampleSource } from "./framework-code"
 import { StylingProvider } from "./styling"
@@ -137,6 +138,7 @@ export function DocPage({ component, section, title, description, preview, code 
               <Prose>
                 <MDXContent code={code} />
               </Prose>
+              <DocFooter component={component} />
             </styled.main>
           </styled.div>
         </PreviewProvider>

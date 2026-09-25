@@ -48,6 +48,7 @@ const icons = {
   "brand-svelte": "outline/brand-svelte",
   "brand-solidjs": "outline/brand-solidjs",
   "brand-javascript": "outline/brand-javascript",
+  "brand-x": "outline/brand-x",
 }
 
 const PRESENTATION_ATTRS = ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin"]
