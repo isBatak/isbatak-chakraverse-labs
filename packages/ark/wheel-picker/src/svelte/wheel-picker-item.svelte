@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { ItemProps } from "@isbatak/zag-wheel-picker"
-  import type { Assign } from "../types"
-  import type { HTMLProps, PolymorphicProps, RefAttribute } from "./types"
+  import type { Assign } from "../types.js"
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from "./types.js"
 
   export interface WheelPickerItemBaseProps extends ItemProps, PolymorphicProps<"li">, RefAttribute {}
   export interface WheelPickerItemProps extends Assign<HTMLProps<"li">, WheelPickerItemBaseProps> {}
@@ -11,7 +11,7 @@
   import { Ark } from "@ark-ui/svelte"
   import * as wheelPicker from "@isbatak/zag-wheel-picker"
   import { mergeProps } from "@zag-js/svelte"
-  import { useWheelPickerContext } from "./use-wheel-picker-context"
+  import { useWheelPickerContext } from "./use-wheel-picker-context.js"
 
   let { ref = $bindable(null), ...props }: WheelPickerItemProps = $props()
   const [itemProps, localProps] = $derived(wheelPicker.splitItemProps(props))

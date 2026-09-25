@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { CollectionItem } from "@isbatak/zag-wheel-picker"
-  import type { Assign, Optional } from "../types"
-  import type { HTMLProps, PolymorphicProps, RefAttribute } from "./types"
-  import type { UseWheelPickerProps } from "./use-wheel-picker.svelte"
+  import type { Assign, Optional } from "../types.js"
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from "./types.js"
+  import type { UseWheelPickerProps } from "./use-wheel-picker.svelte.js"
 
   export interface WheelPickerRootBaseProps<T extends CollectionItem = CollectionItem>
     extends Optional<UseWheelPickerProps<T>, "id">,
@@ -16,8 +16,8 @@
   import { Ark } from "@ark-ui/svelte"
   import * as wheelPicker from "@isbatak/zag-wheel-picker"
   import { mergeProps } from "@zag-js/svelte"
-  import { WheelPickerProvider } from "./use-wheel-picker-context"
-  import { useWheelPicker } from "./use-wheel-picker.svelte"
+  import { WheelPickerProvider } from "./use-wheel-picker-context.js"
+  import { useWheelPicker } from "./use-wheel-picker.svelte.js"
 
   let { ref = $bindable(null), value = $bindable(), ...props }: WheelPickerRootProps<T> = $props()
   const providedId = $props.id()

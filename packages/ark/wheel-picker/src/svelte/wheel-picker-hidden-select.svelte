@@ -1,6 +1,6 @@
 <script module lang="ts">
-  import type { Assign } from "../types"
-  import type { HTMLProps, PolymorphicProps, RefAttribute } from "./types"
+  import type { Assign } from "../types.js"
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from "./types.js"
 
   export interface WheelPickerHiddenSelectBaseProps extends PolymorphicProps<"select">, RefAttribute {}
   export interface WheelPickerHiddenSelectProps extends Assign<HTMLProps<"select">, WheelPickerHiddenSelectBaseProps> {}
@@ -9,7 +9,7 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte"
   import { mergeProps } from "@zag-js/svelte"
-  import { useWheelPickerContext } from "./use-wheel-picker-context"
+  import { useWheelPickerContext } from "./use-wheel-picker-context.js"
 
   let { ref = $bindable(null), ...props }: WheelPickerHiddenSelectProps = $props()
   const api = useWheelPickerContext()
