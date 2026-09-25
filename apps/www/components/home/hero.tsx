@@ -1,9 +1,6 @@
 import { components } from "#site/content"
-import Link from "next/link"
 import { styled } from "styled-system/jsx"
 
-import { Button } from "../ui/button"
-import { Icon } from "../ui/icon"
 import { Eyebrow, Section } from "./section"
 
 const Stat = styled("div", {
@@ -86,25 +83,6 @@ export function Hero() {
             >
               Headless components for React, Vue, Svelte, Solid, Preact and plain JavaScript.
             </styled.h1>
-          </styled.div>
-
-          <styled.div gridColumn={{ md: "9 / span 4" }} pt={{ md: "10" }}>
-            <styled.p maxW="sm" color="fg.muted" lineHeight="1.7" textWrap="pretty">
-              Each component&apos;s logic lives in a single framework-agnostic state machine. Thin adapters plug it into
-              your framework of choice, or into no framework at all with vanilla JS. Same behavior, same accessibility,
-              wherever you ship.
-            </styled.p>
-            <styled.div display="flex" flexWrap="wrap" gap="2" mt="6">
-              <Button asChild size="sm">
-                <Link href="/components">
-                  Browse components
-                  <Icon name="arrow-right" />
-                </Link>
-              </Button>
-              <Button asChild size="sm" variant="outline">
-                <Link href="/components/wheel-picker">See it in your framework</Link>
-              </Button>
-            </styled.div>
           </styled.div>
         </styled.div>
 
