@@ -1,8 +1,9 @@
 "use client"
 
 import { resetSnapshot } from "@isbatak/compositions/react"
-import { useEffect, useRef, useState } from "react"
+import { startTransition, useEffect, useRef, useState, ViewTransition } from "react"
 import { flushSync } from "react-dom"
+import { viewTransition } from "styled-system/css"
 import { styled } from "styled-system/jsx"
 
 import { StylingPicker } from "../docs/styling"
@@ -119,21 +120,38 @@ export function ExamplePreview() {
           fullscreen={fullscreen}
           onFullscreenChange={changeFullscreen}
           showSource={showSource}
-          onShowSourceChange={setShowSource}
+          onShowSourceChange={(next) => startTransition(() => setShowSource(next))}
           onReset={() => {
             if (activeId) resetSnapshot(activeId)
-            setResetKey((key) => key + 1)
+            startTransition(() => setResetKey((key) => key + 1))
           }}
         />
       </styled.div>
       <styled.div position="absolute" bottom="3" insetStart="3" zIndex="1">
         <StylingPicker />
       </styled.div>
-      <div hidden={showSource}>{activeId && <ExampleView key={`${activeId}-${resetKey}`} id={activeId} />}</div>
+      <ViewTransition
+        key={`${activeId}-${resetKey}`}
+        enter={viewTransition("scale-fade")}
+        exit={viewTransition("scale-fade")}
+        default={viewTransition("fade")}
+      >
+        <div hidden={showSource}>{activeId && <ExampleView id={activeId} />}</div>
+      </ViewTransition>
       {showSource && (
-        <styled.div position="absolute" inset="0" overflowY="auto" overscrollBehavior="contain" px="3" pt="10" pb="14">
-          {activeSource}
-        </styled.div>
+        <ViewTransition enter={viewTransition("fade")} exit={viewTransition("fade")}>
+          <styled.div
+            position="absolute"
+            inset="0"
+            overflowY="auto"
+            overscrollBehavior="contain"
+            px="3"
+            pt="10"
+            pb="14"
+          >
+            {activeSource}
+          </styled.div>
+        </ViewTransition>
       )}
     </styled.div>
   )

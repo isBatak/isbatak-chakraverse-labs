@@ -7,4 +7,10 @@ export const globalCss = defineGlobalStyles({
   body: {
     minHeight: "100dvh",
   },
+  ":root": {
+    viewTransitionName: "none",
+  },
+  "::view-transition": {
+    pointerEvents: "none",
+  },
 })

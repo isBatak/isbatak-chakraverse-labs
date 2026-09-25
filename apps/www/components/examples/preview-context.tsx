@@ -2,6 +2,7 @@
 
 import {
   createContext,
+  startTransition,
   type ReactNode,
   useCallback,
   useContext,
@@ -82,8 +83,9 @@ export function PreviewProvider({ defaultId, defaultSource, children }: PreviewP
         .map(([element, id]) => ({ id, rect: element.getBoundingClientRect() }))
         .toSorted((a, b) => a.rect.top - b.rect.top)
       const hit = rects.find(({ rect }) => rect.top <= line && rect.bottom >= line)
-      if (hit) setActiveId(hit.id)
-      else if (rects[0]!.rect.top > line || rects.at(-1)!.rect.bottom < line) setActiveId(defaultId)
+      if (hit) startTransition(() => setActiveId(hit.id))
+      else if (rects[0]!.rect.top > line || rects.at(-1)!.rect.bottom < line)
+        startTransition(() => setActiveId(defaultId))
     }
 
     let frame = 0
