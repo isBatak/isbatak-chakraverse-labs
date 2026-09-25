@@ -64,21 +64,8 @@ const FloatingActions = styled("div", {
   },
 })
 
-const singleFileComponentLangs = new Set(["vue", "svelte"])
-
-function highlightSingleFileComponent(code: string) {
-  return code
-    .split(/(?<=<script[^>]*>\n)([\s\S]*?\n)(?=<\/script>)/)
-    .map((segment, index) =>
-      highlight(segment.replace(/\n$/, ""), { lang: index % 2 === 1 ? "typescript" : "javascript" }),
-    )
-    .join("\n")
-}
-
 export function highlightCode(code: string, language?: string) {
-  const source = code.trimEnd()
-  if (language && singleFileComponentLangs.has(language)) return highlightSingleFileComponent(source)
-  return highlight(source, { lang: resolveLang(language ?? "") ?? "javascript" })
+  return highlight(code.trimEnd(), { lang: resolveLang(language ?? "") ?? "javascript" })
 }
 
 export interface CodeBodyProps {

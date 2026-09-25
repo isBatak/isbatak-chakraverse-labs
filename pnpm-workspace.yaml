@@ -11,6 +11,8 @@ allowBuilds:
 
 # Supply-chain hardening (see https://pnpm.io/supply-chain-security)
 minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - sugar-high@2.5.0
 blockExoticSubdeps: true
 trustPolicy: no-downgrade
 trustPolicyExclude:
