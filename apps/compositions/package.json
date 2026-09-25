@@ -1,0 +1,68 @@
+{
+  "name": "@isbatak/compositions",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./react": {
+      "types": "./types/react.d.ts",
+      "default": "./dist/react.js"
+    },
+    "./vue": {
+      "types": "./types/mount.d.ts",
+      "default": "./dist/vue.js"
+    },
+    "./svelte": {
+      "types": "./types/mount.d.ts",
+      "default": "./dist/svelte.js"
+    },
+    "./solid": {
+      "types": "./types/mount.d.ts",
+      "default": "./dist/solid.js"
+    },
+    "./preact": {
+      "types": "./types/mount.d.ts",
+      "default": "./dist/preact.js"
+    },
+    "./vanilla": {
+      "types": "./types/mount.d.ts",
+      "default": "./dist/vanilla.js"
+    },
+    "./manifest.json": "./dist/manifest.json",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.preact.json && tsc --noEmit -p tsconfig.solid.json && vue-tsc --noEmit -p tsconfig.vue.json && svelte-check --tsconfig ./tsconfig.svelte.json --fail-on-warnings"
+  },
+  "dependencies": {
+    "@isbatak/panda-ds": "workspace:*",
+    "@isbatak/zag-wheel-picker": "workspace:*",
+    "@zag-js/preact": "catalog:",
+    "@zag-js/react": "catalog:",
+    "@zag-js/solid": "catalog:",
+    "@zag-js/svelte": "catalog:",
+    "@zag-js/vanilla": "catalog:",
+    "@zag-js/vue": "catalog:",
+    "preact": "^10.29.8",
+    "react": "catalog:",
+    "solid-js": "^1.9.15",
+    "svelte": "^5.57.1",
+    "vue": "^3.5.43"
+  },
+  "devDependencies": {
+    "@pandacss/compiler": "catalog:",
+    "@pandacss/dev": "catalog:",
+    "@pandacss/preset-base": "catalog:",
+    "@pandacss/transformer": "catalog:",
+    "@preact/preset-vite": "^2.10.6",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "@types/react": "catalog:",
+    "@vitejs/plugin-vue": "^6.0.9",
+    "oxfmt": "0.70.0",
+    "svelte-check": "^4.7.6",
+    "vite": "catalog:",
+    "vite-plugin-solid": "^2.11.14",
+    "vue-tsc": "^3.3.11"
+  }
+}

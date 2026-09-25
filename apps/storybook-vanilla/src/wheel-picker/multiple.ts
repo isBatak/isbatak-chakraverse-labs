@@ -1,7 +1,10 @@
+import { wheelPicker as wheelPickerRecipe } from "@isbatak/panda-ds/recipes"
 import { hourCollection, meridiemCollection, minuteCollection } from "@isbatak/storybook-shared"
 import * as wheelPicker from "@isbatak/zag-wheel-picker"
 import { normalizeProps, spreadProps, VanillaMachine } from "@zag-js/vanilla"
 import { createElement, mount } from "../mount"
+
+const styles = wheelPickerRecipe()
 
 export function createMultiple() {
   const main = createElement(`
@@ -29,6 +32,12 @@ export function createMultiple() {
       items = document.createElement("ul"),
       highlight = document.createElement("div"),
       highlights = document.createElement("ul")
+    root.className = styles.root ?? ""
+    control.className = styles.control ?? ""
+    viewport.className = styles.viewport ?? ""
+    items.className = styles.itemGroup ?? ""
+    highlight.className = styles.highlight ?? ""
+    highlights.className = styles.highlightItemGroup ?? ""
     highlight.append(highlights)
     viewport.append(items, highlight)
     control.append(viewport)
@@ -48,6 +57,7 @@ export function createMultiple() {
       items.replaceChildren(
         ...api.items.map(({ item, index }) => {
           const el = document.createElement("li")
+          el.className = styles.item ?? ""
           el.textContent = item.label
           spreadProps(el, api.getItemProps({ item, index }), machine.scope.id)
           return el
@@ -56,6 +66,7 @@ export function createMultiple() {
       highlights.replaceChildren(
         ...api.highlightItems.map(({ item, index }) => {
           const el = document.createElement("li")
+          el.className = styles.highlightItem ?? ""
           el.textContent = item.label
           spreadProps(el, api.getHighlightItemProps({ item, index }), machine.scope.id)
           return el

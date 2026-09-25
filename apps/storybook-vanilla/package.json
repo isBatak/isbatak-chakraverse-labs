@@ -8,6 +8,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@isbatak/panda-ds": "workspace:*",
     "@isbatak/storybook-shared": "workspace:*",
     "@isbatak/zag-wheel-picker": "workspace:*",
     "@zag-js/vanilla": "catalog:"

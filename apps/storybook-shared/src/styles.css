@@ -1,31 +1,4 @@
-/* Ported from the zag examples (`shared/src/css`): base layout, keyframes, date-input, popover and wheel-picker. */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
-  font-size: 14px;
-}
-
-*:focus-visible {
-  outline: 2px solid blue;
-  outline-offset: 2px;
-}
-
-ul {
-  margin: 0;
-  padding-inline-start: 0;
-}
-
-[hidden] {
-  display: none !important;
-}
+/* Story layout plus the date-input and popover styles ported from the zag examples (`shared/src/css`). The wheel pickers are styled by the panda-ds `wheelPicker` recipe. */
 
 .sr-only {
   position: absolute;
@@ -222,17 +195,13 @@ ul {
   width: 240px;
 }
 
-.wheel-picker > [data-scope="wheel-picker"][data-part="root"] > [data-scope="wheel-picker"][data-part="control"] {
-  border: 1px solid #d4d4d8;
-  background: white;
-}
-
 .wheel-picker-group {
   display: flex;
   width: 336px;
   overflow: hidden;
-  border: 1px solid #d4d4d8;
-  background: white;
+  border: 1px solid var(--colors-border);
+  border-radius: var(--radii-l2);
+  background: var(--colors-bg);
 }
 
 .wheel-picker-group > [data-scope="wheel-picker"][data-part="root"] {
@@ -241,49 +210,29 @@ ul {
 }
 
 .wheel-picker-group > [data-scope="wheel-picker"][data-part="root"]:not(:last-child) {
-  border-inline-end: 1px solid #e4e4e7;
-}
-
-.wheel-picker [data-scope="wheel-picker"][data-part="control"] {
-  height: 192px;
-  cursor: default;
-  outline: none;
-}
-
-.wheel-picker [data-scope="wheel-picker"][data-part="viewport"] {
-  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-}
-
-.wheel-picker [data-scope="wheel-picker"][data-part="item"] {
-  color: black;
-  font-size: 14px;
-}
-
-.wheel-picker [data-scope="wheel-picker"][data-part="highlight"] {
-  background: blue;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.wheel-picker [data-scope="wheel-picker"][data-part="highlight"][data-focus] {
-  box-shadow: inset 0 0 0 2px #a1a1aa;
-}
-
-.wheel-picker [data-scope="wheel-picker"][data-part="item"][data-disabled],
-.wheel-picker [data-scope="wheel-picker"][data-part="highlight-item"][data-disabled] {
-  opacity: 0.35;
+  border-inline-end: 1px solid var(--colors-border);
 }
 
 .wheel-picker output {
-  color: #52525b;
+  color: var(--colors-fg-muted);
   font-size: 14px;
 }
 
 .wheel-picker-actions {
   display: flex;
   gap: 8px;
+}
+
+.wheel-picker-actions button {
+  padding: 6px 12px;
+  border: 1px solid var(--colors-border);
+  border-radius: var(--radii-l2);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.wheel-picker-actions button:hover {
+  background: var(--colors-bg-muted);
 }
 
 .wheel-picker-time-field {
@@ -299,12 +248,12 @@ ul {
 }
 
 [data-scope="popover"][data-part="content"].wheel-picker-time-content {
-  border: 1px solid gray;
+  border: 1px solid var(--colors-border);
   padding: 0;
   min-width: 0;
   width: 240px;
-  background: white;
-  border-radius: 8px;
+  background: var(--colors-bg);
+  border-radius: var(--radii-l3);
   position: relative;
   z-index: var(--layer-index);
   filter: none;
@@ -313,5 +262,6 @@ ul {
 
 .wheel-picker-time-content .wheel-picker-group {
   border: 0;
+  border-radius: 0;
   width: 100%;
 }

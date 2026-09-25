@@ -1,0 +1,10 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": ["src/types.ts", "src/react", "src/vue"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "exactOptionalPropertyTypes": false,
+    "types": ["node"],
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo"
+  }
+}

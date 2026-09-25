@@ -1,0 +1,8 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": ["src", "styled-system", "panda.config.ts"],
+  "compilerOptions": {
+    "types": ["node"],
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo"
+  }
+}

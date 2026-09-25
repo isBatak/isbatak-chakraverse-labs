@@ -1,0 +1,11 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": ["src/types.ts", "src/solid"],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "exactOptionalPropertyTypes": false,
+    "jsxImportSource": "solid-js",
+    "types": ["node"],
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo.solid"
+  }
+}

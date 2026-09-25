@@ -1,7 +1,10 @@
+import { wheelPicker as wheelPickerRecipe } from "@isbatak/panda-ds/recipes"
 import { frameworkCollection, type WheelPickerControls } from "@isbatak/storybook-shared"
 import * as wheelPicker from "@isbatak/zag-wheel-picker"
 import { normalizeProps, spreadProps, VanillaMachine } from "@zag-js/vanilla"
 import { createElement, mount } from "../mount"
+
+const styles = wheelPickerRecipe()
 
 export interface BasicProps extends Partial<WheelPickerControls> {
   onValueChange?: (details: wheelPicker.ValueChangeDetails) => void
@@ -10,12 +13,14 @@ export interface BasicProps extends Partial<WheelPickerControls> {
 export function createBasic(props: BasicProps) {
   const main = createElement(`
     <main class="wheel-picker">
-      <div class="wheel-picker-root">
-        <label class="wheel-picker-label">Framework</label>
-        <div class="wheel-picker-control">
-          <div class="wheel-picker-viewport">
-            <ul class="wheel-picker-items"></ul>
-            <div class="wheel-picker-highlight"><ul class="wheel-picker-highlight-items"></ul></div>
+      <div class="wheel-picker-root ${styles.root}">
+        <label class="wheel-picker-label ${styles.label}">Framework</label>
+        <div class="wheel-picker-control ${styles.control}">
+          <div class="wheel-picker-viewport ${styles.viewport}">
+            <ul class="wheel-picker-items ${styles.itemGroup}"></ul>
+            <div class="wheel-picker-highlight ${styles.highlight}">
+              <ul class="wheel-picker-highlight-items ${styles.highlightItemGroup}"></ul>
+            </div>
           </div>
         </div>
         <select class="wheel-picker-hidden-select"></select>
@@ -48,6 +53,7 @@ export function createBasic(props: BasicProps) {
     root.querySelector(".wheel-picker-items")!.replaceChildren(
       ...api.items.map(({ item, index }) => {
         const el = document.createElement("li")
+        el.className = styles.item ?? ""
         el.textContent = item.label
         spreadProps(el, api.getItemProps({ item, index }), machine.scope.id)
         return el
@@ -56,6 +62,7 @@ export function createBasic(props: BasicProps) {
     root.querySelector(".wheel-picker-highlight-items")!.replaceChildren(
       ...api.highlightItems.map(({ item, index }) => {
         const el = document.createElement("li")
+        el.className = styles.highlightItem ?? ""
         el.textContent = item.label
         spreadProps(el, api.getHighlightItemProps({ item, index }), machine.scope.id)
         return el

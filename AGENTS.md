@@ -1,0 +1,1 @@
+- Never `.map()` over static data to render JSX; write the structure inline instead.

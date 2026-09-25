@@ -1,0 +1,67 @@
+---
+title: Panda CSS
+label: Panda CSS
+description: The wheel picker slot recipe and preset used on this site.
+order: 3
+---
+
+`@isbatak/panda-wheel-picker` builds on the semantic tokens of this design system (`fg`, `bg.muted`, `colorPalette.*`,
+`l2` radii), so it works with any Chakra-style Panda preset.
+
+<ArkExample />
+
+## Installation
+
+```sh
+pnpm add -D @isbatak/panda-wheel-picker
+```
+
+## Setup
+
+Add the preset:
+
+```ts
+import { wheelPickerPreset } from "@isbatak/panda-wheel-picker"
+import { defineConfig } from "@pandacss/dev"
+
+export default defineConfig({
+  presets: ["@pandacss/preset-base", wheelPickerPreset],
+})
+```
+
+Or extend your theme with the recipe directly:
+
+```ts
+import { wheelPickerRecipe } from "@isbatak/panda-wheel-picker"
+
+export default defineConfig({
+  theme: { extend: { slotRecipes: { wheelPicker: wheelPickerRecipe } } },
+})
+```
+
+## Usage with Ark UI
+
+Wire the recipe to the [Ark UI parts](/components/wheel-picker/ark) with `createSlotRecipeContext`:
+
+```tsx
+import { WheelPicker } from "@isbatak/ark-wheel-picker/react"
+import { createSlotRecipeContext } from "styled-system/jsx"
+import { wheelPicker } from "styled-system/recipes"
+
+const { withProvider, withContext } = createSlotRecipeContext(wheelPicker)
+
+export const Root = withProvider(WheelPicker.Root, "root")
+export const Label = withContext(WheelPicker.Label, "label")
+export const Control = withContext(WheelPicker.Control, "control")
+export const Viewport = withContext(WheelPicker.Viewport, "viewport")
+export const ItemGroup = withContext(WheelPicker.ItemGroup, "itemGroup")
+export const Item = withContext(WheelPicker.Item, "item")
+export const Highlight = withContext(WheelPicker.Highlight, "highlight")
+export const HighlightItemGroup = withContext(WheelPicker.HighlightItemGroup, "highlightItemGroup")
+export const HighlightItem = withContext(WheelPicker.HighlightItem, "highlightItem")
+```
+
+## Variants
+
+- `variant`: `subtle`, `outline`, `solid`
+- `size`: `sm`, `md`, `lg`

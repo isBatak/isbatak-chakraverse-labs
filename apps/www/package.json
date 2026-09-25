@@ -1,0 +1,43 @@
+{
+  "name": "@isbatak/website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-api-docs.mjs && pnpm --filter @isbatak/panda-ds build && pnpm --filter @isbatak/compositions build && ikona && panda && node scripts/panda-internal-css.mjs && velite build --strict",
+    "api:generate": "node scripts/generate-api-docs.mjs",
+    "icons:import": "node scripts/import-tabler-icons.mjs && ikona",
+    "dev": "pnpm generate && pnpm run \"/^dev:/\"",
+    "dev:panda": "panda dev",
+    "dev:velite": "velite dev",
+    "dev:next": "next dev --port 3000",
+    "build": "pnpm generate && next build",
+    "start": "next start",
+    "typecheck": "pnpm generate && next typegen && tsc --noEmit",
+    "dev:compositions": "pnpm --filter @isbatak/compositions dev"
+  },
+  "dependencies": {
+    "@ark-ui/react": "5.39.2",
+    "@isbatak/ark-wheel-picker": "workspace:*",
+    "@isbatak/compositions": "workspace:*",
+    "@isbatak/panda-ds": "workspace:*",
+    "@isbatak/panda-wheel-picker": "workspace:*",
+    "@isbatak/zag-wheel-picker": "workspace:*",
+    "@zag-js/react": "catalog:",
+    "next": "16.3.6",
+    "next-themes": "0.4.6",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "sugar-high": "2.4.1"
+  },
+  "devDependencies": {
+    "@ikona/cli": "0.2.1",
+    "@pandacss/compiler": "catalog:",
+    "@pandacss/dev": "catalog:",
+    "@pandacss/preset-base": "catalog:",
+    "@pandacss/transformer": "catalog:",
+    "@pandacss/types": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "velite": "0.4.0"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "next-env.d.ts",
+    "app",
+    "components",
+    "theme",
+    "styled-system",
+    "panda.config.ts",
+    "velite.config.ts",
+    "ikona.config.ts",
+    "next.config.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "allowJs": true,
+    "declaration": false,
+    "exactOptionalPropertyTypes": false,
+    "verbatimModuleSyntax": false,
+    "types": ["node"],
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "styled-system/*": ["./styled-system/*"],
+      "#site/content": ["./.velite"]
+    },
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo"
+  }
+}

@@ -1,0 +1,79 @@
+---
+title: Ark UI
+label: Ark UI
+description: Ark UI style wheel picker parts for React, Solid, Vue and Svelte.
+order: 2
+---
+
+`@isbatak/ark-wheel-picker` follows Ark's conventions: `Root` and `RootProvider`, `asChild`, a `Context` render helper,
+and `useWheelPicker` / `useWheelPickerContext`. It reads `dir` and the root node from Ark's providers.
+
+<ArkExample />
+
+## Installation
+
+```sh
+pnpm add @isbatak/ark-wheel-picker @ark-ui/react
+```
+
+Swap `@ark-ui/react` for `@ark-ui/solid`, `@ark-ui/vue` or `@ark-ui/svelte`.
+
+## Usage
+
+```tsx
+import { createWheelPickerCollection, WheelPicker } from "@isbatak/ark-wheel-picker/react"
+
+const collection = createWheelPickerCollection({
+  items: [
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+  ],
+})
+
+export const Demo = () => (
+  <WheelPicker.Root collection={collection} defaultValue="react">
+    <WheelPicker.Label>Framework</WheelPicker.Label>
+    <WheelPicker.Control>
+      <WheelPicker.Viewport>
+        <WheelPicker.ItemGroup>
+          <WheelPicker.Context>
+            {(api) =>
+              api.items.map(({ item, index, key }) => (
+                <WheelPicker.Item key={key} item={item} index={index}>
+                  {item.label}
+                </WheelPicker.Item>
+              ))
+            }
+          </WheelPicker.Context>
+        </WheelPicker.ItemGroup>
+        <WheelPicker.Highlight>
+          <WheelPicker.HighlightItemGroup>
+            <WheelPicker.Context>
+              {(api) =>
+                api.highlightItems.map(({ item, index, key }) => (
+                  <WheelPicker.HighlightItem key={key} item={item} index={index}>
+                    {item.label}
+                  </WheelPicker.HighlightItem>
+                ))
+              }
+            </WheelPicker.Context>
+          </WheelPicker.HighlightItemGroup>
+        </WheelPicker.Highlight>
+      </WheelPicker.Viewport>
+    </WheelPicker.Control>
+    <WheelPicker.HiddenSelect />
+  </WheelPicker.Root>
+)
+```
+
+Swap the import for `@isbatak/ark-wheel-picker/solid`, `/vue` or `/svelte`. The parts are the same.
+
+## Styling
+
+The parts are unstyled. Style them with the [Panda CSS recipe](/components/wheel-picker/panda), or target the
+`data-scope` and `data-part` attributes described on the [Zag page](/components/wheel-picker/zag).
+
+## API
+
+`Root` takes the [machine props](/components/wheel-picker), except `dir` and `getRootNode`, which it reads from Ark's
+providers. `useWheelPicker` and `Context` return the [machine API](/components/wheel-picker/zag).

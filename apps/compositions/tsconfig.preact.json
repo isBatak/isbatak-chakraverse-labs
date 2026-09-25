@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src/examples/preact", "mount/preact.tsx", "mount/env.d.ts"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "types": ["node"],
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo.preact"
+  }
+}

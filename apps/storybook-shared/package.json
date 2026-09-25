@@ -4,15 +4,23 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./panda.css": "./dist/panda.css",
     "./styles.css": "./src/styles.css",
     "./package.json": "./package.json"
   },
   "scripts": {
+    "build": "panda cssgen -o dist/panda.css",
+    "storybook": "panda cssgen --watch -o dist/panda.css",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@internationalized/date": "^3.12.4",
+    "@isbatak/panda-ds": "workspace:*",
     "@isbatak/zag-wheel-picker": "workspace:*",
     "@zag-js/date-input": "catalog:"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "catalog:",
+    "@pandacss/preset-base": "catalog:"
   }
 }
