@@ -1,4 +1,6 @@
+import { resolve } from "node:path"
 import type { NextConfig } from "next"
+import { codeInspectorPlugin } from "code-inspector-plugin"
 
 const pandaLoader = {
   loaders: ["./panda-turbopack-loader.cjs"],
@@ -22,6 +24,10 @@ const nextConfig: NextConfig = {
   },
   turbopack: {
     rules: {
+      ...codeInspectorPlugin({
+        bundler: "turbopack",
+        injectTo: resolve("components/providers.tsx"),
+      }),
       "./app/**/*.tsx": pandaLoader,
       "./components/**/*.tsx": pandaLoader,
     },

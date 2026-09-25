@@ -38,6 +38,7 @@
     "@pandacss/types": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "code-inspector-plugin": "2.0.9",
     "velite": "0.4.0"
   }
 }
