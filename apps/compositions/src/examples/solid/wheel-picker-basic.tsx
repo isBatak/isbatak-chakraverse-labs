@@ -22,7 +22,7 @@ export function WheelPickerBasic() {
   const service = useMachine(wheelPicker.machine, {
     id: createUniqueId(),
     collection,
-    defaultValue: "solid",
+    defaultValue: "react",
   })
 
   const api = createMemo(() => wheelPicker.connect(service, normalizeProps))

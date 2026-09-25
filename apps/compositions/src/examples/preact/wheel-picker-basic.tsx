@@ -22,7 +22,7 @@ export function WheelPickerBasic() {
   const service = useMachine(wheelPicker.machine, {
     id: useId(),
     collection,
-    defaultValue: "preact",
+    defaultValue: "react",
   })
 
   const api = wheelPicker.connect(service, normalizeProps)

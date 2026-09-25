@@ -22,7 +22,7 @@ const styles = wheelPickerRecipe()
 const service = useMachine(wheelPicker.machine, {
   id: useId(),
   collection,
-  defaultValue: "vue",
+  defaultValue: "react",
 })
 
 const api = computed(() => wheelPicker.connect(service, normalizeProps))
