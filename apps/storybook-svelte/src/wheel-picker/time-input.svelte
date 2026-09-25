@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { wheelPicker as wheelPickerRecipe } from "@isbatak/panda-ds/recipes"
   import {
     getDayPeriodCollection,
     getHourCollection,
@@ -16,6 +17,8 @@
   import * as dateInput from "@zag-js/date-input"
   import * as popover from "@zag-js/popover"
   import { normalizeProps, useMachine } from "@zag-js/svelte"
+
+  const styles = wheelPickerRecipe()
 
   const props: TimeInputControls = $props()
   const id = $props.id()
@@ -111,20 +114,20 @@
       <div class="sr-only" {...popoverApi.getDescriptionProps()}>Choose an hour, minute, and day period.</div>
       <div class="wheel-picker-group" role="group" aria-label="Time picker">
         {#each pickers as { api, label } (label)}
-          <div {...api.getRootProps()}>
+          <div {...api.getRootProps()} class={styles.root}>
             <!-- svelte-ignore a11y_label_has_associated_control -->
-            <label class="sr-only" {...api.getLabelProps()}>{label}</label>
-            <div {...api.getControlProps()}>
-              <div {...api.getViewportProps()}>
-                <ul {...api.getItemGroupProps()}>
+            <label {...api.getLabelProps()} class={styles.label}>{label}</label>
+            <div {...api.getControlProps()} class={styles.control}>
+              <div {...api.getViewportProps()} class={styles.viewport}>
+                <ul {...api.getItemGroupProps()} class={styles.itemGroup}>
                   {#each api.items as { item, index, key } (key)}
-                    <li {...api.getItemProps({ item, index })}>{item.label}</li>
+                    <li {...api.getItemProps({ item, index })} class={styles.item}>{item.label}</li>
                   {/each}
                 </ul>
-                <div {...api.getHighlightProps()}>
-                  <ul {...api.getHighlightItemGroupProps()}>
+                <div {...api.getHighlightProps()} class={styles.highlight}>
+                  <ul {...api.getHighlightItemGroupProps()} class={styles.highlightItemGroup}>
                     {#each api.highlightItems as { item, index, key } (key)}
-                      <li {...api.getHighlightItemProps({ item, index })}>{item.label}</li>
+                      <li {...api.getHighlightItemProps({ item, index })} class={styles.highlightItem}>{item.label}</li>
                     {/each}
                   </ul>
                 </div>

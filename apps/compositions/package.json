@@ -28,9 +28,7 @@
       "default": "./dist/vanilla.js"
     },
     "./manifest.json": "./dist/manifest.json",
-    "./styles/*": "./src/styles/*",
-    "./package.json": "./package.json",
-    "./styles.css": "./src/styles/index.css"
+    "./package.json": "./package.json"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
@@ -38,6 +36,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.preact.json && tsc --noEmit -p tsconfig.solid.json && vue-tsc --noEmit -p tsconfig.vue.json && svelte-check --tsconfig ./tsconfig.svelte.json --fail-on-warnings"
   },
   "dependencies": {
+    "@isbatak/panda-ds": "workspace:*",
     "@isbatak/zag-wheel-picker": "workspace:*",
     "@zag-js/preact": "catalog:",
     "@zag-js/react": "catalog:",
@@ -52,10 +51,15 @@
     "vue": "^3.5.43"
   },
   "devDependencies": {
+    "@pandacss/compiler": "catalog:",
+    "@pandacss/dev": "catalog:",
+    "@pandacss/preset-base": "catalog:",
+    "@pandacss/transformer": "catalog:",
     "@preact/preset-vite": "^2.10.6",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@types/react": "catalog:",
     "@vitejs/plugin-vue": "^6.0.9",
+    "oxfmt": "0.70.0",
     "svelte-check": "^4.7.6",
     "vite": "catalog:",
     "vite-plugin-solid": "^2.11.14",

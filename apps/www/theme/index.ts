@@ -1,4 +1,3 @@
-import { wheelPickerRecipe } from "@isbatak/panda-wheel-picker"
 import type { ExtendableTheme } from "@pandacss/types"
 
 import { layoutContainer } from "./recipes/layout-container"
@@ -50,6 +49,5 @@ export const theme = {
       // Icons default to the surrounding font size; `size` variants override it
       icon: { base: { boxSize: "1em" } },
     },
-    slotRecipes: { wheelPicker: wheelPickerRecipe },
   },
 } satisfies ExtendableTheme

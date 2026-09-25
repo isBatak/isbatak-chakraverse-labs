@@ -7,7 +7,11 @@ export default defineConfig({
   designSystem: "@isbatak/panda-ds",
   preflight: true,
   jsxFramework: "react",
-  include: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  include: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "../compositions/src/examples/**/*.{ts,tsx,vue,svelte}",
+  ],
   exclude: [],
   dependencies: ["./theme/**/*.ts"],
   outdir: "styled-system",

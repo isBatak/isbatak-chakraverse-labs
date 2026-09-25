@@ -1,13 +1,29 @@
 import manifest from "@isbatak/compositions/manifest.json"
 
+import type { FrameworkId } from "../../../components/docs/framework"
+import { registryName } from "../../../components/docs/registry"
+import type { StylingId } from "../../../components/docs/styling"
+
 export const dynamic = "force-static"
 export const dynamicParams = false
 
 const items = manifest.examples.flatMap((example) =>
-  manifest.frameworks.flatMap((framework) => {
-    const files = example.frameworks[framework.id as keyof typeof example.frameworks]
-    return files ? [{ name: `${example.id}-${framework.id}`, example: example.id, framework, ...files }] : []
-  }),
+  manifest.frameworks.flatMap((framework) =>
+    manifest.stylings.flatMap((styling) => {
+      const files = example.frameworks[framework.id as FrameworkId]?.[styling.id as StylingId]
+      return files
+        ? [
+            {
+              name: registryName(example.id, framework.id as FrameworkId, styling.id as StylingId),
+              example: example.id,
+              framework,
+              styling,
+              ...files,
+            },
+          ]
+        : []
+    }),
+  ),
 )
 
 export function generateStaticParams() {
@@ -23,11 +39,12 @@ export async function GET(_request: Request, { params }: { params: Promise<{ nam
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
     name: item.name,
     type: "registry:item",
-    title: `${item.example} (${item.framework.label})`,
-    description: `The ${item.example} example for ${item.framework.label}, built on Zag.`,
+    title: `${item.example} (${item.framework.label}, ${item.styling.label})`,
+    description: `The ${item.example} example for ${item.framework.label}, built on Zag and styled with ${item.styling.label}.`,
     dependencies: item.dependencies,
+    devDependencies: item.devDependencies,
     files: item.files.map((file) => ({
-      path: `registry/${item.framework.id}/${file.name}`,
+      path: `registry/${item.framework.id}/${item.styling.id}/${file.name}`,
       type: "registry:file",
       target: `~/${file.target}`,
       content: file.code,

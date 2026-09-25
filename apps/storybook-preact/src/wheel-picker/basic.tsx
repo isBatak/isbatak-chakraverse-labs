@@ -1,7 +1,10 @@
+import { wheelPicker as wheelPickerRecipe } from "@isbatak/panda-ds/recipes"
 import { frameworkCollection, type WheelPickerControls } from "@isbatak/storybook-shared"
 import * as wheelPicker from "@isbatak/zag-wheel-picker"
 import { normalizeProps, useMachine } from "@zag-js/preact"
 import { useId } from "preact/hooks"
+
+const styles = wheelPickerRecipe()
 
 export interface BasicProps extends Partial<WheelPickerControls> {
   onValueChange?: (details: wheelPicker.ValueChangeDetails) => void
@@ -20,23 +23,25 @@ export function Basic(props: BasicProps) {
 
   return (
     <main className="wheel-picker">
-      <div {...api.getRootProps()}>
-        <label {...api.getLabelProps()}>Framework</label>
+      <div {...api.getRootProps()} className={styles.root}>
+        <label {...api.getLabelProps()} className={styles.label}>
+          Framework
+        </label>
 
-        <div {...api.getControlProps()}>
-          <div {...api.getViewportProps()}>
-            <ul {...api.getItemGroupProps()}>
+        <div {...api.getControlProps()} className={styles.control}>
+          <div {...api.getViewportProps()} className={styles.viewport}>
+            <ul {...api.getItemGroupProps()} className={styles.itemGroup}>
               {api.items.map(({ item, index, key }) => (
-                <li key={key} {...api.getItemProps({ item, index })}>
+                <li key={key} {...api.getItemProps({ item, index })} className={styles.item}>
                   {item.label}
                 </li>
               ))}
             </ul>
 
-            <div {...api.getHighlightProps()}>
-              <ul {...api.getHighlightItemGroupProps()}>
+            <div {...api.getHighlightProps()} className={styles.highlight}>
+              <ul {...api.getHighlightItemGroupProps()} className={styles.highlightItemGroup}>
                 {api.highlightItems.map(({ item, index, key }) => (
-                  <li key={key} {...api.getHighlightItemProps({ item, index })}>
+                  <li key={key} {...api.getHighlightItemProps({ item, index })} className={styles.highlightItem}>
                     {item.label}
                   </li>
                 ))}

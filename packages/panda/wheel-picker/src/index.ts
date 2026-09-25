@@ -29,7 +29,7 @@ export const wheelPickerRecipe: SlotRecipeConfig = defineSlotRecipe({
       outline: "none",
       cursor: "grab",
       _dragging: { cursor: "grabbing" },
-      _readOnly: { cursor: "default" },
+      "&[data-readonly]": { cursor: "default" },
       _disabled: { cursor: "not-allowed" },
     },
     viewport: {

@@ -143,6 +143,9 @@ importers:
 
   apps/compositions:
     dependencies:
+      '@isbatak/panda-ds':
+        specifier: workspace:*
+        version: link:../../packages/panda/ds
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
         version: link:../../packages/zag/wheel-picker
@@ -180,6 +183,18 @@ importers:
         specifier: ^3.5.43
         version: 3.5.43(typescript@6.0.3)
     devDependencies:
+      '@pandacss/compiler':
+        specifier: 'catalog:'
+        version: 2.0.0-beta.18(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.3)
+      '@pandacss/dev':
+        specifier: 'catalog:'
+        version: 2.0.0-beta.18(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.3)(postcss@8.5.28)
+      '@pandacss/preset-base':
+        specifier: 'catalog:'
+        version: 2.0.0-beta.18
+      '@pandacss/transformer':
+        specifier: 'catalog:'
+        version: 2.0.0-beta.18(@emnapi/core@1.11.0)(@emnapi/runtime@1.11.3)(rollup@4.63.4)(vite@8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1))
       '@preact/preset-vite':
         specifier: ^2.10.6
         version: 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(rollup@4.63.4)(vite@8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1))
@@ -192,6 +207,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^6.0.9
         version: 6.0.9(vite@8.3.0(@types/node@25.9.5)(esbuild@0.27.7)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
+      oxfmt:
+        specifier: 0.70.0
+        version: 0.70.0(svelte@5.57.1)
       svelte-check:
         specifier: ^4.7.6
         version: 4.7.6(picomatch@4.0.7)(svelte@5.57.1)(typescript@6.0.3)
@@ -225,6 +243,9 @@ importers:
 
   apps/storybook-preact:
     dependencies:
+      '@isbatak/panda-ds':
+        specifier: workspace:*
+        version: link:../../packages/panda/ds
       '@isbatak/storybook-shared':
         specifier: workspace:*
         version: link:../storybook-shared
@@ -259,6 +280,9 @@ importers:
 
   apps/storybook-react:
     dependencies:
+      '@isbatak/panda-ds':
+        specifier: workspace:*
+        version: link:../../packages/panda/ds
       '@isbatak/storybook-shared':
         specifier: workspace:*
         version: link:../storybook-shared
@@ -305,15 +329,28 @@ importers:
       '@internationalized/date':
         specifier: ^3.12.4
         version: 3.12.4
+      '@isbatak/panda-ds':
+        specifier: workspace:*
+        version: link:../../packages/panda/ds
       '@isbatak/zag-wheel-picker':
         specifier: workspace:*
         version: link:../../packages/zag/wheel-picker
       '@zag-js/date-input':
         specifier: 'catalog:'
         version: 1.44.0(@internationalized/date@3.12.4)
+    devDependencies:
+      '@pandacss/dev':
+        specifier: 'catalog:'
+        version: 2.0.0-beta.18(postcss@8.5.28)
+      '@pandacss/preset-base':
+        specifier: 'catalog:'
+        version: 2.0.0-beta.18
 
   apps/storybook-solid:
     dependencies:
+      '@isbatak/panda-ds':
+        specifier: workspace:*
+        version: link:../../packages/panda/ds
       '@isbatak/storybook-shared':
         specifier: workspace:*
         version: link:../storybook-shared
@@ -348,6 +385,9 @@ importers:
 
   apps/storybook-svelte:
     dependencies:
+      '@isbatak/panda-ds':
+        specifier: workspace:*
+        version: link:../../packages/panda/ds
       '@isbatak/storybook-shared':
         specifier: workspace:*
         version: link:../storybook-shared
@@ -385,6 +425,9 @@ importers:
 
   apps/storybook-vanilla:
     dependencies:
+      '@isbatak/panda-ds':
+        specifier: workspace:*
+        version: link:../../packages/panda/ds
       '@isbatak/storybook-shared':
         specifier: workspace:*
         version: link:../storybook-shared
@@ -407,6 +450,9 @@ importers:
 
   apps/storybook-vue:
     dependencies:
+      '@isbatak/panda-ds':
+        specifier: workspace:*
+        version: link:../../packages/panda/ds
       '@isbatak/storybook-shared':
         specifier: workspace:*
         version: link:../storybook-shared
@@ -559,6 +605,10 @@ importers:
         version: 3.5.43(typescript@6.0.3)
 
   packages/panda/ds:
+    dependencies:
+      '@isbatak/panda-wheel-picker':
+        specifier: workspace:*
+        version: link:../wheel-picker
     devDependencies:
       '@pandacss/dev':
         specifier: 'catalog:'

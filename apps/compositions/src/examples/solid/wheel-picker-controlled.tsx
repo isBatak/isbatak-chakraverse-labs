@@ -1,7 +1,8 @@
+import { css } from "@isbatak/panda-ds/css"
+import { wheelPicker as wheelPickerRecipe } from "@isbatak/panda-ds/recipes"
 import * as wheelPicker from "@isbatak/zag-wheel-picker"
 import { normalizeProps, useMachine } from "@zag-js/solid"
 import { createMemo, createSignal, createUniqueId, Index } from "solid-js"
-import "../../styles/wheel-picker.css"
 
 const collection = wheelPicker.collection({
   items: [
@@ -12,6 +13,23 @@ const collection = wheelPicker.collection({
     { label: "Solid", value: "solid" },
   ],
 })
+
+const styles = wheelPickerRecipe()
+
+const classes = {
+  root: css({ display: "grid", gap: "4" }),
+  actions: css({ display: "flex", justifyContent: "center", gap: "2" }),
+  button: css({
+    px: "3",
+    py: "1.5",
+    borderWidth: "1px",
+    borderRadius: "l2",
+    textStyle: "sm",
+    cursor: "pointer",
+    _hover: { bg: "bg.muted" },
+  }),
+  output: css({ color: "fg.muted", textStyle: "sm", textAlign: "center" }),
+}
 
 export function WheelPickerControlled() {
   const id = createUniqueId()
@@ -27,35 +45,45 @@ export function WheelPickerControlled() {
   const api = createMemo(() => wheelPicker.connect(service, normalizeProps))
 
   return (
-    <div class="wheel-picker-example">
-      <div {...api().getRootProps()} class="wheel-picker">
-        <label {...api().getLabelProps()}>Framework</label>
-        <div {...api().getControlProps()}>
-          <div {...api().getViewportProps()}>
-            <ul {...api().getItemGroupProps()}>
+    <div class={classes.root}>
+      <div {...api().getRootProps()} class={styles.root}>
+        <label {...api().getLabelProps()} class={styles.label}>
+          Framework
+        </label>
+        <div {...api().getControlProps()} class={styles.control}>
+          <div {...api().getViewportProps()} class={styles.viewport}>
+            <ul {...api().getItemGroupProps()} class={styles.itemGroup}>
               <Index each={api().items}>
-                {(entry) => <li {...api().getItemProps(entry())}>{entry().item.label}</li>}
+                {(entry) => (
+                  <li {...api().getItemProps(entry())} class={styles.item}>
+                    {entry().item.label}
+                  </li>
+                )}
               </Index>
             </ul>
-            <div {...api().getHighlightProps()}>
-              <ul {...api().getHighlightItemGroupProps()}>
+            <div {...api().getHighlightProps()} class={styles.highlight}>
+              <ul {...api().getHighlightItemGroupProps()} class={styles.highlightItemGroup}>
                 <Index each={api().highlightItems}>
-                  {(entry) => <li {...api().getHighlightItemProps(entry())}>{entry().item.label}</li>}
+                  {(entry) => (
+                    <li {...api().getHighlightItemProps(entry())} class={styles.highlightItem}>
+                      {entry().item.label}
+                    </li>
+                  )}
                 </Index>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="wheel-picker-actions">
-        <button type="button" onClick={() => setValue("react")}>
+      <div class={classes.actions}>
+        <button type="button" class={classes.button} onClick={() => setValue("react")}>
           React
         </button>
-        <button type="button" onClick={() => setValue("svelte")}>
+        <button type="button" class={classes.button} onClick={() => setValue("svelte")}>
           Svelte
         </button>
       </div>
-      <output>Value: {value()}</output>
+      <output class={classes.output}>Value: {value()}</output>
     </div>
   )
 }

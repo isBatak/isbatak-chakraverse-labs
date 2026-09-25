@@ -60,6 +60,9 @@
     "build": "panda codegen && panda lib -o dist",
     "typecheck": "panda codegen && tsc --noEmit"
   },
+  "dependencies": {
+    "@isbatak/panda-wheel-picker": "workspace:*"
+  },
   "devDependencies": {
     "@pandacss/dev": "catalog:",
     "@pandacss/preset-base": "catalog:",

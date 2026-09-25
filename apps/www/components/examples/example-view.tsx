@@ -1,11 +1,10 @@
 "use client"
 
 import { examples } from "@isbatak/compositions/react"
-import "@isbatak/compositions/styles.css"
 import { useEffect, useRef } from "react"
 
 import { type FrameworkId, useFramework } from "../docs/framework"
-import { DemoTheme } from "./demo-theme"
+import { DemoFrame } from "./demo-frame"
 
 type MountModule = { mount: (id: string, container: HTMLElement) => () => void }
 
@@ -40,13 +39,13 @@ export function ExampleView({ id }: { id: string }) {
   const Example = examples[id]
 
   return (
-    <DemoTheme>
+    <DemoFrame>
       {framework === "react" ? (
         Example && <Example />
       ) : (
         <MountedExample key={framework} id={id} load={loaders[framework]} />
       )}
-    </DemoTheme>
+    </DemoFrame>
   )
 }
 
@@ -54,8 +53,8 @@ export function ExampleThumbnail({ id }: { id: string }) {
   const Example = examples[id]
 
   return (
-    <DemoTheme inert aria-hidden>
+    <DemoFrame inert aria-hidden>
       {Example && <Example />}
-    </DemoTheme>
+    </DemoFrame>
   )
 }

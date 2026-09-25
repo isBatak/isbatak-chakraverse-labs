@@ -44,18 +44,26 @@ Each example is its own registry item, so you can add it with the CLI the same w
 
 ## Theming
 
-The stylesheet is scoped to the `wheel-picker` class and reads these custom properties, so you can theme it without
-editing it:
+Every example is styled by the `wheelPicker` slot recipe from
+[`@isbatak/panda-wheel-picker`](/components/wheel-picker/panda). Pick **Panda CSS** above to get the source that calls
+the recipe, or **CSS** to get the same classes with a stylesheet generated from it.
+
+With Panda CSS, theme it through your semantic tokens (`fg`, `fg.subtle`, `bg.muted`, `colorPalette.focusRing` and the
+`l2` radius) or switch `variant` and `size` on the recipe call.
+
+The CSS stylesheet declares those tokens in cascade layers, so plain custom properties override them:
 
 ```css
 :root {
-  --wheel-picker-fg-color: #18181b;
-  --wheel-picker-muted-color: #a1a1aa;
-  --wheel-picker-highlight-color: #f4f4f5;
-  --wheel-picker-ring-color: #a1a1aa;
-  --wheel-picker-radius: 8px;
+  --colors-fg: #18181b;
+  --colors-fg-subtle: #a1a1aa;
+  --colors-bg-muted: #f4f4f5;
+  --colors-color-palette-focus-ring: #a1a1aa;
+  --radii-l2: 8px;
 }
 ```
+
+Dark mode follows a `dark` class on any ancestor.
 
 ## Accessibility
 

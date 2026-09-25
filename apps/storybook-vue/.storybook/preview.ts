@@ -1,3 +1,4 @@
+import "@isbatak/storybook-shared/panda.css"
 import "@isbatak/storybook-shared/styles.css"
 import type { Preview } from "@storybook/vue3-vite"
 

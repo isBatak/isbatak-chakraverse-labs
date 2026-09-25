@@ -1,7 +1,10 @@
+import { wheelPicker as wheelPickerRecipe } from "@isbatak/panda-ds/recipes"
 import { frameworkCollection, type WheelPickerControls } from "@isbatak/storybook-shared"
 import * as wheelPicker from "@isbatak/zag-wheel-picker"
 import { normalizeProps, useMachine } from "@zag-js/solid"
 import { For, Index, createMemo, createUniqueId } from "solid-js"
+
+const styles = wheelPickerRecipe()
 
 export interface BasicProps extends Partial<WheelPickerControls> {
   onValueChange?: (details: wheelPicker.ValueChangeDetails) => void
@@ -20,19 +23,29 @@ export function Basic(props: BasicProps) {
 
   return (
     <main class="wheel-picker">
-      <div {...api().getRootProps()}>
-        <label {...api().getLabelProps()}>Framework</label>
-        <div {...api().getControlProps()}>
-          <div {...api().getViewportProps()}>
-            <ul {...api().getItemGroupProps()}>
+      <div {...api().getRootProps()} class={styles.root}>
+        <label {...api().getLabelProps()} class={styles.label}>
+          Framework
+        </label>
+        <div {...api().getControlProps()} class={styles.control}>
+          <div {...api().getViewportProps()} class={styles.viewport}>
+            <ul {...api().getItemGroupProps()} class={styles.itemGroup}>
               <Index each={api().items}>
-                {(entry) => <li {...api().getItemProps(entry())}>{entry().item.label}</li>}
+                {(entry) => (
+                  <li {...api().getItemProps(entry())} class={styles.item}>
+                    {entry().item.label}
+                  </li>
+                )}
               </Index>
             </ul>
-            <div {...api().getHighlightProps()}>
-              <ul {...api().getHighlightItemGroupProps()}>
+            <div {...api().getHighlightProps()} class={styles.highlight}>
+              <ul {...api().getHighlightItemGroupProps()} class={styles.highlightItemGroup}>
                 <Index each={api().highlightItems}>
-                  {(entry) => <li {...api().getHighlightItemProps(entry())}>{entry().item.label}</li>}
+                  {(entry) => (
+                    <li {...api().getHighlightItemProps(entry())} class={styles.highlightItem}>
+                      {entry().item.label}
+                    </li>
+                  )}
                 </Index>
               </ul>
             </div>

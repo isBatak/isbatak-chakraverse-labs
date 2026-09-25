@@ -1,3 +1,4 @@
+import { wheelPicker as wheelPickerRecipe } from "@isbatak/panda-ds/recipes"
 import {
   getDayPeriodCollection,
   getHourCollection,
@@ -16,6 +17,8 @@ import * as dateInput from "@zag-js/date-input"
 import * as popover from "@zag-js/popover"
 import { normalizeProps, useMachine } from "@zag-js/preact"
 import { useId, useMemo, useState } from "preact/hooks"
+
+const styles = wheelPickerRecipe()
 
 export function TimeInput({ locale }: TimeInputControls) {
   const id = useId()
@@ -121,24 +124,28 @@ export function TimeInput({ locale }: TimeInputControls) {
 
           <div className="wheel-picker-group" role="group" aria-label="Time picker">
             {pickers.map(({ api, label }) => (
-              <div key={label} {...api.getRootProps()}>
-                <label className="sr-only" {...api.getLabelProps()}>
+              <div key={label} {...api.getRootProps()} className={styles.root}>
+                <label {...api.getLabelProps()} className={styles.label}>
                   {label}
                 </label>
-                <div {...api.getControlProps()}>
-                  <div {...api.getViewportProps()}>
-                    <ul {...api.getItemGroupProps()}>
+                <div {...api.getControlProps()} className={styles.control}>
+                  <div {...api.getViewportProps()} className={styles.viewport}>
+                    <ul {...api.getItemGroupProps()} className={styles.itemGroup}>
                       {api.items.map(({ item, index, key }) => (
-                        <li key={key} {...api.getItemProps({ item, index })}>
+                        <li key={key} {...api.getItemProps({ item, index })} className={styles.item}>
                           {item.label}
                         </li>
                       ))}
                     </ul>
 
-                    <div {...api.getHighlightProps()}>
-                      <ul {...api.getHighlightItemGroupProps()}>
+                    <div {...api.getHighlightProps()} className={styles.highlight}>
+                      <ul {...api.getHighlightItemGroupProps()} className={styles.highlightItemGroup}>
                         {api.highlightItems.map(({ item, index, key }) => (
-                          <li key={key} {...api.getHighlightItemProps({ item, index })}>
+                          <li
+                            key={key}
+                            {...api.getHighlightItemProps({ item, index })}
+                            className={styles.highlightItem}
+                          >
                             {item.label}
                           </li>
                         ))}

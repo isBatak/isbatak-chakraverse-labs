@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { wheelPicker as wheelPickerRecipe } from "@isbatak/panda-ds/recipes"
 import * as wheelPicker from "@isbatak/zag-wheel-picker"
 import { normalizeProps, useMachine } from "@zag-js/vue"
 import { computed, useId } from "vue"
-import "../../styles/wheel-picker.css"
 
 const collection = wheelPicker.collection({
   items: [
@@ -17,6 +17,8 @@ const collection = wheelPicker.collection({
   ],
 })
 
+const styles = wheelPickerRecipe()
+
 const service = useMachine(wheelPicker.machine, {
   id: useId(),
   collection,
@@ -27,21 +29,27 @@ const api = computed(() => wheelPicker.connect(service, normalizeProps))
 </script>
 
 <template>
-  <div v-bind="api.getRootProps()" class="wheel-picker">
-    <label v-bind="api.getLabelProps()">Framework</label>
-    <div v-bind="api.getControlProps()">
-      <div v-bind="api.getViewportProps()">
-        <ul v-bind="api.getItemGroupProps()">
-          <li v-for="{ item, index, key } in api.items" :key="key" v-bind="api.getItemProps({ item, index })">
+  <div v-bind="api.getRootProps()" :class="styles.root">
+    <label v-bind="api.getLabelProps()" :class="styles.label">Framework</label>
+    <div v-bind="api.getControlProps()" :class="styles.control">
+      <div v-bind="api.getViewportProps()" :class="styles.viewport">
+        <ul v-bind="api.getItemGroupProps()" :class="styles.itemGroup">
+          <li
+            v-for="{ item, index, key } in api.items"
+            :key="key"
+            v-bind="api.getItemProps({ item, index })"
+            :class="styles.item"
+          >
             {{ item.label }}
           </li>
         </ul>
-        <div v-bind="api.getHighlightProps()">
-          <ul v-bind="api.getHighlightItemGroupProps()">
+        <div v-bind="api.getHighlightProps()" :class="styles.highlight">
+          <ul v-bind="api.getHighlightItemGroupProps()" :class="styles.highlightItemGroup">
             <li
               v-for="{ item, index, key } in api.highlightItems"
               :key="key"
               v-bind="api.getHighlightItemProps({ item, index })"
+              :class="styles.highlightItem"
             >
               {{ item.label }}
             </li>
