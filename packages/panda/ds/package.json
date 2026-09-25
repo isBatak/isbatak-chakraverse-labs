@@ -142,6 +142,7 @@
   "devDependencies": {
     "@pandacss/dev": "catalog:",
     "@pandacss/preset-base": "catalog:",
+    "@pandacss/preset-typography": "catalog:",
     "@pandacss/types": "catalog:"
   }
 }
