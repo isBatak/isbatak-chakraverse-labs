@@ -71,6 +71,18 @@ jobs:
           cache: pnpm
       - run: npm install --global --ignore-scripts vercel@59.23.2
       - run: vercel pull --yes --environment=production
+      - name: Resolve production domain
+        if: matrix.app == 'website'
+        run: |
+          domain=$(curl -fsS -H "Authorization: Bearer $VERCEL_TOKEN" \
+            "https://api.vercel.com/v9/projects/$VERCEL_PROJECT_ID/domains?teamId=$VERCEL_ORG_ID" \
+            | jq -r '[.domains[] | select(.redirect == null and .gitBranch == null and .verified)]
+              | sort_by(.name | endswith(".vercel.app")) | .[0].name // empty')
+          if [ -z "$domain" ]; then
+            echo "::error::No production domain found for the website Vercel project"
+            exit 1
+          fi
+          echo "NEXT_PUBLIC_SITE_URL=https://$domain" >> "$GITHUB_ENV"
       - run: vercel build --prod
       - id: deploy
         run: echo "url=$(vercel deploy --prebuilt --prod)" >> "$GITHUB_OUTPUT"

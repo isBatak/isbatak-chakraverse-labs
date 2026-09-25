@@ -87,4 +87,12 @@ export const textStyles = defineTextStyles({
       fontWeight: "medium",
     },
   },
+  overline: {
+    value: {
+      fontSize: "xs",
+      lineHeight: "1rem",
+      textTransform: "uppercase",
+      letterSpacing: "widest",
+    },
+  },
 })

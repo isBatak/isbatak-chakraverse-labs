@@ -1,5 +1,6 @@
 // Downloads Tabler icons into assets/icons, the input folder of the ikona sprite.
 // The set mirrors Chakra UI's internal icons (packages/react/src/components/icons.tsx).
+// Brands missing from Tabler come from Simple Icons, or from the brand's own logo.
 //
 // Ikona strips `fill` from the root <svg> when turning it into a <symbol>, so the root
 // presentation attributes (fill="none", stroke, ...) are moved onto a wrapping <g>.
@@ -48,6 +49,26 @@ const icons = {
   "brand-svelte": "outline/brand-svelte",
   "brand-solidjs": "outline/brand-solidjs",
   "brand-javascript": "outline/brand-javascript",
+  "brand-x": "outline/brand-x",
+  "brand-storybook": "outline/brand-storybook",
+  "brand-openai": "outline/brand-openai",
+  markdown: "outline/markdown",
+  "arrow-up-right": "outline/arrow-up-right",
+}
+
+const SIMPLE_ICONS_VERSION = "15"
+
+/** icon name in the sprite -> slug in simple-icons/icons */
+const simpleIcons = {
+  "brand-anthropic": "anthropic",
+}
+
+/** icon name in the sprite -> brand logo whose white foreground path becomes the glyph */
+const brandLogos = {
+  "brand-ark": {
+    url: "https://raw.githubusercontent.com/chakra-ui/ark/main/website/src/app/icon.svg",
+    viewBox: "56 56 400 400",
+  },
 }
 
 const PRESENTATION_ATTRS = ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin"]
@@ -86,5 +107,28 @@ await Promise.all(
     if (!res.ok) throw new Error(`${res.status} ${url}`)
     await writeFile(join(outDir, `${name}.svg`), normalize(await res.text()))
     console.log(`${name} <- ${path}`)
+  }),
+)
+
+await Promise.all(
+  Object.entries(simpleIcons).map(async ([name, slug]) => {
+    const url = `https://cdn.jsdelivr.net/npm/simple-icons@${SIMPLE_ICONS_VERSION}/icons/${slug}.svg`
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`${res.status} ${url}`)
+    const svg = (await res.text()).replace(/<title>[^<]*<\/title>/, "").replace("<svg", '<svg fill="currentColor"')
+    await writeFile(join(outDir, `${name}.svg`), normalize(svg))
+    console.log(`${name} <- simple-icons/${slug}`)
+  }),
+)
+
+await Promise.all(
+  Object.entries(brandLogos).map(async ([name, { url, viewBox }]) => {
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`${res.status} ${url}`)
+    const [, d] = (await res.text()).match(/<path\s+d="([^"]+)"\s+fill="white"/) ?? []
+    if (!d) throw new Error(`No foreground path in ${url}`)
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" fill="currentColor"><path d="${d}" /></svg>`
+    await writeFile(join(outDir, `${name}.svg`), normalize(svg))
+    console.log(`${name} <- ${url}`)
   }),
 )

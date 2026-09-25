@@ -11,9 +11,18 @@ const components = defineCollection({
       category: s.string(),
       status: s.enum(["new", "beta", "stable"]).optional(),
       preview: s.string().optional(),
+      links: s
+        .object({
+          source: s.string().optional(),
+          storybook: s.string().optional(),
+          recipe: s.string().optional(),
+          ark: s.string().optional(),
+        })
+        .default({}),
       path: s.path(),
       toc: s.toc(),
       metadata: s.metadata(),
+      raw: s.raw(),
       code: s.mdx(),
     })
     .transform(({ path, ...data }) => {
@@ -35,6 +44,7 @@ const componentGuides = defineCollection({
       path: s.path(),
       toc: s.toc(),
       metadata: s.metadata(),
+      raw: s.raw(),
       code: s.mdx(),
     })
     .transform(({ path, ...data }) => {

@@ -5,8 +5,7 @@ import { styled } from "styled-system/jsx"
 import { CodeBlock } from "./code/code-block"
 import { ApiTable } from "./docs/api-table"
 import { ArkWheelPickerExample } from "./docs/ark-wheel-picker-example"
-import { Example, ExampleCode, FrameworkInstall, Installation } from "./docs/framework-code"
-import { WheelPickerUsage } from "./docs/wheel-picker-usage"
+import { Example, ExampleSource, FrameworkInstall, Installation } from "./docs/framework-code"
 
 type MDXComponents = Record<string, ComponentType<any>>
 
@@ -18,7 +17,16 @@ function Pre({ children }: { children?: ReactNode }) {
 
 function ArkExample() {
   return (
-    <styled.div display="grid" placeItems="center" my="6" py="10" borderRadius="l3" borderWidth="1px" bg="bg.subtle">
+    <styled.div
+      className="not-prose"
+      display="grid"
+      placeItems="center"
+      my="6"
+      py="10"
+      borderRadius="l3"
+      borderWidth="1px"
+      bg="bg.subtle"
+    >
       <ArkWheelPickerExample />
     </styled.div>
   )
@@ -29,10 +37,9 @@ const sharedComponents: MDXComponents = {
   ApiTable,
   ArkExample,
   Example,
-  ExampleCode,
+  ExampleCode: ExampleSource,
   FrameworkInstall,
   Installation,
-  WheelPickerUsage,
 }
 
 function getMDXComponent(code: string): ComponentType<{ components?: MDXComponents }> {

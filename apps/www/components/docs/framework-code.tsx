@@ -3,12 +3,12 @@ import type { ReactNode } from "react"
 import { styled } from "styled-system/jsx"
 
 import { CodeBlock, CodeBody, CodeFrame, CodeHeader } from "../code/code-block"
-import { CopyButton } from "../code/copy-button"
-import { ExampleView } from "../examples/example-view"
+import { TabsCopyButton } from "../code/copy-button"
+import { ExampleTrigger } from "../examples/example-trigger"
 import { Tabs } from "../ui/tabs"
-import { type FrameworkId, FrameworkPicker, FrameworkSwitch } from "./framework"
+import { type FrameworkId, FrameworkSwitch } from "./framework"
 import { registryUrl } from "./registry"
-import { type StylingId, StylingPicker, StylingSwitch } from "./styling"
+import { type StylingId, StylingSwitch } from "./styling"
 
 type ExampleFiles = (typeof manifest.examples)[number]["frameworks"]["react"]["panda"]
 
@@ -22,15 +22,6 @@ const Unavailable = styled("p", {
     p: "4",
     textStyle: "sm",
     color: "fg.muted",
-  },
-})
-
-const Pickers = styled("div", {
-  base: {
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "center",
-    gap: "2",
   },
 })
 
@@ -141,62 +132,45 @@ function ManualInstall({ id, framework, styling }: VariantProps) {
 
 export function Installation({ id }: ExampleProps) {
   return (
-    <styled.div my="6">
-      <styled.div overflowX="auto" pb="1">
-        <Pickers>
-          <FrameworkPicker />
-          <StylingPicker />
-        </Pickers>
-      </styled.div>
-      <Tabs.Root defaultValue="cli" size="sm" variant="line" mt="4">
-        <Tabs.List>
-          <Tabs.Trigger value="cli">shadcn CLI</Tabs.Trigger>
-          <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
-        </Tabs.List>
-        <Tabs.Content value="cli">
-          <VariantSwitch
-            render={(framework, styling) => <CliInstall id={id} framework={framework} styling={styling} />}
-          />
-        </Tabs.Content>
-        <Tabs.Content value="manual">
-          <VariantSwitch
-            render={(framework, styling) => <ManualInstall id={id} framework={framework} styling={styling} />}
-          />
-        </Tabs.Content>
-      </Tabs.Root>
-    </styled.div>
+    <Tabs.Root variant="enclosed" defaultValue="cli" size="xs" my="6">
+      <Tabs.List>
+        <Tabs.Trigger value="cli">shadcn CLI</Tabs.Trigger>
+        <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
+        <Tabs.Indicator />
+      </Tabs.List>
+      <Tabs.Content value="cli">
+        <VariantSwitch
+          render={(framework, styling) => <CliInstall id={id} framework={framework} styling={styling} />}
+        />
+      </Tabs.Content>
+      <Tabs.Content value="manual">
+        <VariantSwitch
+          render={(framework, styling) => <ManualInstall id={id} framework={framework} styling={styling} />}
+        />
+      </Tabs.Content>
+    </Tabs.Root>
   )
 }
-
-const FileActions = styled("div", {
-  base: {
-    position: "absolute",
-    top: "2",
-    insetEnd: "2",
-  },
-})
 
 function ExampleFilesTabs({ id, framework, styling }: VariantProps) {
   const example = getExample(id, framework, styling)
   if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
 
   return (
-    <Tabs.Root key={`${framework}-${styling}`} defaultValue={example.files[0]!.name} size="sm" variant="line">
+    <Tabs.Root key={`${framework}-${styling}`} defaultValue={example.files[0]!.name} size="xs" variant="outline">
       <CodeHeader>
-        <Tabs.List borderBottomWidth="0">
+        <Tabs.List alignSelf="flex-end" ms="-2.5" borderBottomWidth="0" overflowX="auto">
           {example.files.map((file) => (
             <Tabs.Trigger key={file.name} value={file.name}>
               {file.name}
             </Tabs.Trigger>
           ))}
         </Tabs.List>
+        <TabsCopyButton files={Object.fromEntries(example.files.map((file) => [file.name, file.code]))} />
       </CodeHeader>
       {example.files.map((file) => (
-        <Tabs.Content key={file.name} value={file.name} position="relative" pt="0">
+        <Tabs.Content key={file.name} value={file.name} pt="0">
           <CodeBody code={file.code} lang={file.lang} />
-          <FileActions>
-            <CopyButton value={file.code} />
-          </FileActions>
         </Tabs.Content>
       ))}
     </Tabs.Root>
@@ -219,33 +193,10 @@ export function ExampleSource({ id }: ExampleProps) {
   )
 }
 
-export function ExampleCode({ id }: ExampleProps) {
+export function Example({ id, children }: ExampleProps & { children?: ReactNode }) {
   return (
-    <CodeFrame>
-      <CodeHeader overflowX="auto" py="2">
-        <Pickers>
-          <FrameworkPicker />
-          <StylingPicker />
-        </Pickers>
-      </CodeHeader>
-      <ExampleFiles id={id} />
-    </CodeFrame>
-  )
-}
-
-export function Example({ id }: ExampleProps) {
-  return (
-    <CodeFrame>
-      <CodeHeader overflowX="auto" py="2">
-        <Pickers>
-          <FrameworkPicker />
-          <StylingPicker />
-        </Pickers>
-      </CodeHeader>
-      <styled.div display="grid" placeItems="center" py="8" borderBottomWidth="1px" bg="bg">
-        <ExampleView id={id} />
-      </styled.div>
-      <ExampleFiles id={id} />
-    </CodeFrame>
+    <ExampleTrigger id={id} source={<ExampleSource id={id} />}>
+      {children}
+    </ExampleTrigger>
   )
 }

@@ -1,10 +1,14 @@
 "use client"
 
-import { type ReactNode, useEffect, useRef, useState } from "react"
+import { resetSnapshot } from "@isbatak/compositions/react"
+import { startTransition, useEffect, useRef, useState, ViewTransition } from "react"
 import { flushSync } from "react-dom"
+import { viewTransition } from "styled-system/css"
 import { styled } from "styled-system/jsx"
 
+import { StylingPicker } from "../docs/styling"
 import { ExampleView } from "./example-view"
+import { usePreview } from "./preview-context"
 import { PreviewToolbar } from "./preview-toolbar"
 
 const easing = "cubic-bezier(0.32, 0.72, 0, 1)"
@@ -22,12 +26,8 @@ const backdrop = (visible: boolean) => `0 0 0 100vmax ${visible ? "var(--colors-
 
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-export interface ExamplePreviewProps {
-  id: string
-  source: ReactNode
-}
-
-export function ExamplePreview({ id, source }: ExamplePreviewProps) {
+export function ExamplePreview() {
+  const { activeId, activeSource } = usePreview()
   const [fullscreen, setFullscreen] = useState(false)
   const [showSource, setShowSource] = useState(false)
   const [resetKey, setResetKey] = useState(0)
@@ -120,17 +120,38 @@ export function ExamplePreview({ id, source }: ExamplePreviewProps) {
           fullscreen={fullscreen}
           onFullscreenChange={changeFullscreen}
           showSource={showSource}
-          onShowSourceChange={setShowSource}
-          onReset={() => setResetKey((key) => key + 1)}
+          onShowSourceChange={(next) => startTransition(() => setShowSource(next))}
+          onReset={() => {
+            if (activeId) resetSnapshot(activeId)
+            startTransition(() => setResetKey((key) => key + 1))
+          }}
         />
       </styled.div>
-      <div hidden={showSource}>
-        <ExampleView key={resetKey} id={id} />
-      </div>
+      <styled.div position="absolute" bottom="3" insetStart="3" zIndex="1">
+        <StylingPicker />
+      </styled.div>
+      <ViewTransition
+        key={`${activeId}-${resetKey}`}
+        enter={viewTransition("scale-fade")}
+        exit={viewTransition("scale-fade")}
+        default={viewTransition("fade")}
+      >
+        <div hidden={showSource}>{activeId && <ExampleView id={activeId} />}</div>
+      </ViewTransition>
       {showSource && (
-        <styled.div position="absolute" inset="0" overflowY="auto" overscrollBehavior="contain" px="3" pt="10">
-          {source}
-        </styled.div>
+        <ViewTransition enter={viewTransition("fade")} exit={viewTransition("fade")}>
+          <styled.div
+            position="absolute"
+            inset="0"
+            overflowY="auto"
+            overscrollBehavior="contain"
+            px="3"
+            pt="10"
+            pb="14"
+          >
+            {activeSource}
+          </styled.div>
+        </ViewTransition>
       )}
     </styled.div>
   )

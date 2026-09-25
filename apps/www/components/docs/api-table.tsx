@@ -13,10 +13,8 @@ const Th = styled("th", {
     pb: "3",
     pe: "4",
     textAlign: "start",
-    fontSize: "xs",
+    textStyle: "overline",
     fontWeight: "normal",
-    textTransform: "uppercase",
-    letterSpacing: "wider",
     color: "fg.subtle",
     borderBottomWidth: "1px",
   },
@@ -30,6 +28,18 @@ const Td = styled("td", {
   },
 })
 
+const PropName = styled("code", {
+  base: {
+    fontFamily: "mono",
+    fontSize: "0.875em",
+    fontWeight: "medium",
+    px: "0.3em",
+    py: "0.15em",
+    borderRadius: "sm",
+    bg: "bg.muted",
+  },
+})
+
 const Mono = styled("span", {
   base: {
     fontFamily: "mono",
@@ -39,7 +49,7 @@ const Mono = styled("span", {
   },
 })
 
-function formatType(type: string) {
+export function formatType(type: string) {
   if (!type.endsWith(" | undefined")) return type
   return type.slice(0, -" | undefined".length).replace(/^\((.*)\)$/, "$1")
 }
@@ -54,7 +64,7 @@ export function ApiTable({ name, kind }: ApiTableProps) {
   const hasDefaults = members.some(([, member]) => member.defaultValue)
 
   return (
-    <styled.div overflowX="auto" my="6">
+    <styled.div className="not-prose" overflowX="auto" my="6">
       <styled.table w="full" borderCollapse="collapse">
         <colgroup>
           <styled.col w={{ base: "36%", md: "28%" }} />
@@ -72,7 +82,7 @@ export function ApiTable({ name, kind }: ApiTableProps) {
           {members.map(([key, member]) => (
             <styled.tr key={key} borderBottomWidth="1px" _last={{ borderBottomWidth: "0" }}>
               <Td>
-                <code>{key}</code>
+                <PropName>{key}</PropName>
               </Td>
               <Td>
                 <Mono>{formatType(member.type)}</Mono>

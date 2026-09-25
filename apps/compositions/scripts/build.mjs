@@ -240,6 +240,29 @@ function examplesModule(framework, ids) {
   }
 }
 
+function snapshotMachines() {
+  const prefix = "\0compositions-snapshot:"
+  const exampleFile = /\/src\/examples\/[^/]+\/([^/.?]+)\.\w+(\?.*)?$/
+  return {
+    name: "compositions-snapshot",
+    enforce: "pre",
+    resolveId(source, importer) {
+      const example = importer?.match(exampleFile)?.[1]
+      if (source === "@isbatak/zag-wheel-picker" && example) return `${prefix}${example}`
+    },
+    load(id) {
+      if (!id.startsWith(prefix)) return undefined
+      return [
+        `import { machine } from "@isbatak/zag-wheel-picker"`,
+        `import { withSnapshot } from ${JSON.stringify(`${root}mount/snapshot.ts`)}`,
+        `export * from "@isbatak/zag-wheel-picker"`,
+        `const snapshotMachine = withSnapshot(machine, ${JSON.stringify(id.slice(prefix.length))})`,
+        `export { snapshotMachine as machine }`,
+      ].join("\n")
+    },
+  }
+}
+
 const ids = await writeManifest()
 
 if (watch) watchFiles(`${root}/src`, { recursive: true }, () => writeManifest())
@@ -250,7 +273,7 @@ await Promise.all(
       root,
       configFile: false,
       logLevel: "warn",
-      plugins: [examplesModule(framework, ids), ...(framework.plugins?.() ?? [])],
+      plugins: [snapshotMachines(), examplesModule(framework, ids), ...(framework.plugins?.() ?? [])],
       define: { "process.env.NODE_ENV": JSON.stringify("production") },
       build: {
         outDir: "dist",

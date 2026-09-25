@@ -47,9 +47,7 @@ const Body = styled("div", {
 const Category = styled("span", {
   base: {
     fontFamily: "mono",
-    textStyle: "xs",
-    textTransform: "uppercase",
-    letterSpacing: "widest",
+    textStyle: "overline",
     color: "fg.subtle",
   },
 })

@@ -42,4 +42,9 @@ export const globalCss = defineGlobalStyles({
   "*::selection": {
     bg: "colorPalette.emphasized/80",
   },
+  "::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*)": {
+    _motionReduce: {
+      animation: "none",
+    },
+  },
 })

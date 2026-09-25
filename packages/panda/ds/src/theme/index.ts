@@ -9,6 +9,7 @@ import { semanticTokens } from "./semantic-tokens"
 import { slotRecipes } from "./slot-recipes"
 import { textStyles } from "./text-styles"
 import { tokens } from "./tokens"
+import { viewTransitions } from "./view-transitions"
 
 export const theme = defineThemeVariant({
   breakpoints,
@@ -20,6 +21,7 @@ export const theme = defineThemeVariant({
   textStyles,
   layerStyles,
   animationStyles,
+  viewTransitions,
 })
 
 export { conditions } from "./conditions"

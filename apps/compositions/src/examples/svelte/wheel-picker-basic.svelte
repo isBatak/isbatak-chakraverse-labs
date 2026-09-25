@@ -22,7 +22,7 @@
   const service = useMachine(wheelPicker.machine, {
     id,
     collection,
-    defaultValue: "svelte",
+    defaultValue: "react",
   })
 
   const api = $derived(wheelPicker.connect(service, normalizeProps))

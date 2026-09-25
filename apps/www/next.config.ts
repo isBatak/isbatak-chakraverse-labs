@@ -1,4 +1,6 @@
+import { resolve } from "node:path"
 import type { NextConfig } from "next"
+import { codeInspectorPlugin } from "code-inspector-plugin"
 
 const pandaLoader = {
   loaders: ["./panda-turbopack-loader.cjs"],
@@ -6,6 +8,10 @@ const pandaLoader = {
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  reactCompiler: true,
+  experimental: {
+    turbopackRustReactCompiler: true,
+  },
   // Workspace packages that export their TypeScript source
   transpilePackages: [
     "@isbatak/zag-wheel-picker",
@@ -20,8 +26,23 @@ const nextConfig: NextConfig = {
       { source: "/docs/:path*", destination: "/components", permanent: true },
     ]
   },
+  async rewrites() {
+    return [
+      { source: "/components/:slug.md", destination: "/md/components/:slug" },
+      { source: "/components/:slug/:section.md", destination: "/md/components/:slug/:section" },
+      {
+        source: "/components/:path+",
+        destination: "/md/components/:path+",
+        has: [{ type: "header", key: "accept", value: "(.*)text/markdown(.*)" }],
+      },
+    ]
+  },
   turbopack: {
     rules: {
+      ...codeInspectorPlugin({
+        bundler: "turbopack",
+        injectTo: resolve("components/providers.tsx"),
+      }),
       "./app/**/*.tsx": pandaLoader,
       "./components/**/*.tsx": pandaLoader,
     },

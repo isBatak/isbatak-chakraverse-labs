@@ -669,4 +669,63 @@ export const colors = defineSemanticTokens.colors({
       },
     },
   },
+  prose: {
+    body: {
+      value: "{colors.fg}",
+    },
+    heading: {
+      value: "{colors.fg}",
+    },
+    lead: {
+      value: "{colors.fg.muted}",
+    },
+    link: {
+      value: "{colors.fg}",
+    },
+    linkDecoration: {
+      value: "{colors.border.emphasized}",
+    },
+    bold: {
+      value: "{colors.fg}",
+    },
+    counter: {
+      value: "{colors.fg.muted}",
+    },
+    bullet: {
+      value: "{colors.fg.subtle}",
+    },
+    hrBorder: {
+      value: "{colors.border}",
+    },
+    quote: {
+      value: "{colors.fg}",
+    },
+    quoteBorder: {
+      value: "{colors.border}",
+    },
+    caption: {
+      value: "{colors.fg.muted}",
+    },
+    kbd: {
+      value: "{colors.fg}",
+    },
+    code: {
+      value: "{colors.fg}",
+    },
+    codeBg: {
+      value: "{colors.bg.muted}",
+    },
+    preCode: {
+      value: "{colors.fg}",
+    },
+    preBg: {
+      value: "{colors.bg.subtle}",
+    },
+    thBorder: {
+      value: "{colors.border}",
+    },
+    tdBorder: {
+      value: "{colors.border.muted}",
+    },
+  },
 })

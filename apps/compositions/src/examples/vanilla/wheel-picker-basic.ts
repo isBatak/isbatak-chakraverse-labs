@@ -38,7 +38,7 @@ export function createWheelPickerBasic(container: HTMLElement) {
   const machine = new VanillaMachine(wheelPicker.machine, {
     id: crypto.randomUUID(),
     collection,
-    defaultValue: "lit",
+    defaultValue: "react",
   })
 
   const spread = (node: Element, props: object) => spreadProps(node, props, machine.scope.id)
