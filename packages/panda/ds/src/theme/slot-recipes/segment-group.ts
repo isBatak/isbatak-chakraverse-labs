@@ -5,15 +5,17 @@ export const segmentGroupSlotRecipe = defineSlotRecipe({
   slots: ["root", "label", "item", "itemText", "itemControl", "indicator"],
   base: {
     root: {
-      "--segment-radius": "radii.l2",
+      "--segment-radius": "radii.l3",
+      "--segment-padding": "spacing.1",
       "--segment-indicator-bg": {
-        _light: "colors.bg",
+        base: "colors.bg",
         _dark: "colors.bg.emphasized",
       },
-      "--segment-indicator-shadow": "shadows.sm",
-      borderRadius: "var(--segment-radius)",
+      "--segment-indicator-shadow": "shadows.xs",
+      borderRadius: "calc(var(--segment-radius) + var(--segment-padding))",
       display: "inline-flex",
-      boxShadow: "inset",
+      gap: "0.5",
+      p: "var(--segment-padding)",
       minW: "max-content",
       textAlign: "center",
       position: "relative",
@@ -28,45 +30,29 @@ export const segmentGroupSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       justifyContent: "center",
       userSelect: "none",
+      cursor: "pointer",
       fontSize: "sm",
       position: "relative",
-      color: "fg",
+      color: "fg.muted",
       borderRadius: "var(--segment-radius)",
+      transitionProperty: "color",
+      transitionDuration: "fast",
+      _hover: {
+        color: "fg",
+      },
+      _checked: {
+        color: "fg",
+      },
       _disabled: {
         opacity: "0.5",
+        cursor: "not-allowed",
       },
       "&:has(input:focus-visible)": {
         focusRing: "outside",
       },
-      _before: {
-        content: '""',
-        position: "absolute",
-        bg: "border",
-        transition: "opacity 0.2s",
-      },
-      _horizontal: {
-        _before: {
-          insetInlineStart: 0,
-          insetBlock: "1.5",
-          width: "1px",
-        },
-      },
-      _vertical: {
-        _before: {
-          insetBlockStart: 0,
-          insetInline: "1.5",
-          height: "1px",
-        },
-      },
-      "& + &[data-state=checked], &[data-state=checked] + &, &:first-of-type": {
-        _before: {
-          opacity: "0",
-        },
-      },
       "&[data-state=checked][data-ssr]": {
-        shadow: "sm",
-        bg: "bg",
-        borderRadius: "var(--segment-radius)",
+        shadow: "var(--segment-indicator-shadow)",
+        bg: "var(--segment-indicator-bg)",
       },
     },
     indicator: {
@@ -86,17 +72,17 @@ export const segmentGroupSlotRecipe = defineSlotRecipe({
       xs: {
         item: {
           textStyle: "xs",
-          px: "3",
+          px: "2.5",
           gap: "1",
-          height: "6",
+          height: "5",
         },
       },
       sm: {
         item: {
           textStyle: "sm",
-          px: "4",
+          px: "3",
           gap: "2",
-          height: "8",
+          height: "6",
         },
       },
       md: {
@@ -104,7 +90,7 @@ export const segmentGroupSlotRecipe = defineSlotRecipe({
           textStyle: "sm",
           px: "4",
           gap: "2",
-          height: "10",
+          height: "8",
         },
       },
       lg: {
@@ -112,7 +98,7 @@ export const segmentGroupSlotRecipe = defineSlotRecipe({
           textStyle: "md",
           px: "4.5",
           gap: "3",
-          height: "11",
+          height: "9",
         },
       },
     },
