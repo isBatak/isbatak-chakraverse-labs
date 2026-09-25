@@ -36,13 +36,21 @@ jobs:
     needs: ci
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: storybook
+            project-id-secret: VERCEL_STORYBOOK_PROJECT_ID
+          - app: website
+            project-id-secret: VERCEL_WEBSITE_PROJECT_ID
     environment:
-      name: production
+      name: ${{ matrix.app }}
       url: ${{ steps.deploy.outputs.url }}
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets[matrix.project-id-secret] }}
     steps:
       - name: Check Vercel secrets
         run: |
