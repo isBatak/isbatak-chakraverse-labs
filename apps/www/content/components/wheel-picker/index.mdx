@@ -61,39 +61,6 @@ const service = useMachine(wheelPicker.machine, {
 
 </Example>
 
-## Theming
-
-Every example is styled by the `wheelPicker` slot recipe from
-[`@isbatak/panda-wheel-picker`](/components/wheel-picker/panda). Switch to **Panda CSS** in the preview to get the
-source that calls the recipe, or **CSS** to get the same classes with a stylesheet generated from it.
-
-With Panda CSS, theme it through your semantic tokens (`fg`, `fg.subtle`, `bg.muted`, `colorPalette.focusRing` and the
-`l2` radius) or switch `variant` and `size` on the recipe call.
-
-The CSS stylesheet declares those tokens in cascade layers, so plain custom properties override them:
-
-```css
-:root {
-  --colors-fg: #18181b;
-  --colors-fg-subtle: #a1a1aa;
-  --colors-bg-muted: #f4f4f5;
-  --colors-color-palette-focus-ring: #a1a1aa;
-  --radii-l2: 8px;
-}
-```
-
-Dark mode follows a `dark` class on any ancestor.
-
-## Accessibility
-
-The control has the `spinbutton` role and reports the current item through `aria-valuenow` and `aria-valuetext`. Give it
-a name with a visible label, `aria-label` or `aria-labelledby`.
-
-- **Arrow Up / Arrow Down**: select the previous or next enabled item
-- **Arrow Left / Arrow Right**: move focus between sibling wheel pickers
-- **Home / End**: select the first or last enabled item (not in infinite mode)
-- **Characters**: jump to an item by typeahead
-
 ## Props
 
 <ApiTable name="wheel-picker" kind="context" />
