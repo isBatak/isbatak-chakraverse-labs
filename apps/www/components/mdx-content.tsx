@@ -17,7 +17,16 @@ function Pre({ children }: { children?: ReactNode }) {
 
 function ArkExample() {
   return (
-    <styled.div display="grid" placeItems="center" my="6" py="10" borderRadius="l3" borderWidth="1px" bg="bg.subtle">
+    <styled.div
+      className="not-prose"
+      display="grid"
+      placeItems="center"
+      my="6"
+      py="10"
+      borderRadius="l3"
+      borderWidth="1px"
+      bg="bg.subtle"
+    >
       <ArkWheelPickerExample />
     </styled.div>
   )

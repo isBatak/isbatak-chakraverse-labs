@@ -36,7 +36,16 @@ export function ExampleTrigger({ id, source, children }: ExampleTriggerProps) {
       {children}
       {inline && (
         <>
-          <styled.div display="grid" placeItems="center" py="8" my="6" borderRadius="l3" borderWidth="1px" bg="bg">
+          <styled.div
+            className="not-prose"
+            display="grid"
+            placeItems="center"
+            py="8"
+            my="6"
+            borderRadius="l3"
+            borderWidth="1px"
+            bg="bg"
+          >
             <ExampleView id={id} />
           </styled.div>
           {source}

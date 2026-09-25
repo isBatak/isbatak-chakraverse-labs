@@ -15,9 +15,7 @@ const Stat = styled("div", {
 const StatLabel = styled("dt", {
   base: {
     order: "1",
-    textStyle: "xs",
-    textTransform: "uppercase",
-    letterSpacing: "widest",
+    textStyle: "overline",
     color: "fg.muted",
   },
 })

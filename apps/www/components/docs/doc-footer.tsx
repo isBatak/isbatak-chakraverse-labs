@@ -12,9 +12,7 @@ const PagerLabel = styled("span", {
     display: "inline-flex",
     alignItems: "center",
     gap: "1",
-    textStyle: "xs",
-    textTransform: "uppercase",
-    letterSpacing: "widest",
+    textStyle: "overline",
     color: "fg.subtle",
   },
 })

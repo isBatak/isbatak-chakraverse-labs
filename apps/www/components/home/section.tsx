@@ -14,9 +14,7 @@ export const Section = styled("section", {
 export const Eyebrow = styled("p", {
   base: {
     fontFamily: "mono",
-    textStyle: "xs",
-    textTransform: "uppercase",
-    letterSpacing: "widest",
+    textStyle: "overline",
     color: "fg.subtle",
   },
 })

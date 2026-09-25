@@ -5,25 +5,33 @@ import { lang as resolveLang } from "sugar-high/lang"
 
 import { CopyButton } from "./copy-button"
 
-export const CodeFrame = styled("div", {
-  base: {
-    position: "relative",
-    my: "6",
-    borderRadius: "l3",
-    borderWidth: "1px",
-    bg: "bg.subtle",
-    overflow: "hidden",
-    "--sh-keyword": "{colors.code.keyword}",
-    "--sh-string": "{colors.code.string}",
-    "--sh-class": "{colors.code.class}",
-    "--sh-identifier": "{colors.code.identifier}",
-    "--sh-sign": "{colors.code.sign}",
-    "--sh-property": "{colors.code.property}",
-    "--sh-entity": "{colors.code.entity}",
-    "--sh-jsxliterals": "{colors.code.jsxliterals}",
-    "--sh-comment": "{colors.code.comment}",
+export const CodeFrame = styled(
+  "div",
+  {
+    base: {
+      position: "relative",
+      my: "6",
+      borderRadius: "l3",
+      borderWidth: "1px",
+      bg: "bg.subtle",
+      overflow: "hidden",
+      "--sh-keyword": "{colors.code.keyword}",
+      "--sh-string": "{colors.code.string}",
+      "--sh-class": "{colors.code.class}",
+      "--sh-identifier": "{colors.code.identifier}",
+      "--sh-sign": "{colors.code.sign}",
+      "--sh-property": "{colors.code.property}",
+      "--sh-entity": "{colors.code.entity}",
+      "--sh-jsxliterals": "{colors.code.jsxliterals}",
+      "--sh-comment": "{colors.code.comment}",
+    },
   },
-})
+  {
+    defaultProps: {
+      className: "not-prose",
+    },
+  },
+)
 
 export const CodeHeader = styled("div", {
   base: {
