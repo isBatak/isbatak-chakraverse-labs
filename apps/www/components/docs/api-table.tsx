@@ -49,7 +49,7 @@ const Mono = styled("span", {
   },
 })
 
-function formatType(type: string) {
+export function formatType(type: string) {
   if (!type.endsWith(" | undefined")) return type
   return type.slice(0, -" | undefined".length).replace(/^\((.*)\)$/, "$1")
 }

@@ -8,9 +8,12 @@ import { MDXContent } from "../mdx-content"
 import { Button } from "../ui/button"
 import { Icon } from "../ui/icon"
 import { Prose } from "../ui/prose"
+import { CopyPage } from "./copy-page"
 import { DocFooter } from "./doc-footer"
+import { DocLinks } from "./doc-links"
 import { FrameworkProvider } from "./framework"
 import { ExampleSource } from "./framework-code"
+import { markdownPath } from "./markdown"
 import { StylingProvider } from "./styling"
 
 const BreadcrumbLink = styled(Link, {
@@ -50,7 +53,10 @@ export function DocPage({ component, section, title, description, preview, code 
             // Static values only: the Panda transformer drops runtime conditions in style props
             css={{
               "&[data-preview]": {
-                gridTemplateAreas: { base: `"intro" "preview" "content"`, lg: `"intro preview" "content preview"` },
+                gridTemplateAreas: {
+                  base: `"intro" "preview" "content"`,
+                  lg: `"intro preview" "content preview"`,
+                },
                 gridTemplateColumns: { lg: "minmax(0, 1fr) minmax(0, 1fr)" },
                 gridTemplateRows: { lg: "auto 1fr" },
               },
@@ -80,7 +86,10 @@ export function DocPage({ component, section, title, description, preview, code 
                 )}
               </styled.nav>
 
-              <styled.div maxW="2xl" pt={{ base: "12", md: "24" }} pb="10">
+              <styled.div maxW="2xl" pt={{ base: "8", md: "16" }} pb="10">
+                <styled.div display="flex" justifyContent="flex-start" mb="4">
+                  <CopyPage href={markdownPath(current?.permalink ?? component.permalink)} />
+                </styled.div>
                 <styled.h1 textStyle={{ base: "4xl", md: "5xl" }} fontWeight="semibold" letterSpacing="tight">
                   {title}
                 </styled.h1>
@@ -89,6 +98,7 @@ export function DocPage({ component, section, title, description, preview, code 
                     {description}
                   </styled.p>
                 )}
+                <DocLinks links={component.links} />
                 {guides.length > 0 && (
                   <styled.nav aria-label="Sections" display="flex" flexWrap="wrap" gap="1" mt="8" ms="-2.5">
                     <Button asChild variant={current ? "ghost" : "subtle"} size="sm">

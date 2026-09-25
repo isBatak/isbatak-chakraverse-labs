@@ -26,6 +26,17 @@ const nextConfig: NextConfig = {
       { source: "/docs/:path*", destination: "/components", permanent: true },
     ]
   },
+  async rewrites() {
+    return [
+      { source: "/components/:slug.md", destination: "/md/components/:slug" },
+      { source: "/components/:slug/:section.md", destination: "/md/components/:slug/:section" },
+      {
+        source: "/components/:path+",
+        destination: "/md/components/:path+",
+        has: [{ type: "header", key: "accept", value: "(.*)text/markdown(.*)" }],
+      },
+    ]
+  },
   turbopack: {
     rules: {
       ...codeInspectorPlugin({
