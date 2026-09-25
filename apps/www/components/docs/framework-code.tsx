@@ -132,24 +132,23 @@ function ManualInstall({ id, framework, styling }: VariantProps) {
 
 export function Installation({ id }: ExampleProps) {
   return (
-    <styled.div my="6">
-      <Tabs.Root defaultValue="cli" size="sm" variant="line">
-        <Tabs.List>
-          <Tabs.Trigger value="cli">shadcn CLI</Tabs.Trigger>
-          <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
-        </Tabs.List>
-        <Tabs.Content value="cli">
-          <VariantSwitch
-            render={(framework, styling) => <CliInstall id={id} framework={framework} styling={styling} />}
-          />
-        </Tabs.Content>
-        <Tabs.Content value="manual">
-          <VariantSwitch
-            render={(framework, styling) => <ManualInstall id={id} framework={framework} styling={styling} />}
-          />
-        </Tabs.Content>
-      </Tabs.Root>
-    </styled.div>
+    <Tabs.Root variant="enclosed" defaultValue="cli" size="xs" my="6">
+      <Tabs.List>
+        <Tabs.Trigger value="cli">shadcn CLI</Tabs.Trigger>
+        <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
+        <Tabs.Indicator />
+      </Tabs.List>
+      <Tabs.Content value="cli">
+        <VariantSwitch
+          render={(framework, styling) => <CliInstall id={id} framework={framework} styling={styling} />}
+        />
+      </Tabs.Content>
+      <Tabs.Content value="manual">
+        <VariantSwitch
+          render={(framework, styling) => <ManualInstall id={id} framework={framework} styling={styling} />}
+        />
+      </Tabs.Content>
+    </Tabs.Root>
   )
 }
 
