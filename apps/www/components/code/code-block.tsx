@@ -22,7 +22,6 @@ export const CodeFrame = styled("div", {
     "--sh-entity": "{colors.code.entity}",
     "--sh-jsxliterals": "{colors.code.jsxliterals}",
     "--sh-comment": "{colors.code.comment}",
-    "& .sh__token--comment": { fontStyle: "italic" },
   },
 })
 
