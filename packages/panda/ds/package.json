@@ -1,13 +1,25 @@
 {
   "name": "@isbatak/panda-ds",
   "version": "0.0.0",
-  "private": true,
   "description": "Panda CSS design system",
   "author": "Ivica Batinic <ivicabatinic123@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/isBatak/isbatak-labs/tree/main/packages/panda/ds#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isBatak/isbatak-labs.git",
+    "directory": "packages/panda/ds"
+  },
+  "bugs": {
+    "url": "https://github.com/isBatak/isbatak-labs/issues"
+  },
   "type": "module",
   "sideEffects": [
     "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "styled-system"
   ],
   "exports": {
     "./theme": "./src/theme/index.ts",
@@ -57,11 +69,75 @@
   },
   "scripts": {
     "codegen": "panda codegen",
-    "build": "panda codegen && panda lib -o dist",
+    "build": "panda codegen && panda lib -o dist && tsup",
     "typecheck": "panda codegen && tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      "./theme": {
+        "types": "./dist/theme/index.d.ts",
+        "default": "./dist/theme/index.js"
+      },
+      "./radius": {
+        "types": "./dist/theme/radius.d.ts",
+        "default": "./dist/theme/radius.js"
+      },
+      "./panda/*": "./dist/panda/*",
+      "./package.json": "./package.json",
+      "./css": {
+        "types": "./styled-system/css/index.d.ts",
+        "default": "./styled-system/css/index.js"
+      },
+      "./css/*": {
+        "types": "./styled-system/css/*.d.ts",
+        "default": "./styled-system/css/*.js"
+      },
+      "./recipes": {
+        "types": "./styled-system/recipes/index.d.ts",
+        "default": "./styled-system/recipes/index.js"
+      },
+      "./recipes/*": {
+        "types": "./styled-system/recipes/*.d.ts",
+        "default": "./styled-system/recipes/*.js"
+      },
+      "./patterns": {
+        "types": "./styled-system/patterns/index.d.ts",
+        "default": "./styled-system/patterns/index.js"
+      },
+      "./patterns/*": {
+        "types": "./styled-system/patterns/*.d.ts",
+        "default": "./styled-system/patterns/*.js"
+      },
+      "./jsx": {
+        "types": "./styled-system/jsx/index.d.ts",
+        "default": "./styled-system/jsx/index.js"
+      },
+      "./jsx/*": {
+        "types": "./styled-system/jsx/*.d.ts",
+        "default": "./styled-system/jsx/*.js"
+      },
+      "./tokens": {
+        "types": "./styled-system/tokens/index.d.ts",
+        "default": "./styled-system/tokens/index.js"
+      },
+      "./helpers": {
+        "types": "./styled-system/helpers.d.ts",
+        "default": "./styled-system/helpers.js"
+      }
+    }
   },
   "dependencies": {
     "@isbatak/panda-wheel-picker": "workspace:*"
+  },
+  "peerDependencies": {
+    "@pandacss/dev": ">=2.0.0-beta.18",
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@pandacss/dev": "catalog:",

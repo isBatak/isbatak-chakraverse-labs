@@ -10,6 +10,7 @@ export default defineConfig({
   exclude: ["./src/theme/**"],
   dependencies: ["./src/**/*.ts"],
   outdir: "styled-system",
+  forceImportExtension: true,
   conditions,
   utilities: {
     extend: utilities,
