@@ -152,7 +152,14 @@ export function PreviewToolbar({
         aria-label="Toggle color mode"
         onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       >
-        <Icon size="md" name="contrast" />
+        <Icon
+          size="md"
+          name="contrast"
+          transitionProperty="rotate"
+          transitionDuration="moderate"
+          transitionTimingFunction="ease-in-smooth"
+          _dark={{ rotate: "180deg" }}
+        />
       </ToolbarButton>
     </styled.div>
   )
