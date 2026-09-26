@@ -43,6 +43,10 @@ export const segmentIndicator = defineStyles({
 })
 
 export const segmentSizes = {
+  "2xs": {
+    root: defineStyles({ "--segment-height": "sizes.6", "--segment-item-height": "sizes.4.5" }),
+    item: defineStyles({ textStyle: "2xs", px: "2", gap: "1" }),
+  },
   xs: {
     root: defineStyles({ "--segment-height": "sizes.8", "--segment-item-height": "sizes.5" }),
     item: defineStyles({ textStyle: "xs", px: "2.5", gap: "1" }),

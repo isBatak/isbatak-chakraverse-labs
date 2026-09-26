@@ -77,6 +77,13 @@ export const tabsSlotRecipe = defineSlotRecipe({
       },
     },
     size: {
+      "2xs": {
+        root: defineStyles({
+          ...segmentSizes["2xs"].root,
+          "--tabs-content-padding": "spacing.2",
+        }),
+        trigger: segmentSizes["2xs"].item,
+      },
       xs: {
         root: defineStyles({
           ...segmentSizes.xs.root,
