@@ -23,8 +23,8 @@ export function InstallMethodTabs({ children }: { children: ReactNode }) {
 
   return (
     <Tabs.Root
-      variant="line"
-      size="sm"
+      variant="enclosed"
+      size="2xs"
       my="6"
       value={installMethod}
       onValueChange={(details) => setInstallMethod(details.value as InstallMethodId)}
