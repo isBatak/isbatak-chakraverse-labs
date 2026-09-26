@@ -1,37 +1,21 @@
 "use client"
 
-import { createContext, type ReactNode, useContext, useEffect, useState } from "react"
+import type { ReactNode } from "react"
+
+import { createPreference } from "./preference"
 
 export type FrameworkId = "react" | "vue" | "svelte" | "solid" | "preact" | "vanilla"
 
-const storageKey = "docs-framework"
+const useFrameworkPreference = createPreference<FrameworkId, FrameworkId>(
+  "docs-framework",
+  ["react", "vue", "svelte", "solid", "preact", "vanilla"],
+  "react",
+)
 
-const FrameworkContext = createContext<{ framework: FrameworkId; setFramework: (id: FrameworkId) => void }>({
-  framework: "react",
-  setFramework: () => {},
-})
-
-export function FrameworkProvider({ children }: { children: ReactNode }) {
-  const [framework, setFrameworkState] = useState<FrameworkId>("react")
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(storageKey)
-      if (stored) setFrameworkState(stored as FrameworkId)
-    } catch {}
-  }, [])
-
-  const setFramework = (id: FrameworkId) => {
-    setFrameworkState(id)
-    try {
-      localStorage.setItem(storageKey, id)
-    } catch {}
-  }
-
-  return <FrameworkContext value={{ framework, setFramework }}>{children}</FrameworkContext>
+export function useFramework() {
+  const [framework, setFramework] = useFrameworkPreference()
+  return { framework, setFramework }
 }
-
-export const useFramework = () => useContext(FrameworkContext)
 
 export type FrameworkSwitchProps = Record<FrameworkId, ReactNode>
 

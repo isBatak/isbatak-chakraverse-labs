@@ -1,39 +1,18 @@
 "use client"
 
-import { createContext, type ReactNode, useContext, useEffect, useState } from "react"
+import type { ReactNode } from "react"
 
 import { SegmentGroup } from "../ui/segment-group"
+import { createPreference } from "./preference"
 
 export type StylingId = "panda" | "css"
 
-const storageKey = "docs-styling"
+const useStylingPreference = createPreference<StylingId, StylingId>("docs-styling", ["panda", "css"], "panda")
 
-const StylingContext = createContext<{ styling: StylingId; setStyling: (id: StylingId) => void }>({
-  styling: "panda",
-  setStyling: () => {},
-})
-
-export function StylingProvider({ children }: { children: ReactNode }) {
-  const [styling, setStylingState] = useState<StylingId>("panda")
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(storageKey)
-      if (stored === "panda" || stored === "css") setStylingState(stored)
-    } catch {}
-  }, [])
-
-  const setStyling = (id: StylingId) => {
-    setStylingState(id)
-    try {
-      localStorage.setItem(storageKey, id)
-    } catch {}
-  }
-
-  return <StylingContext value={{ styling, setStyling }}>{children}</StylingContext>
+export function useStyling() {
+  const [styling, setStyling] = useStylingPreference()
+  return { styling, setStyling }
 }
-
-export const useStyling = () => useContext(StylingContext)
 
 export type StylingSwitchProps = Record<StylingId, ReactNode>
 
