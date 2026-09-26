@@ -5,6 +5,7 @@ import { breakpoints } from "./breakpoints"
 import { keyframes } from "./keyframes"
 import { layerStyles } from "./layer-styles"
 import { recipes } from "./recipes"
+import { proseRecipe } from "./recipes/prose"
 import { semanticTokens } from "./semantic-tokens"
 import { slotRecipes } from "./slot-recipes"
 import { textStyles } from "./text-styles"
@@ -22,6 +23,11 @@ export const theme = defineThemeVariant({
   layerStyles,
   animationStyles,
   viewTransitions,
+  extend: {
+    recipes: {
+      prose: proseRecipe,
+    },
+  },
 })
 
 export { conditions } from "./conditions"
