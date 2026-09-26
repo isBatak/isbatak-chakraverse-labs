@@ -3,6 +3,7 @@
 import { createContext, type ReactNode, useContext } from "react"
 import { styled } from "styled-system/jsx"
 
+import { Icon, type IconName } from "../ui/icon"
 import { Tabs } from "../ui/tabs"
 import { TabsCopyButton } from "./copy-button"
 
@@ -26,6 +27,18 @@ const CodeTabsHeader = styled("div", {
   },
 })
 
+const fileIcons: Record<string, IconName> = {
+  ts: "brand-typescript",
+  tsx: "brand-typescript",
+  js: "brand-javascript",
+  jsx: "brand-javascript",
+  css: "brand-css3",
+  vue: "brand-vue",
+  svelte: "brand-svelte",
+}
+
+const fileIcon = (name: string) => fileIcons[name.split(".").pop() ?? ""] ?? "file"
+
 interface CodeFile {
   name: string
   code: string
@@ -47,7 +60,8 @@ export function CodeTabs({ files, children }: { files: CodeFile[]; children: Rea
       <CodeTabsHeader surface={surface}>
         <Tabs.List minW="0" overflowX="auto">
           {files.map((file) => (
-            <Tabs.Trigger key={file.name} value={file.name} fontFamily="mono">
+            <Tabs.Trigger key={file.name} value={file.name} fontFamily="mono" gap="1.5">
+              <Icon size="xs" name={fileIcon(file.name)} />
               {file.name}
             </Tabs.Trigger>
           ))}

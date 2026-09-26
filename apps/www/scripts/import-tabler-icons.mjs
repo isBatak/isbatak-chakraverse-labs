@@ -49,6 +49,8 @@ const icons = {
   "brand-svelte": "outline/brand-svelte",
   "brand-solidjs": "outline/brand-solidjs",
   "brand-javascript": "outline/brand-javascript",
+  "brand-typescript": "outline/brand-typescript",
+  "brand-css3": "outline/brand-css3",
   "brand-x": "outline/brand-x",
   "brand-storybook": "outline/brand-storybook",
   "brand-openai": "outline/brand-openai",
