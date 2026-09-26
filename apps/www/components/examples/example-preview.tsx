@@ -6,6 +6,7 @@ import { flushSync } from "react-dom"
 import { viewTransition } from "styled-system/css"
 import { styled } from "styled-system/jsx"
 
+import { CodeSurfaceProvider } from "../code/code-tabs"
 import { StylingPicker } from "../docs/styling"
 import { ExampleView } from "./example-view"
 import { usePreview } from "./preview-context"
@@ -146,10 +147,10 @@ export function ExamplePreview() {
             overflowY="auto"
             overscrollBehavior="contain"
             px="3"
-            pt="10"
+            pt="16"
             pb="14"
           >
-            {activeSource}
+            <CodeSurfaceProvider value="preview">{activeSource}</CodeSurfaceProvider>
           </styled.div>
         </ViewTransition>
       )}

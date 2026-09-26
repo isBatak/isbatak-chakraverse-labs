@@ -2,11 +2,12 @@ import manifest from "@isbatak/compositions/manifest.json"
 import type { ReactNode } from "react"
 import { styled } from "styled-system/jsx"
 
-import { CodeBlock, CodeBody, CodeFrame, CodeHeader } from "../code/code-block"
-import { TabsCopyButton } from "../code/copy-button"
+import { CodeBlock, CodeBody } from "../code/code-block"
+import { CodeTabs } from "../code/code-tabs"
 import { ExampleTrigger } from "../examples/example-trigger"
 import { Tabs } from "../ui/tabs"
 import { type FrameworkId, FrameworkSwitch } from "./framework"
+import { InstallMethodTabs } from "./install-method"
 import { registryUrl } from "./registry"
 import { type StylingId, StylingSwitch } from "./styling"
 
@@ -122,9 +123,7 @@ function ManualInstall({ id, framework, styling }: VariantProps) {
       )}
       <li>
         Copy these files into <code>{folderOf(example)}</code>:
-        <CodeFrame>
-          <ExampleFilesTabs id={id} framework={framework} styling={styling} />
-        </CodeFrame>
+        <ExampleFilesTabs id={id} framework={framework} styling={styling} />
       </li>
     </ol>
   )
@@ -132,7 +131,7 @@ function ManualInstall({ id, framework, styling }: VariantProps) {
 
 export function Installation({ id }: ExampleProps) {
   return (
-    <Tabs.Root variant="enclosed" defaultValue="cli" size="xs" my="6">
+    <InstallMethodTabs>
       <Tabs.List>
         <Tabs.Trigger value="cli">shadcn CLI</Tabs.Trigger>
         <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
@@ -148,7 +147,7 @@ export function Installation({ id }: ExampleProps) {
           render={(framework, styling) => <ManualInstall id={id} framework={framework} styling={styling} />}
         />
       </Tabs.Content>
-    </Tabs.Root>
+    </InstallMethodTabs>
   )
 }
 
@@ -157,23 +156,13 @@ function ExampleFilesTabs({ id, framework, styling }: VariantProps) {
   if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
 
   return (
-    <Tabs.Root key={`${framework}-${styling}`} defaultValue={example.files[0]!.name} size="xs" variant="outline">
-      <CodeHeader>
-        <Tabs.List alignSelf="flex-end" ms="-2.5" borderBottomWidth="0" overflowX="auto">
-          {example.files.map((file) => (
-            <Tabs.Trigger key={file.name} value={file.name}>
-              {file.name}
-            </Tabs.Trigger>
-          ))}
-        </Tabs.List>
-        <TabsCopyButton files={Object.fromEntries(example.files.map((file) => [file.name, file.code]))} />
-      </CodeHeader>
+    <CodeTabs key={`${framework}-${styling}`} files={example.files}>
       {example.files.map((file) => (
-        <Tabs.Content key={file.name} value={file.name} pt="0">
+        <Tabs.Content key={file.name} value={file.name} p="0">
           <CodeBody code={file.code} lang={file.lang} />
         </Tabs.Content>
       ))}
-    </Tabs.Root>
+    </CodeTabs>
   )
 }
 
@@ -186,11 +175,7 @@ function ExampleFiles({ id }: ExampleProps) {
 }
 
 export function ExampleSource({ id }: ExampleProps) {
-  return (
-    <CodeFrame>
-      <ExampleFiles id={id} />
-    </CodeFrame>
-  )
+  return <ExampleFiles id={id} />
 }
 
 export function Example({ id, children }: ExampleProps & { children?: ReactNode }) {
