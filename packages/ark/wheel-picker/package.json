@@ -1,6 +1,6 @@
 {
   "name": "@isbatak/ark-wheel-picker",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Ark UI style wheel-picker components for React, Solid, Vue and Svelte",
   "keywords": [
     "ark",
