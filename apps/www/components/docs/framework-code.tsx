@@ -155,7 +155,7 @@ function ExampleFilesTabs({ id, framework, styling }: VariantProps) {
   if (!example) return <Unavailable>Not available for {frameworkLabel(framework)} yet.</Unavailable>
 
   return (
-    <CodeTabs key={`${framework}-${styling}`} files={example.files}>
+    <CodeTabs key={`${id}-${framework}-${styling}`} files={example.files}>
       {example.files.map((file) => (
         <Tabs.Content key={file.name} value={file.name} p="0">
           <CodeBody code={file.code} lang={file.lang} />

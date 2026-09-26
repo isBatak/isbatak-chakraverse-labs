@@ -142,6 +142,7 @@ export function ExamplePreview() {
       {showSource && (
         <ViewTransition enter={viewTransition("fade")} exit={viewTransition("fade")}>
           <styled.div
+            key={activeId}
             position="absolute"
             inset="0"
             overflowY="auto"
