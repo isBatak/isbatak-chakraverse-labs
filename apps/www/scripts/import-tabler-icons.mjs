@@ -56,6 +56,7 @@ const icons = {
   "brand-openai": "outline/brand-openai",
   markdown: "outline/markdown",
   "arrow-up-right": "outline/arrow-up-right",
+  focus: "outline/focus-2",
 }
 
 const SIMPLE_ICONS_VERSION = "15"

@@ -6,6 +6,7 @@ import { CodeBlock } from "./code/code-block"
 import { ApiTable } from "./docs/api-table"
 import { ArkWheelPickerExample } from "./docs/ark-wheel-picker-example"
 import { Example, ExampleSource, FrameworkInstall, Installation } from "./docs/framework-code"
+import { FrameworkHint } from "./docs/framework-hint"
 
 type MDXComponents = Record<string, ComponentType<any>>
 
@@ -38,6 +39,7 @@ const sharedComponents: MDXComponents = {
   ArkExample,
   Example,
   ExampleCode: ExampleSource,
+  FrameworkHint,
   FrameworkInstall,
   Installation,
 }

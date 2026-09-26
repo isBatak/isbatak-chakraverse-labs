@@ -1,5 +1,6 @@
 import type { ExtendableTheme } from "@pandacss/types"
 
+import { hint } from "./recipes/hint"
 import { layoutContainer } from "./recipes/layout-container"
 
 export const theme = {
@@ -48,6 +49,9 @@ export const theme = {
       layoutContainer,
       // Icons default to the surrounding font size; `size` variants override it
       icon: { base: { boxSize: "1em" } },
+    },
+    slotRecipes: {
+      hint,
     },
   },
 } satisfies ExtendableTheme

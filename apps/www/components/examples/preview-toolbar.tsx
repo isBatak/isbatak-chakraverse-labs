@@ -45,7 +45,7 @@ function FrameworkSelect() {
       width="auto"
     >
       <Select.Trigger asChild>
-        <ToolbarButton aria-label={`Framework: ${frameworks.stringify(framework)}`}>
+        <ToolbarButton data-framework-picker="" aria-label={`Framework: ${frameworks.stringify(framework)}`}>
           <Icon size="md" name={frameworkIcons[framework]} />
         </ToolbarButton>
       </Select.Trigger>
