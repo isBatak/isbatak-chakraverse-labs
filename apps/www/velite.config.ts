@@ -31,28 +31,6 @@ const components = defineCollection({
     }),
 })
 
-const componentGuides = defineCollection({
-  name: "ComponentGuide",
-  pattern: ["components/*/*.mdx", "!components/*/index.mdx"],
-  schema: s
-    .object({
-      title: s.string().max(99),
-      label: s.string().max(30),
-      description: s.string().max(999).optional(),
-      order: s.number().default(0),
-      preview: s.string().optional(),
-      path: s.path(),
-      toc: s.toc(),
-      metadata: s.metadata(),
-      raw: s.raw(),
-      code: s.mdx(),
-    })
-    .transform(({ path, ...data }) => {
-      const [component = "", slug = ""] = path.replace(/^components\//, "").split("/")
-      return { ...data, component, slug, permalink: `/components/${component}/${slug}` }
-    }),
-})
-
 export default defineConfig({
   root: "content",
   output: {
@@ -62,5 +40,5 @@ export default defineConfig({
     name: "[name]-[hash:6].[ext]",
     clean: true,
   },
-  collections: { components, componentGuides },
+  collections: { components },
 })

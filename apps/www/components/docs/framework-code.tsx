@@ -75,8 +75,7 @@ const folderOf = (example: ExampleFiles) => example.files[0]!.target.replace(/[^
 function PandaSetup() {
   return (
     <p>
-      Add <code>wheelPickerPreset</code> from <code>@isbatak/panda-wheel-picker</code> to your Panda config, see{" "}
-      <a href="/components/wheel-picker/panda">Panda CSS</a>.
+      Add <code>wheelPickerPreset</code> from <code>@isbatak/panda-wheel-picker</code> to your Panda config.
     </p>
   )
 }

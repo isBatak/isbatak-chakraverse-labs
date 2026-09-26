@@ -1,4 +1,4 @@
-import { componentGuides, components } from "#site/content"
+import { components } from "#site/content"
 import manifest from "@isbatak/compositions/manifest.json"
 
 import api from "../../data/api.json"
@@ -109,16 +109,10 @@ const toMarkdown = (title: string, description: string | undefined, raw: string)
     .replace(/\n{3,}/g, "\n\n")
     .trim()}\n`
 
-export const markdownParams = () => [
-  ...components.map((doc) => ({ slug: [doc.slug] })),
-  ...componentGuides.map((doc) => ({ slug: [doc.component, doc.slug] })),
-]
+export const markdownParams = () => components.map((doc) => ({ slug: [doc.slug] }))
 
-export function getMarkdown([slug, section, ...rest]: string[]) {
+export function getMarkdown([slug, ...rest]: string[]) {
   const component = components.find((doc) => doc.slug === slug)
   if (!component || rest.length > 0) return undefined
-  if (!section) return toMarkdown(component.title, component.description, component.raw)
-
-  const guide = componentGuides.find((doc) => doc.component === slug && doc.slug === section)
-  return guide && toMarkdown(`${component.title}: ${guide.title}`, guide.description, guide.raw)
+  return toMarkdown(component.title, component.description, component.raw)
 }
