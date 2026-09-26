@@ -128,6 +128,56 @@ export const tabsSlotRecipe = defineSlotRecipe({
       plain: {
         trigger: segmentVariants.plain.item,
       },
+      folder: {
+        root: {
+          "--tabs-panel-bg": "colors.bg.subtle",
+        },
+        list: {
+          zIndex: 1,
+          gap: "1",
+          _horizontal: {
+            mb: "-1px",
+          },
+          _vertical: {
+            me: "-1px",
+          },
+        },
+        trigger: {
+          height: "var(--segment-height)",
+          minW: "var(--segment-height)",
+          borderWidth: "1px",
+          borderColor: "transparent",
+          _horizontal: {
+            borderBottomWidth: "0",
+            borderTopRadius: "var(--segment-radius)",
+          },
+          _vertical: {
+            borderEndWidth: "0",
+            borderStartRadius: "var(--segment-radius)",
+          },
+          "&:is([aria-selected=true], [data-selected], [data-state=checked])": {
+            color: "fg",
+            bg: "var(--tabs-panel-bg)",
+            borderColor: "border",
+          },
+        },
+        content: {
+          bg: "var(--tabs-panel-bg)",
+          borderWidth: "1px",
+          borderRadius: "l3",
+          _horizontal: {
+            p: "var(--tabs-content-padding)",
+            borderTopStartRadius: "0",
+          },
+          _vertical: {
+            p: "var(--tabs-content-padding)",
+            borderStartStartRadius: "0",
+          },
+        },
+        indicator: {
+          display: "none",
+        },
+      },
     },
   },
   defaultVariants: {
