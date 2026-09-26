@@ -67,7 +67,7 @@ export const numberInputSlotRecipe = defineSlotRecipe({
       _active: {
         bg: "bg.emphasized",
       },
-      borderTopEndRadius: "var(--stepper-radius)",
+      borderStartEndRadius: "var(--stepper-radius)",
     },
     decrementTrigger: {
       display: "flex",
@@ -92,7 +92,7 @@ export const numberInputSlotRecipe = defineSlotRecipe({
       _active: {
         bg: "bg.emphasized",
       },
-      borderBottomEndRadius: "var(--stepper-radius)",
+      borderEndEndRadius: "var(--stepper-radius)",
     },
     valueText: {
       fontWeight: "medium",

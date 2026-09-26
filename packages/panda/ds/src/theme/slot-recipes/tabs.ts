@@ -174,7 +174,7 @@ export const tabsSlotRecipe = defineSlotRecipe({
           borderRadius: "l3",
           _horizontal: {
             p: "var(--tabs-content-padding)",
-            borderTopStartRadius: "0",
+            borderStartStartRadius: "0",
           },
           _vertical: {
             p: "var(--tabs-content-padding)",
